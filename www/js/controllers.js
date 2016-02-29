@@ -24,6 +24,11 @@ angular.module('mapasculturais.controllers', [])
 
 })
 
+.controller('navbarCtrl', function($scope, $location) {
+    $scope.location = $location.path();
+
+})
+
 .controller('filterCtrl', function($scope) {
 
 })

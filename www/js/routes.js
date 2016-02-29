@@ -1,4 +1,4 @@
-angular.module('app.routes', [])
+angular.module('mapasculturais.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -14,7 +14,7 @@ angular.module('app.routes', [])
     abstract:true
   })
 
-  .state('events', {
+  .state('menu.events', {
     url: '/events',
     views: {
       'side-menu21': {
@@ -24,7 +24,7 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('spaces', {
+  .state('menu.spaces', {
     url: '/spaces',
     views: {
       'side-menu21': {
@@ -34,7 +34,7 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('map', {
+  .state('menu.map', {
     url: '/map',
     views: {
       'side-menu21': {
@@ -44,7 +44,7 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('about', {
+  .state('menu.about', {
     url: '/about',
     views: {
       'side-menu21': {
@@ -54,16 +54,24 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('starred', {
+  .state('menu.starred', {
     url: '/starred',
-    templateUrl: 'templates/starred.html',
-    controller: 'starredCtrl'
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/starred.html',
+        controller: 'starredCtrl'
+      }
+    }
   })
 
-  .state('messages', {
+  .state('menu.messages', {
     url: '/messages',
-    templateUrl: 'templates/messages.html',
-    controller: 'messagesCtrl'
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/messages.html',
+        controller: 'messagesCtrl'
+      }
+    }
   })
 
 $urlRouterProvider.otherwise('/side-menu21/events')

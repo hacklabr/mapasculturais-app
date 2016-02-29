@@ -1,6 +1,5 @@
-angular.module('app.directives', [])
+angular.module('mapasculturais.directives', [])
 
 .directive('blankDirective', [function(){
 
 }]);
-

@@ -1,4 +1,4 @@
-angular.module('app.services', [])
+angular.module('mapasculturais.services', [])
 
 .factory('BlankFactory', [function(){
 
@@ -7,4 +7,3 @@ angular.module('app.services', [])
 .service('BlankService', [function(){
 
 }]);
-

@@ -1,9 +1,14 @@
-<ion-side-menus style="" enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-stable">
             <ion-nav-back-button></ion-nav-back-button>
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <div ng-if="true"
+                     class="button icon ion-android-more-vertical" menu-toggle="right">
+                </div>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="side-menu21"></ion-nav-view>
@@ -22,5 +27,69 @@
                 <ion-item style="" menu-close="" ui-sref="menu.about">Sobre</ion-item>
             </ion-list>
         </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu id="right-menu" ng-controller="filterCtrl" side="right">
+        <ion-content>
+            <ion-list>
+                <div class="item item-input">
+                    <i class="icon icon_search placeholder-icon"></i>
+                    <input ng-model="tempFilters.filters.query" ng-keydown="keyLog($event)" type="text" placeholder="Buscar">
+                </div>
+
+                <ion-item class="item-divider">
+                    Filtrado por:
+                </ion-item>
+                <div class="item item-toggle">
+                    <i class="icon icon_circle-slelected"></i>
+                    Próximas a mim
+                    <label class="toggle toggle-dark">
+                        <input type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+                <ion-item>
+                    <div ng-click="openModal()">
+                        <i class="icon icon_pin"></i>
+                        Locais
+                        <span ng-show="selectedSpaces" class="badge badge-dark">
+                            {{selectedSpaces}}
+                        </span>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div>
+                        <i class="icon icon_clock"></i>
+                        Data
+                        <article>
+                        </article>
+                    </div>
+                </ion-item>
+
+                <ion-item class="item-divider">
+                    Ordenado por:
+                </ion-item>
+
+                <ion-radio ng-model="tempFilters.view" ng-change="change(this)" ng-value="'L'">
+                    <i class="icon icon_pin"></i> Local
+                </ion-radio>
+
+                <ion-radio ng-model="tempFilters.view" ng-change="change(this)" ng-value="'A'">
+                    <i class="icon arrow_up-down_alt"></i> Nome
+                </ion-radio>
+
+                <ion-radio ng-model="tempFilters.view" ng-change="change(this)" ng-value="'H'">
+                    <i class="icon icon_clock"></i> Data
+                </ion-radio>
+            </ion-list>
+        </ion-content>
+        <ion-footer-bar align-title="left" class="bar-light">
+            <div class="button-bar">
+                <a class="button button-large icon-left ion-close-circled" ng-click="clearFilters()">Limpar</a>
+                <a class="button button-large icon-left ion-checkmark-circled" ng-click="applyFilters()">Aplicar</a>
+            </div>
+        </ion-footer-bar>
     </ion-side-menu>
 </ion-side-menus>

@@ -1,4 +1,4 @@
-angular.module('app.controllers', [])
+angular.module('mapasculturais.controllers', [])
 
 .controller('eventsCtrl', function($scope) {
 
@@ -21,5 +21,9 @@ angular.module('app.controllers', [])
 })
 
 .controller('messagesCtrl', function($scope) {
+
+})
+
+.controller('filterCtrl', function($scope) {
 
 })

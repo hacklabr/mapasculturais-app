@@ -1,12 +1,20 @@
 <ion-view title="Eventos">
     <ion-content class="has-header" overflow-scroll="true" padding="true">
-        Eventos
-        <ion-list>
-            <ion-item collection-repeat="entity in entities">
-                <a href="">{{entity.name}}</a> <strong>{{entity.start.calendar()}}</strong>
-            </ion-item>
+        <ion-list ng-repeat="group in groups">
+            <div class="item item-divider">
+                {{group.date.calendar()}}
+            </div>
+
+
+            <ion-list>
+                <ion-item ng-repeat="entity in group.events">
+                    <div><a href="">{{entity.name}}</a></div>
+                    <p ng-if="entity.subtitle">{{entity.subtitle}}</p>
+                    <strong>onde: </strong>{{entity.space.name}}
+                </ion-item>
+            </ion-list>
         </ion-list>
 
-        <ion-infinite-scroll on-infinite="loadMore()" distance="30%"></ion-infinite-scroll>
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

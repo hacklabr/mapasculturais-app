@@ -10,7 +10,8 @@ angular.module('mapasculturais', [
     'mapasculturais.controllers',
     'mapasculturais.routes',
     'mapasculturais.services',
-    'mapasculturais.directives'
+    'mapasculturais.directives',
+    'mapas.service'
 ])
 
 .run(function($ionicPlatform) {
@@ -25,4 +26,10 @@ angular.module('mapasculturais', [
       StatusBar.styleDefault();
     }
   });
-})
+});
+
+//@TODO: colocar isto num arquivo de configuração
+window.config = {
+    // url da instalação
+    url: 'http://spcultura.mapas.rafa/'
+};

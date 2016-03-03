@@ -1,20 +1,34 @@
 <ion-view title="Eventos">
     <ion-content class="has-header" overflow-scroll="true" padding="true">
         <ion-list ng-repeat="group in groups">
-            <div class="item item-divider">
+            
+            <div ng-if="showCalendar(group.date)" class="item item-divider">
                 {{group.date.calendar()}}
             </div>
+            <div ng-if="!showCalendar(group.date)" class="item item-divider">
+                {{group.date.format('LLL')}}
+            </div>
 
-
-            <ion-list>
-                <ion-item ng-repeat="entity in group.events">
-                    <div><a href="">{{entity.name}}</a></div>
-                    <p ng-if="entity.subtitle">{{entity.subtitle}}</p>
-                    <strong>onde: </strong>{{entity.space.name}}
+            <ion-list class="event-item">
+                <ion-item ng-repeat="event in group.events">
+                    <h2><a ui-sref="menu.event({entity:event.id})">{{event.name}}</a></h2>
+                    <h3 ng-if="event.subTitulo">{{event.subTitle}}</h3>
+                    <p class="short-description">
+                        <img ng-if="event.$files.avatarSmall" ng-src="{{event.$files.avatarSmall.url}}"/>
+                        {{event.shortDescription}}
+                    </p>
+                    
+                    <p ng-if="event.subtitle">{{event.subtitle}}</p>
+                    <p><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:event.space.id})">{{event.space.name}}</a></p>
+                    <p><i class="icon ion-clock"></i> {{event.start.format('LL')}} das {{event.start.format('HH:mm')}} às {{event.end.format('HH:mm')}}</p>
+                    <p><i class="icon ion-social-usd"></i> {{event.rule.price}}</p>
+                    <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{event.classificacaoEtaria}}</span></p>
+                    <p><strong>linguagem:</strong> {{event.terms.linguagem.join(', ')}}</p>
+                    
                 </ion-item>
             </ion-list>
         </ion-list>
 
-        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
     </ion-content>
 </ion-view>

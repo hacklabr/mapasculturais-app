@@ -9,7 +9,7 @@ angular.module('mapasculturais.routes', [])
   $stateProvider
 
   .state('menu', {
-    url: '/side-menu21',
+    url: '/app',
     templateUrl: 'templates/menu.html',
     abstract:true
   })
@@ -17,9 +17,19 @@ angular.module('mapasculturais.routes', [])
   .state('menu.events', {
     url: '/events',
     views: {
-      'side-menu21': {
+      'app': {
         templateUrl: 'templates/events.html',
         controller: 'eventsCtrl'
+      }
+    }
+  })
+  
+  .state('menu.event', {
+    url: '/event/:entity',
+    views: {
+      'app': {
+        templateUrl: 'templates/event.html',
+        controller: 'eventCtrl'
       }
     }
   })
@@ -27,9 +37,19 @@ angular.module('mapasculturais.routes', [])
   .state('menu.spaces', {
     url: '/spaces',
     views: {
-      'side-menu21': {
+      'app': {
         templateUrl: 'templates/spaces.html',
         controller: 'spacesCtrl'
+      }
+    }
+  })
+  
+  .state('menu.space', {
+    url: '/space/:entity',
+    views: {
+      'app': {
+        templateUrl: 'templates/space.html',
+        controller: 'spaceCtrl'
       }
     }
   })
@@ -37,7 +57,7 @@ angular.module('mapasculturais.routes', [])
   .state('menu.map', {
     url: '/map',
     views: {
-      'side-menu21': {
+      'app': {
         templateUrl: 'templates/map.html',
         controller: 'mapCtrl'
       }
@@ -47,7 +67,7 @@ angular.module('mapasculturais.routes', [])
   .state('menu.about', {
     url: '/about',
     views: {
-      'side-menu21': {
+      'app': {
         templateUrl: 'templates/about.html',
         controller: 'aboutCtrl'
       }
@@ -57,7 +77,7 @@ angular.module('mapasculturais.routes', [])
   .state('menu.starred', {
     url: '/starred',
     views: {
-      'side-menu21': {
+      'app': {
         templateUrl: 'templates/starred.html',
         controller: 'starredCtrl'
       }
@@ -67,14 +87,14 @@ angular.module('mapasculturais.routes', [])
   .state('menu.messages', {
     url: '/messages',
     views: {
-      'side-menu21': {
+      'app': {
         templateUrl: 'templates/messages.html',
         controller: 'messagesCtrl'
       }
     }
   })
 
-$urlRouterProvider.otherwise('/side-menu21/events')
+$urlRouterProvider.otherwise('/app/events')
 
 
 

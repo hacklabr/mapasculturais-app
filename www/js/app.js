@@ -31,5 +31,5 @@ angular.module('mapasculturais', [
 //@TODO: colocar isto num arquivo de configuração
 window.config = {
     // url da instalação
-    url: 'http://spcultura.mapas.rafa/'
+    url: 'http://spcultura.prefeitura.sp.gov.br/'
 };

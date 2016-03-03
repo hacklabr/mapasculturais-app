@@ -1,0 +1,24 @@
+<ion-view title="{{entity.name}}">
+    <ion-content class="has-header" overflow-scroll="true" padding="true">
+        <h2 ng-if="entity.subTitle">{{entity.subtitle}}</h2>
+        
+        <img ng-if="entity.$files.avatarEvent" ng-src="{{entity.$files.avatarEvent.url}}" style="width:100%">
+        
+        
+        <p ng-if="!entity.longDescription">{{entity.shortDescription}}</p>
+        <p ng-if="entity.longDescription">{{entity.longDescription}}</p>
+        
+        <p><strong>linguagem:</strong> {{entity.terms.linguagem.join(', ')}}</p>
+        <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{entity.classificacaoEtaria}}</span></p>
+        <p><i class="icon ion-person"></i> <span class="label">publicado por:</span> <a ui-sref="menu.agent({entity:owner.id})">{{entity.owner.name}}</a></p>
+        
+        <h3>onde e quando</h3>
+        <ion-list class="event-item">
+            <ion-item ng-repeat="occ in entity.occurrences">
+                <div><a href><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:occ.space.id})">{{occ.space.name}}</a></div>
+                <div><i class="icon ion-clock"></i> {{occ.rule.description}}</div> 
+                <div><i class="icon ion-social-usd"></i> {{occ.rule.price}}</div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

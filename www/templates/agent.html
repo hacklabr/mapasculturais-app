@@ -4,17 +4,14 @@
         <div class="servico">
             <p><strong>endereço:</strong> {{entity.endereco}}</p>
             <p><strong>tipo:</strong> {{entity.type.name}}</p>
-            <p><strong>area de atuação:</strong> {{entity.terms.area.join(', ')}}</p> {{owner}}
-            <p>
-                <i class="icon ion-person"></i> <span class="label">publicado por:</span> 
-                <a ui-sref="menu.agent({entity:entity.owner.id})">{{entity.owner.name}}</a>
-            </p>
+            <p><strong>area de atuação:</strong> {{entity.terms.area.join(', ')}}</p>
+            <p ng-if="entity.owner.id"><i class="icon ion-person"></i> <span class="label">publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})">{{entity.owner.name}}</a></p>
         </div>
 
         <p ng-if="!entity.longDescription">{{entity.shortDescription}}</p>
         <p ng-if="entity.longDescription">{{entity.longDescription}}</p>
         
-        <div ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findBySpace'; findEntityId = entity.id">
+        <div ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByOwner'; findEntityId = entity.id">
             <h3>programação:</h3>
             
             <ion-list ng-repeat="group in groups">
@@ -36,6 +33,7 @@
                         </p>
 
                         <p ng-if="event.subtitle">{{event.subtitle}}</p>
+                        <p><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:event.space.id})">{{event.space.name}}</a></p>
                         <p><i class="icon ion-clock"></i> {{event.start.format('LL')}} das {{event.start.format('HH:mm')}} às {{event.end.format('HH:mm')}}</p>
                         <p><i class="icon ion-social-usd"></i> {{event.rule.price}}</p>
                         <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{event.classificacaoEtaria}}</span></p>

@@ -27,7 +27,7 @@ angular.module('mapasculturais.controllers', [])
     .controller('eventsCtrl', ['$scope', 'mapas.service.event', function ($scope, eventApi) {
             console.log('eventCtrl');
             var api = eventApi(window.config.url);
-            var _limit = 30;
+            var _limit = 300;
             var _page = 1;
             var _endData = false;
             var _lastGroup = null;
@@ -40,7 +40,7 @@ angular.module('mapasculturais.controllers', [])
                 to: moment().add(31, 'days').format('Y-MM-DD'),
                 pastEvents: false
             };
-            
+
             $scope.$watch('filters', function () {
                 $scope.groups = [];
                 _page = 1;
@@ -52,20 +52,19 @@ angular.module('mapasculturais.controllers', [])
             }
 
             $scope.loadMore = function () {
+                var events;
                 var params = {
                     '@limit': _limit,
                     '@page': _page
                 };
-                
-                if(!$scope.controllerFilters){
-                    $scope.controllerFilters = {};
+
+                if ($scope.findFunction) {
+                    console.log($scope.findFunction);
+                    var entityId = $scope.findEntityId;
+                    events = api[$scope.findFunction](entityId, $scope.filters.from, $scope.filters.to, params);
+                } else {
+                    events = api.find($scope.filters.from, $scope.filters.to, params);
                 }
-                
-                if($scope.controllerFilters.space){
-                    params['space:id'] = $IN($scope.controllerFilters.space);
-                }
-                
-                var events = api.find($scope.filters.from, $scope.filters.to, params);
 
                 _page++;
 
@@ -73,7 +72,7 @@ angular.module('mapasculturais.controllers', [])
                     if (rs.length < _limit) {
                         _endData = true;
                     }
-                    
+
                     var _groups = api.group('YYYY-MM-DD HH:mm', rs);
 
                     _groups.forEach(function (e) {
@@ -94,7 +93,7 @@ angular.module('mapasculturais.controllers', [])
                     console.log('load more');
                 });
             };
-            
+
 
             $scope.showCalendar = function (group) {
                 var numDays = 6
@@ -107,7 +106,7 @@ angular.module('mapasculturais.controllers', [])
     .controller('eventCtrl', ['$scope', '$stateParams', 'mapas.service.event', function ($scope, $stateParams, eventApi) {
             var api = eventApi(window.config.url);
             api.util.applyMe.apply($scope);
-            
+
             $scope.entity = null;
 
             api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
@@ -118,15 +117,37 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('spacesCtrl', function ($scope) {
-        
+
     })
 
     .controller('spaceCtrl', ['$scope', '$stateParams', 'mapas.service.space', 'mapas.service.event', function ($scope, $stateParams, spaceApi, eventApi) {
             var api = spaceApi(window.config.url);
             api.util.applyMe.apply($scope);
-            
+
             $scope.entity = null;
 
+            api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
+                $scope.entity = entity;
+            });
+        }])
+
+    .controller('agentCtrl', ['$scope', '$stateParams', 'mapas.service.agent', 'mapas.service.event', function ($scope, $stateParams, agentApi, eventApi) {
+            var api = agentApi(window.config.url);
+            api.util.applyMe.apply($scope);
+
+            $scope.entity = null;
+            
+            api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
+                $scope.entity = entity;
+            });
+        }])
+
+    .controller('projectCtrl', ['$scope', '$stateParams', 'mapas.service.project', 'mapas.service.event', function ($scope, $stateParams, projectApi, eventApi) {
+            var api = projectApi(window.config.url);
+            api.util.applyMe.apply($scope);
+
+            $scope.entity = null;
+            
             api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
                 $scope.entity = entity;
             });

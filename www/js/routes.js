@@ -53,6 +53,26 @@ angular.module('mapasculturais.routes', [])
       }
     }
   })
+  
+  .state('menu.agent', {
+    url: '/agent/:entity',
+    views: {
+      'app': {
+        templateUrl: 'templates/agent.html',
+        controller: 'agentCtrl'
+      }
+    }
+  })
+  
+  .state('menu.project', {
+    url: '/project/:entity',
+    views: {
+      'app': {
+        templateUrl: 'templates/project.html',
+        controller: 'agentCtrl'
+      }
+    }
+  })
 
   .state('menu.map', {
     url: '/map',

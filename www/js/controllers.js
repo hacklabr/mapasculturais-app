@@ -24,7 +24,8 @@ function classificacao(event) {
 }
 angular.module('mapasculturais.controllers', [])
 
-    .controller('eventsCtrl', ['$scope', 'mapas.service.event', function ($scope, eventApi) {
+    .controller('eventsCtrl', [
+        '$scope', 'mapas.service.event', function ($scope, eventApi) {
             var api = eventApi(window.config.url);
             var _limit = 50;
             var _page = 1;
@@ -100,7 +101,8 @@ angular.module('mapasculturais.controllers', [])
             $scope.classificacao = classificacao;
         }])
 
-    .controller('eventCtrl', ['$scope', '$stateParams', 'mapas.service.event', function ($scope, $stateParams, eventApi) {
+    .controller('eventCtrl', [
+        '$scope', '$stateParams', 'mapas.service.event', function ($scope, $stateParams, eventApi) {
             var api = eventApi(window.config.url);
             api.util.applyMe.apply($scope);
 
@@ -117,7 +119,8 @@ angular.module('mapasculturais.controllers', [])
 
     })
 
-    .controller('spaceCtrl', ['$scope', '$stateParams', 'mapas.service.space', 'mapas.service.event', function ($scope, $stateParams, spaceApi, eventApi) {
+    .controller('spaceCtrl', [
+        '$scope', '$stateParams', 'mapas.service.space', 'mapas.service.event', function ($scope, $stateParams, spaceApi, eventApi) {
             var api = spaceApi(window.config.url);
             api.util.applyMe.apply($scope);
 
@@ -128,7 +131,8 @@ angular.module('mapasculturais.controllers', [])
             });
         }])
 
-    .controller('agentCtrl', ['$scope', '$stateParams', 'mapas.service.agent', 'mapas.service.event', function ($scope, $stateParams, agentApi, eventApi) {
+    .controller('agentCtrl', [
+        '$scope', '$stateParams', 'mapas.service.agent', 'mapas.service.event', function ($scope, $stateParams, agentApi, eventApi) {
             var api = agentApi(window.config.url);
             api.util.applyMe.apply($scope);
 
@@ -139,7 +143,8 @@ angular.module('mapasculturais.controllers', [])
             });
         }])
 
-    .controller('projectCtrl', ['$scope', '$stateParams', 'mapas.service.project', 'mapas.service.event', function ($scope, $stateParams, projectApi, eventApi) {
+    .controller('projectCtrl', [
+        '$scope', '$stateParams', 'mapas.service.project', 'mapas.service.event', function ($scope, $stateParams, projectApi, eventApi) {
             var api = projectApi(window.config.url);
             api.util.applyMe.apply($scope);
 

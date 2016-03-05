@@ -7,7 +7,6 @@
             <p><strong>area de atuação:</strong> {{entity.terms.area.join(', ')}}</p>
             <p ng-if="entity.owner.id"><i class="icon ion-person"></i> <span class="label">publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})">{{entity.owner.name}}</a></p>
         </div>
-
         <p ng-if="!entity.longDescription">{{entity.shortDescription}}</p>
         <p ng-if="entity.longDescription">{{entity.longDescription}}</p>
         

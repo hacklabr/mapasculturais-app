@@ -69,7 +69,7 @@ angular.module('mapasculturais.routes', [])
     views: {
       'app': {
         templateUrl: 'templates/project.html',
-        controller: 'agentCtrl'
+        controller: 'projectCtrl'
       }
     }
   })

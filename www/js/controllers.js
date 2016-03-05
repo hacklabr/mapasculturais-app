@@ -25,9 +25,8 @@ function classificacao(event) {
 angular.module('mapasculturais.controllers', [])
 
     .controller('eventsCtrl', ['$scope', 'mapas.service.event', function ($scope, eventApi) {
-            console.log('eventCtrl');
             var api = eventApi(window.config.url);
-            var _limit = 300;
+            var _limit = 50;
             var _page = 1;
             var _endData = false;
             var _lastGroup = null;
@@ -59,7 +58,6 @@ angular.module('mapasculturais.controllers', [])
                 };
 
                 if ($scope.findFunction) {
-                    console.log($scope.findFunction);
                     var entityId = $scope.findEntityId;
                     events = api[$scope.findFunction](entityId, $scope.filters.from, $scope.filters.to, params);
                 } else {
@@ -90,10 +88,9 @@ angular.module('mapasculturais.controllers', [])
                         _lastGroup = e;
                     });
                     $scope.$broadcast('scroll.infiniteScrollComplete');
-                    console.log('load more');
+                    
                 });
             };
-
 
             $scope.showCalendar = function (group) {
                 var numDays = 6

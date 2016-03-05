@@ -25,7 +25,7 @@ function classificacao(event) {
 angular.module('mapasculturais.controllers', [])
 
     .controller('eventsCtrl', [
-        '$scope', 'mapas.service.event', function ($scope, eventApi) {
+        '$scope', 'mapas.service.event', 'FavoriteEvents', function ($scope, eventApi, FavoriteEvents) {
             var api = eventApi(window.config.url);
             var _limit = 50;
             var _page = 1;
@@ -71,6 +71,9 @@ angular.module('mapasculturais.controllers', [])
                     if (rs.length < _limit) {
                         _endData = true;
                     }
+                    rs.forEach(function(event) {
+                        event.favorite = FavoriteEvents.isFavorite(event);
+                    })
 
                     var _groups = api.group('YYYY-MM-DD HH:mm', rs);
 
@@ -99,18 +102,23 @@ angular.module('mapasculturais.controllers', [])
             }
 
             $scope.classificacao = classificacao;
+
+            $scope.favorite = FavoriteEvents.favorite
         }])
 
     .controller('eventCtrl', [
-        '$scope', '$stateParams', 'mapas.service.event', function ($scope, $stateParams, eventApi) {
+        '$scope', '$stateParams', 'mapas.service.event', 'FavoriteEvents', function ($scope, $stateParams, eventApi, FavoriteEvents) {
             var api = eventApi(window.config.url);
             api.util.applyMe.apply($scope);
 
             $scope.entity = null;
 
             api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
+                entity.favorite = FavoriteEvents.isFavorite(entity);
                 $scope.entity = entity;
             });
+
+            $scope.favorite = FavoriteEvents.favorite;
 
             $scope.classificacao = classificacao;
         }])

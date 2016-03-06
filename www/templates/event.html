@@ -6,7 +6,7 @@
 
         <div class="info">
             <p><strong>linguagem:</strong> {{entity.terms.linguagem.join(', ')}}</p>
-            <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{entity.classificacaoEtaria}}</span></p>
+            <p><strong>classificação:</strong> <span class="classificacao {{classificacao(entity)}}">{{entity.classificacaoEtaria}}</span></p>
             <p><i class="icon ion-person"></i> <span class="label">publicado por:</span> <a ui-sref="menu.agent({entity:owner.id})">{{entity.owner.name}}</a></p>
 
             <p>{{entity.longDescription || entity.shortDescription}}</p>

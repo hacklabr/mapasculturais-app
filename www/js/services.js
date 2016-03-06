@@ -10,23 +10,41 @@ angular.module('mapasculturais.services', [])
 
 .service('FavoriteEvents', ['$localStorage', function($localStorage) {
 
+    var self = this
+    this.favorites = [];
+
+    var sync = function() {
+        while (self.favorites.length > 0)
+            self.favorites.pop()
+        for (var key in $localStorage.favoriteEvents) {
+            self.favorites.push($localStorage.favoriteEvents[key]);
+        }
+    }
+
     if (!$localStorage.favoriteEvents) {
-        console.log($localStorage.favoriteEvents)
         $localStorage.favoriteEvents = {}
+    } else {
+        sync();
+    }
+
+    var getKey = function(event) {
+        console.log(event.start.toString())
+        return event.start + '|' + event.occurrence_id
     }
 
     this.favorite = function(event) {
         if (!event.favorite) {
             event.favorite = true;
-            $localStorage.favoriteEvents[event.id] = true;
+            $localStorage.favoriteEvents[getKey(event)] = event;
         } else {
             event.favorite = false;
-            delete $localStorage.favoriteEvents[event.id]
+            delete $localStorage.favoriteEvents[getKey(event)]
         }
+        sync()
     }
 
     this.isFavorite = function(event) {
-        return !!$localStorage.favoriteEvents[event.id]
+        return !!$localStorage.favoriteEvents[getKey(event)]
     }
 
 }])

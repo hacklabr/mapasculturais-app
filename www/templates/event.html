@@ -8,10 +8,6 @@
         <p ng-if="!entity.longDescription">{{entity.shortDescription}}</p>
         <p ng-if="entity.longDescription">{{entity.longDescription}}</p>
 
-        <a ng-click="favorite(entity)">
-          <i ng-show="entity.favorite" class="icon icon-accessory event-star icon_star">favorito</i>
-          <i ng-show="!entity.favorite" class="icon icon-accessory event-star icon_star_alt">naofavorito</i>
-        </a>
         <p><strong>linguagem:</strong> {{entity.terms.linguagem.join(', ')}}</p>
         <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{entity.classificacaoEtaria}}</span></p>
         <p><i class="icon ion-person"></i> <span class="label">publicado por:</span> <a ui-sref="menu.agent({entity:owner.id})">{{entity.owner.name}}</a></p>

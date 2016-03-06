@@ -94,12 +94,12 @@ angular.module('mapasculturais.routes', [])
     }
   })
 
-  .state('menu.starred', {
-    url: '/starred',
+  .state('menu.favorites', {
+    url: '/favorites',
     views: {
       'app': {
-        templateUrl: 'templates/starred.html',
-        controller: 'starredCtrl'
+        templateUrl: 'templates/favorites.html',
+        controller: 'favoritesCtrl'
       }
     }
   })

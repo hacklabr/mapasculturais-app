@@ -114,7 +114,6 @@ angular.module('mapasculturais.controllers', [])
             $scope.entity = null;
 
             api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
-                entity.favorite = FavoriteEvents.isFavorite(entity);
                 $scope.entity = entity;
             });
 
@@ -221,9 +220,10 @@ angular.module('mapasculturais.controllers', [])
 
     })
 
-    .controller('starredCtrl', function ($scope) {
-
-    })
+    .controller('favoritesCtrl', ['$scope', 'FavoriteEvents', function ($scope, FavoriteEvents) {
+        $scope.events = FavoriteEvents.favorites;
+        $scope.favorite = FavoriteEvents.favorite;
+    }])
 
     .controller('messagesCtrl', function ($scope) {
 

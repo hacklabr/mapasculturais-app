@@ -4,10 +4,6 @@
         
         <img ng-if="entity.$files.avatarEvent" ng-src="{{entity.$files.avatarEvent.url}}" style="width:100%">
 
-        <a ng-click="favorite(entity)">
-          <i ng-show="entity.favorite" class="icon icon-accessory event-star icon_star">favorito</i>
-          <i ng-show="!entity.favorite" class="icon icon-accessory event-star icon_star_alt">naofavorito</i>
-        </a>
         <div class="info">
             <p><strong>linguagem:</strong> {{entity.terms.linguagem.join(', ')}}</p>
             <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{entity.classificacaoEtaria}}</span></p>
@@ -30,6 +26,10 @@
 
                 <ion-list class="event-item">
                     <ion-item ng-repeat="event in group.events">
+                        <a ng-click="favorite(event)">
+                            <i ng-show="event.favorite" class="icon icon-accessory event-star icon_star">favorito</i>
+                            <i ng-show="!event.favorite" class="icon icon-accessory event-star icon_star_alt">naofavorito</i>
+                        </a>
                         <p><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:event.space.id})">{{event.space.name}}</a> <br>
                             <small>{{event.space.endereco}}</small>
                             </p>

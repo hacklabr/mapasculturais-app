@@ -1,7 +1,8 @@
 <ion-view style="" title="{{entity.name}}">
     <ion-content class="has-header" overflow-scroll="true">
         <img ng-if="entity.$files.avatarEvent" ng-src="{{entity.$files.avatarEvent.url}}" style="width:100%">
-        <div class="servico">
+        
+        <div class="info">
             <p><strong>endereço:</strong> {{entity.endereco}}</p>
             <p><strong>tipo:</strong> {{entity.type.name}}</p>
             <p><strong>area de atuação:</strong> {{entity.terms.area.join(', ')}}</p> {{owner}}
@@ -9,10 +10,10 @@
                 <i class="icon ion-person"></i> <span class="label">publicado por:</span> 
                 <a ui-sref="menu.agent({entity:entity.owner.id})">{{entity.owner.name}}</a>
             </p>
+            
+            <p>{{entity.longDescription || entity.shortDescription}}</p>
         </div>
 
-        <p ng-if="!entity.longDescription">{{entity.shortDescription}}</p>
-        <p ng-if="entity.longDescription">{{entity.longDescription}}</p>
         
         <div ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findBySpace'; findEntityId = entity.id">
             <h3>programação:</h3>

@@ -32,7 +32,7 @@ angular.module('mapasculturais.controllers', [])
             var _endData = false;
             var _lastGroup = null;
             var _now = moment().format('YMMDDHH') - 2;
-
+            
             $scope.groups = [];
 
             $scope.filters = {
@@ -115,9 +115,58 @@ angular.module('mapasculturais.controllers', [])
             $scope.classificacao = classificacao;
         }])
 
-    .controller('spacesCtrl', function ($scope) {
+    .controller('spacesCtrl', [
+        '$scope', 'mapas.service.space', function ($scope, spaceApi) {
+            var api = spaceApi(window.config.url);
+            var _limit = 50;
+            var _page = 1;
+            var _endData = false;
+            
+            api.util.applyMe.apply($scope);
+            
+            $scope.entities = [];
+            
+            $scope.filters = {
+                keyword: ''
+            };
+            
+            $scope.$watch('filters', function () {
+                $scope.entities = [];
+                _page = 1;
+                _endData = false;
+            });
 
-    })
+            $scope.moreDataCanBeLoaded = function () {
+                return !_endData;
+            }
+            
+            $scope.loadMore = function(){
+                var params = {
+                    '@limit': _limit,
+                    '@page': _page,
+                    '@order': 'name ASC',
+                    '@select': api._select + ',endereco'
+                };
+                
+                if($scope.filters.keyword){
+                    params['@keyword'] = $scope.filters.keyword;
+                }
+                
+                _page++;
+                
+                api.find(params).then(function(rs){
+                    if (rs.length < _limit) {
+                        _endData = true;
+                    }
+                    
+                    rs.forEach(function(entity){
+                        $scope.entities.push(entity);
+                    });
+                    
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
+                });
+            }
+        }])
 
     .controller('spaceCtrl', [
         '$scope', '$stateParams', 'mapas.service.space', 'mapas.service.event', function ($scope, $stateParams, spaceApi, eventApi) {

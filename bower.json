@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "ng-mapasculturais": "https://github.com/hacklabr/ng-mapasculturais.git"
+    "ng-mapasculturais": "https://github.com/hacklabr/ng-mapasculturais.git",
+    "ngstorage": "ng-storage#~0.4.2"
   }
 }

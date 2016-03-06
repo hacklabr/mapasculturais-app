@@ -3,7 +3,10 @@
         <h2 ng-if="entity.subTitle">{{entity.subtitle}}</h2>
         
         <img ng-if="entity.$files.avatarEvent" ng-src="{{entity.$files.avatarEvent.url}}" style="width:100%">
-        
+        <a ng-click="favorite(entity)">
+          <i ng-show="entity.favorite" class="icon icon-accessory event-star icon_star">favorito</i>
+          <i ng-show="!entity.favorite" class="icon icon-accessory event-star icon_star_alt">naofavorito</i>
+        </a>
         <div class="info">
             <p><strong>linguagem:</strong> {{entity.terms.linguagem.join(', ')}}</p>
             <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{entity.classificacaoEtaria}}</span></p>
@@ -36,5 +39,6 @@
             </ion-list>
             <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
         </div>
+
     </ion-content>
 </ion-view>

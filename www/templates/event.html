@@ -26,9 +26,9 @@
 
                 <ion-list class="event-item">
                     <ion-item ng-repeat="event in group.events">
-                        <a ng-click="favorite(event)">
-                            <i ng-show="event.favorite" class="icon icon-accessory event-star icon_star">favorito</i>
-                            <i ng-show="!event.favorite" class="icon icon-accessory event-star icon_star_alt">naofavorito</i>
+                        <a ng-click="favorite(event)" class="favotite">
+                            <i ng-show="event.favorite" class="icon ion-ios-star"></i>
+                            <i ng-show="!event.favorite" class="icon ion-ios-star-outline"></i>
                         </a>
                         <p><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:event.space.id})">{{event.space.name}}</a> <br>
                             <small>{{event.space.endereco}}</small>

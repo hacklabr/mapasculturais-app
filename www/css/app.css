@@ -69,3 +69,9 @@ span.label {
 .info {
     padding: 0 5px;
 }
+
+.favotite {
+    padding:0 5px;
+    font-size:20px;
+    float:right;
+}

@@ -23,12 +23,15 @@
 
                 <ion-list class="event-item">
                     <ion-item ng-repeat="event in group.events">
-                        <h2><a ui-sref="menu.event({entity:event.id})">{{event.name}}</a></h2>
+                        <h2>
+                            <a ng-click="favorite(event)" class="favotite">
+                                <i ng-show="event.favorite" class="icon ion-ios-star"></i>
+                                <i ng-show="!event.favorite" class="icon ion-ios-star-outline"></i>
+                            </a>
+                            <a ui-sref="menu.event({entity:event.id})">{{event.name}}</a>
+                        </h2>
                         <h3 ng-if="event.subTitulo">{{event.subTitle}}</h3>
-                        <a ng-click="favorite(event)">
-                            <i ng-show="event.favorite" class="icon icon-accessory event-star icon_star">favorito</i>
-                            <i ng-show="!event.favorite" class="icon icon-accessory event-star icon_star_alt">naofavorito</i>
-                        </a>
+                        
                         <p class="short-description">
                             <img ng-if="event.$files.avatarSmall" ng-src="{{event.$files.avatarSmall.url}}"/>
                             {{event.shortDescription}}

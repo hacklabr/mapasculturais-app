@@ -20,7 +20,15 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    {
+      "locator": "https://github.com/wf9a5m75/phonegap-googlemaps-plugin.git",
+      "id": "plugin.google.maps",
+      "variables": {
+        "API_KEY_FOR_ANDROID": "AIzaSyCpS-mpvqc6FL4GzZ0WOz5NBLHlt1jhDQY",
+        "API_KEY_FOR_IOS": "AIzaSyB7x8TPq2ieu4WjpOl5K08ewFIFyZoteNs"
+      }
+    }
   ],
   "cordovaPlatforms": [
     "ios",

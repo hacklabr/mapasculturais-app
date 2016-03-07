@@ -92,7 +92,7 @@ angular.module('mapasculturais.controllers', [])
                         _lastGroup = e;
                     });
                     $scope.$broadcast('scroll.infiniteScrollComplete');
-                    
+
                 });
             };
 
@@ -193,7 +193,7 @@ angular.module('mapasculturais.controllers', [])
             api.util.applyMe.apply($scope);
 
             $scope.entity = null;
-            
+
             api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
                 $scope.entity = entity;
             });
@@ -205,15 +205,67 @@ angular.module('mapasculturais.controllers', [])
             api.util.applyMe.apply($scope);
 
             $scope.entity = null;
-            
+
             api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
                 $scope.entity = entity;
             });
         }])
 
 
-    .controller('mapCtrl', function ($scope) {
+    .controller('mapCtrl', function ($scope, $ionicPlatform) {
 
+        var map;
+
+        $ionicPlatform.ready(function() {
+
+            var map_wrapper = angular.element(document.querySelector("#map-wrapper"));
+            $scope.frameHeight = map_wrapper[0].clientHeight;
+
+            // Getting the map selector in DOM
+            var div = document.getElementById("map_canvas");
+
+            // Invoking Map using Google Map SDK v2 by dubcanada
+            map = plugin.google.maps.Map.getMap(div,{
+                'camera': {
+                    'latLng': setPosition(-19.9178713, -43.9603117),
+                    'zoom': 10
+                }
+            });
+
+            map.setClickable(true);
+            // Capturing event when Map load are ready.
+            map.addEventListener(plugin.google.maps.event.MAP_READY, function(){
+
+                // Defining markers for demo
+                // var markers = [{
+                //     position: setPosition(-19.9178713, -43.9603117),
+                //     title: "Marker 1"
+                // }, {
+                //     position: setPosition(-19.8363826, -43.9787167),
+                //     title: "Marker 2"
+                // }];
+                //
+                // // Bind markers
+                // for (var i = 0; i < markers.length; i++) {
+                //     map.addMarker({
+                //         'marker': markers[i],
+                //         'position': markers[i].position
+                //     }, function(marker) {
+                //
+                //         // Defining event for each marker
+                //         marker.on("click", function() {
+                //             alert(marker.get('marker').title);
+                //         });
+                //
+                //     });
+                // }
+            });
+
+            // Function that return a LatLng Object to Map
+            function setPosition(lat, lng) {
+                return new plugin.google.maps.LatLng(lat, lng);
+            }
+      });
     })
 
     .controller('aboutCtrl', function ($scope) {
@@ -229,9 +281,54 @@ angular.module('mapasculturais.controllers', [])
 
     })
 
-    .controller('navbarCtrl', function ($scope, $location) {
-        $scope.location = $location.path();
+    .controller('navCtrl', function ($scope, $location, $ionicSideMenuDelegate, $timeout, $ionicLoading) {
 
+        $scope.show_filter_search_menu = true;
+        $scope.show_share_buttom = false;
+        $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            // var new_location_path = newVal.split('#')[1];
+            // var old_location_path = oldVal.split('#')[1];
+            if (toState.name == 'menu.events') {
+                $scope.show_filter_search_menu = true;
+            } else {
+                $scope.show_filter_search_menu = false;
+            }
+            // TODO: show share buttom goes here.
+            // if (newVal == '') {
+            //     $scope.show_share_buttom = true;
+            // } else {
+            //     $scope.show_share_buttom = false;
+            // }
+        });
+
+        $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+            if (fromState.name == 'menu.map') {
+                $timeout(function(){
+                    $scope.hide_right_menu = false;
+                    $scope.hide_left_menu = false;
+                }, 1000);
+
+            }
+        });
+
+        var is_map_active = false;
+
+        $scope.$watch(function(){
+            return $ionicSideMenuDelegate.getOpenRatio();
+        }, function(newValue, oldValue) {
+            if ((newValue == 0) && ($location.path() == '/app/map')){
+                $scope.hide_left_menu = true;
+                $scope.hide_right_menu = true;
+                is_map_active = true;
+            } else if ((newValue == 0) && (is_map_active == true)) {
+                // Hide left menu when leaving the maps. Make transition smoothier
+                $scope.hide_left_menu = true;
+                is_map_active = false;
+                // $ionicLoading.show();
+            } else {
+                $scope.hide_left_menu = false;
+            }
+        });
     })
 
     .controller('filterCtrl', function ($scope) {

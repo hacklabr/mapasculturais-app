@@ -1,19 +1,19 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="false" ng-controller="navCtrl">
     <ion-side-menu-content>
-        <ion-nav-bar class="bar-stable" ng-controller="navbarCtrl">
+        <ion-nav-bar class="bar-stable">
             <ion-nav-back-button></ion-nav-back-button>
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="right">
-                <div ng-if="true"
+                <div ng-show="show_filter_search_menu"
                      class="button icon ion-android-more-vertical" menu-toggle="right">
                 </div>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="app"></ion-nav-view>
     </ion-side-menu-content>
-    <ion-side-menu side="left">
+    <ion-side-menu id=left-menu side="left" ng-hide="hide_left_menu">
         <ion-header-bar class="bar-stable">
             <div class="title">Menu</div>
         </ion-header-bar>
@@ -29,7 +29,7 @@
         </ion-content>
     </ion-side-menu>
 
-    <ion-side-menu id="right-menu" ng-controller="filterCtrl" side="right">
+    <ion-side-menu id="right-menu" ng-controller="filterCtrl" side="right" ng-hide="hide_right_menu">
         <ion-content>
             <ion-list>
                 <div class="item item-input">

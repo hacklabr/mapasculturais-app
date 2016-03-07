@@ -32,7 +32,7 @@ angular.module('mapasculturais.controllers', [])
             var _endData = false;
             var _lastGroup = null;
             var _now = moment().format('YMMDDHH') - 2;
-            
+
             $scope.groups = [];
 
             $scope.filters = {
@@ -128,15 +128,15 @@ angular.module('mapasculturais.controllers', [])
             var _limit = 50;
             var _page = 1;
             var _endData = false;
-            
+
             api.util.applyMe.apply($scope);
-            
+
             $scope.entities = [];
-            
+
             $scope.filters = {
                 keyword: ''
             };
-            
+
             $scope.$watch('filters', function () {
                 $scope.entities = [];
                 _page = 1;
@@ -146,7 +146,7 @@ angular.module('mapasculturais.controllers', [])
             $scope.moreDataCanBeLoaded = function () {
                 return !_endData;
             }
-            
+
             $scope.loadMore = function(){
                 var params = {
                     '@limit': _limit,
@@ -154,22 +154,22 @@ angular.module('mapasculturais.controllers', [])
                     '@order': 'name ASC',
                     '@select': api._select + ',endereco'
                 };
-                
+
                 if($scope.filters.keyword){
                     params['@keyword'] = $scope.filters.keyword;
                 }
-                
+
                 _page++;
-                
+
                 api.find(params).then(function(rs){
                     if (rs.length < _limit) {
                         _endData = true;
                     }
-                    
+
                     rs.forEach(function(entity){
                         $scope.entities.push(entity);
                     });
-                    
+
                     $scope.$broadcast('scroll.infiniteScrollComplete');
                 });
             }
@@ -212,11 +212,13 @@ angular.module('mapasculturais.controllers', [])
         }])
 
 
-    .controller('mapCtrl', function ($scope, $ionicPlatform) {
+    .controller('mapCtrl', function ($scope, $ionicPlatform, MapState) {
 
         var map;
 
-        $ionicPlatform.ready(function() {
+        $scope.map_state = MapState;
+
+        $ionicPlatform.ready(function(MapState) {
 
             var map_wrapper = angular.element(document.querySelector("#map-wrapper"));
             $scope.frameHeight = map_wrapper[0].clientHeight;
@@ -225,12 +227,7 @@ angular.module('mapasculturais.controllers', [])
             var div = document.getElementById("map_canvas");
 
             // Invoking Map using Google Map SDK v2 by dubcanada
-            map = plugin.google.maps.Map.getMap(div,{
-                'camera': {
-                    'latLng': setPosition(-19.9178713, -43.9603117),
-                    'zoom': 10
-                }
-            });
+            map = plugin.google.maps.Map.getMap(div, $scope.map_state.options);
 
             map.setClickable(true);
             // Capturing event when Map load are ready.
@@ -262,9 +259,9 @@ angular.module('mapasculturais.controllers', [])
             });
 
             // Function that return a LatLng Object to Map
-            function setPosition(lat, lng) {
-                return new plugin.google.maps.LatLng(lat, lng);
-            }
+            // function setPosition(lat, lng) {
+            //     return new plugin.google.maps.LatLng(lat, lng);
+            // }
       });
     })
 
@@ -293,6 +290,7 @@ angular.module('mapasculturais.controllers', [])
             } else {
                 $scope.show_filter_search_menu = false;
             }
+            $ionicLoading.show();
             // TODO: show share buttom goes here.
             // if (newVal == '') {
             //     $scope.show_share_buttom = true;
@@ -307,8 +305,8 @@ angular.module('mapasculturais.controllers', [])
                     $scope.hide_right_menu = false;
                     $scope.hide_left_menu = false;
                 }, 1000);
-
             }
+            $ionicLoading.hide();
         });
 
         var is_map_active = false;

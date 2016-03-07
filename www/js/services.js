@@ -5,7 +5,7 @@ angular.module('mapasculturais.services', [])
 }])
 
 .service('BlankService', [function(){
-
+q
 }])
 
 .service('FavoriteEvents', ['$localStorage', function($localStorage) {
@@ -28,7 +28,7 @@ angular.module('mapasculturais.services', [])
     }
 
     var getKey = function(event) {
-        console.log(event.start.toString())
+        // console.log(event.start.toString())
         return event.start.toString() + '|' + event.occurrence_id
     }
 
@@ -48,3 +48,30 @@ angular.module('mapasculturais.services', [])
     }
 
 }])
+
+.service('MapState', function(){
+    // return function(mapTypeId, center){
+    var center = new plugin.google.maps.LatLng(-23.5408, -46.6400);
+    this.options = {
+        'backgroundColor': 'transparent',
+        'mapType': plugin.google.maps.MapTypeId.ROADMAP,
+        'controls': {
+            'myLocationButton': true,
+            'indoorPicker': true,
+            'zoom': true
+        },
+        'gestures': {
+            'scroll': true,
+            'tilt': true,
+            'rotate': false,
+            'zoom': true
+        },
+        'camera': {
+            'latLng': center,
+            'zoom': 14,
+        }
+    };
+    this.markers = [];
+        // map options that will be kept in memory ;)
+    // }
+})

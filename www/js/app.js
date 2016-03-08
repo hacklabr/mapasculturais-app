@@ -27,6 +27,10 @@ angular.module('mapasculturais', [
       StatusBar.styleDefault();
     }
   });
+})
+
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.scrolling.jsScrolling(false);
 });
 
 //@TODO: colocar isto num arquivo de configuração

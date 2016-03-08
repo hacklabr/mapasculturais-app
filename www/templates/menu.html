@@ -62,28 +62,18 @@
                 <ion-item>
                     <div>
                         <i class="icon icon_clock"></i>
-                        Data
-                        <article>
-                        </article>
+                        De <input type="date" ng-model="filters.from" style="display: inline-block;">
                     </div>
                 </ion-item>
-
-                <ion-item class="item-divider">
-                    Ordenado por:
+                <ion-item>
+                    <div>
+                        <i class="icon icon_clock"></i>
+                        Até <input type="date" ng-model="filters.to" style="display: inline-block;">
+                    </div>
                 </ion-item>
-
-                <ion-radio ng-model="tempFilters.view" ng-change="change(this)" ng-value="'L'">
-                    <i class="icon icon_pin"></i> Local
-                </ion-radio>
-
-                <ion-radio ng-model="tempFilters.view" ng-change="change(this)" ng-value="'A'">
-                    <i class="icon arrow_up-down_alt"></i> Nome
-                </ion-radio>
-
-                <ion-radio ng-model="tempFilters.view" ng-change="change(this)" ng-value="'H'">
-                    <i class="icon icon_clock"></i> Data
-                </ion-radio>
-            </ion-list>
+                <ion-item>
+                    
+                </ion-item>
         </ion-content>
         <ion-footer-bar align-title="left" class="bar-light">
             <div class="button-bar">

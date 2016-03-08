@@ -27,7 +27,7 @@ angular.module('mapasculturais.controllers', [])
     .controller('eventsCtrl', [
         '$scope', 'mapas.service.event', 'FavoriteEvents', function ($scope, eventApi, FavoriteEvents) {
             var api = eventApi(window.config.url);
-            var _limit = 50;
+            var _limit = 75;
             var _page = 1;
             var _endData = false;
             var _lastGroup = null;
@@ -95,6 +95,10 @@ angular.module('mapasculturais.controllers', [])
 
                 });
             };
+
+            $scope.applyFilters = function(){
+                alert('Event Controller');
+            }
 
             $scope.showCalendar = function (group) {
                 var numDays = 6
@@ -331,4 +335,7 @@ angular.module('mapasculturais.controllers', [])
 
     .controller('filterCtrl', function ($scope) {
 
+            $scope.applyFilters = function(){
+                alert('Filter Controller');
+            }
     })

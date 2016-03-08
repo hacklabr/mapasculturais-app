@@ -75,3 +75,13 @@ q
         // map options that will be kept in memory ;)
     // }
 })
+
+.service('FilterState', function(){
+    this.filters = {
+        keyword: '',
+        from: moment().format('YY-mm-dd'),
+        to: moment().format('YY-mm-dd')
+    };
+
+
+})

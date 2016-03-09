@@ -1,4 +1,4 @@
-<h1 ng-click="openModal()"><i class="ion-ios-search-strong"></i></h1>
+<h3 ng-click="openModal()"><i class="ion-ios-search-strong"></i></h3>
 
 <!--<button ng-click="applyFilters()">aplicar</button>-->
 <script id="my-modal.html" type="text/ng-template">
@@ -9,7 +9,7 @@
         <ion-content style="background:white">
             <div class="item item-input">
                 <i class="icon icon_search placeholder-icon"></i>
-                <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Buscar">
+                <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Palavra-chave">
             </div>
             <div class="item item-toggle">
                 <i class="icon icon_circle-slelected"></i>
@@ -21,17 +21,13 @@
                     </div>
                 </label>
             </div>
-            <div>
-                <div>
-                    <i class="icon icon_clock"></i>
-                    De <input type="date" ng-model="temp.from" style="display: inline-block;">
-                </div>
+            <div class="item">
+                <span class="input-label">De</span>
+                <input type="date" ng-model="temp.from" style="display: inline-block;">
             </div>
-            <div>
-                <div>
-                    <i class="icon icon_clock"></i>
-                    Até <input type="date" ng-model="temp.to" style="display: inline-block;">
-                </div>
+            <div class="item">
+                <span class="input-label">até</span>
+                <input type="date" ng-model="temp.to" style="display: inline-block;">
             </div>
         </ion-content>
         <ion-footer-bar align-title="left" class="bar-light">

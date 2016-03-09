@@ -75,3 +75,9 @@ span.label {
     font-size:20px;
     float:right;
 }
+
+
+.ion-nifty-modal {
+    top:10%;
+    height:400px !important;
+}

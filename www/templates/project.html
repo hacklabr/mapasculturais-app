@@ -10,6 +10,7 @@
 
         
         <div ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByProject'; findEntityId = entity.id">
+            <filter-events on-apply="applyFilters" filters="filters" style="float:right"></filter-events>
             <h3>programação:</h3>
             
             <ion-list ng-repeat="group in groups">

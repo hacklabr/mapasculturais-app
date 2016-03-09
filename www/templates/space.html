@@ -16,6 +16,7 @@
 
         
         <div ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findBySpace'; findEntityId = entity.id">
+            <filter-events on-apply="applyFilters" filters="filters" style="float:right"></filter-events>
             <h3>programação:</h3>
             
             <ion-list ng-repeat="group in groups">
@@ -44,6 +45,7 @@
                         </p>
 
                         <p ng-if="event.subtitle">{{event.subtitle}}</p>
+                        <p ng-if="event.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
                         <p><i class="icon ion-clock"></i> {{event.start.format('LL')}} das {{event.start.format('HH:mm')}} às {{event.end.format('HH:mm')}}</p>
                         <p><i class="icon ion-social-usd"></i> {{event.rule.price}}</p>
                         <p><strong>classificação:</strong> <span class="classificacao {{classificacao(event)}}">{{event.classificacaoEtaria}}</span></p>

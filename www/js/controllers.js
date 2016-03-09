@@ -34,19 +34,16 @@ angular.module('mapasculturais.controllers', [])
             var _now = moment().format('YMMDDHH') - 2;
 
             $scope.groups = [];
+            $scope.notFound = false;
 
             $scope.filters = {
+                keyword: '',
                 from: moment().format('Y-MM-DD'),
                 to: moment().add(31, 'days').format('Y-MM-DD'),
-                pastEvents: false
+                hidePast: true
             };
-
-            $scope.$watch('filters', function () {
-                $scope.groups = [];
-                _page = 1;
-                _endData = false;
-            });
-
+            
+            
             $scope.moreDataCanBeLoaded = function () {
                 return !_endData;
             }
@@ -57,6 +54,10 @@ angular.module('mapasculturais.controllers', [])
                     '@limit': _limit,
                     '@page': _page
                 };
+                
+                if($scope.filters.keyword){
+                    params['@keyword'] = '%' + $scope.filters.keyword + '%';
+                }
 
                 if ($scope.findFunction) {
                     var entityId = $scope.findEntityId;
@@ -74,11 +75,15 @@ angular.module('mapasculturais.controllers', [])
                     rs.forEach(function(event) {
                         event.favorite = FavoriteEvents.isFavorite(event);
                     })
+                    
+                    if(_page === 2 && rs.length === 0){
+                        $scope.notFound = true;
+                    }
 
                     var _groups = api.group('YYYY-MM-DD HH:mm', rs);
 
                     _groups.forEach(function (e) {
-                        if (!$scope.filters.pastEvents && e.date.format('YMMDDHH') < _now) {
+                        if ($scope.filters.hidePast && e.date.format('YMMDDHH') < _now) {
                             return;
                         }
 
@@ -97,7 +102,11 @@ angular.module('mapasculturais.controllers', [])
             };
 
             $scope.applyFilters = function(){
-                alert('Event Controller');
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+                $scope.groups = [];
+                $scope.notFound = false;
+                _page = 1;
+                _endData = false;
             }
 
             $scope.showCalendar = function (group) {
@@ -124,6 +133,7 @@ angular.module('mapasculturais.controllers', [])
             $scope.favorite = FavoriteEvents.favorite;
 
             $scope.classificacao = classificacao;
+            
         }])
 
     .controller('spacesCtrl', [
@@ -334,8 +344,5 @@ angular.module('mapasculturais.controllers', [])
     })
 
     .controller('filterCtrl', function ($scope) {
-
-            $scope.applyFilters = function(){
-                alert('Filter Controller');
-            }
+        
     })

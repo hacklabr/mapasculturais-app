@@ -1,6 +1,8 @@
 <ion-view title="Eventos">
     <ion-content class="has-header" overflow-scroll="true">
-        <ion-list ng-repeat="group in groups track by $index">
+        <filter-events on-apply="applyFilters" filters="filters"></filter-events>
+        
+        <ion-list ng-if="groups.length > 0" ng-repeat="group in groups track by $index">
 
             <div ng-if="showCalendar(group.date)" class="item item-divider">
                 {{::group.date.calendar()}}
@@ -36,6 +38,8 @@
                 </ion-item>
             </ion-list>
         </ion-list>
+        
+        <p ng-if="notFound">Nenhum evento encontrado, refaça a busca.</p>
 
         <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="30%"></ion-infinite-scroll>
     </ion-content>

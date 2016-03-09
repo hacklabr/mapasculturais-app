@@ -1,0 +1,45 @@
+<h1 ng-click="openModal()"><i class="ion-ios-search-strong"></i></h1>
+
+<!--<button ng-click="applyFilters()">aplicar</button>-->
+<script id="my-modal.html" type="text/ng-template">
+    <ion-modal-view class="ion-nifty-modal">
+        <ion-header-bar>
+            <h1 class="title"><i class="ion-ios-search-strong"></i> Filtros</h1>
+        </ion-header-bar>
+        <ion-content style="background:white">
+            <div class="item item-input">
+                <i class="icon icon_search placeholder-icon"></i>
+                <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Buscar">
+            </div>
+            <div class="item item-toggle">
+                <i class="icon icon_circle-slelected"></i>
+                Ocultar eventos passados
+                <label class="toggle toggle-dark">
+                    <input type="checkbox" ng-model="temp.hidePast">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+            <div>
+                <div>
+                    <i class="icon icon_clock"></i>
+                    De <input type="date" ng-model="temp.from" style="display: inline-block;">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <i class="icon icon_clock"></i>
+                    Até <input type="date" ng-model="temp.to" style="display: inline-block;">
+                </div>
+            </div>
+        </ion-content>
+        <ion-footer-bar align-title="left" class="bar-light">
+            <div class="button-bar">
+                <a class="button button-large icon-left ion-close-circled" ng-click="cancel()">Cancelar</a>
+                <a class="button button-large icon-left ion-close-circled" ng-click="reset()">Limpar</a>
+                <a class="button button-large icon-left ion-checkmark-circled" ng-click="applyFilters()">Aplicar</a>
+            </div>
+        </ion-footer-bar>
+    </ion-modal-view>
+</script>

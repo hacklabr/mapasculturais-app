@@ -1,6 +1,6 @@
 angular.module('mapasculturais.directives', ['ionic'])
 
-    .directive('filterEvents', function ($ionicModal) {
+    .directive('filterEvents', ['$ionicModal', 'mapas.service.api', function ($ionicModal, mapasApi) {
         return {
             restrict: 'E',
             templateUrl: '/templates/filter.events.html',
@@ -9,6 +9,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                 onApply: '='
             },
             link: function ($scope, el, attrs) {
+                var api = mapasApi(window.config.url);
                 var original = {
                     keyword: '',
                     hidePast: true,
@@ -56,21 +57,11 @@ angular.module('mapasculturais.directives', ['ionic'])
                 $scope.openModal = function () {
                     $scope.modal.show();
                 };
-                $scope.closeModal = function () {
-                    $scope.modal.hide();
-                };
-                //Cleanup the modal when we're done with it!
-                $scope.$on('$destroy', function () {
-                    $scope.modal.remove();
-                });
-                // Execute action on hide modal
-                $scope.$on('modal.hidden', function () {
-                    // Execute action
-                });
-                // Execute action on remove modal
-                $scope.$on('modal.removed', function () {
-                    // Execute action
+                console.log(api);
+                api.taxonomyTerms('linguagem').then(function(terms){
+                    console.log(terms);
+                    $scope.linguagem = terms;
                 });
             }
         };
-    });
+    }]);

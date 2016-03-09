@@ -5,7 +5,7 @@ angular.module('mapasculturais.services', [])
 }])
 
 .service('BlankService', [function(){
-q
+
 }])
 
 .service('FavoriteEvents', ['$localStorage', function($localStorage) {

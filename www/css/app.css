@@ -79,5 +79,9 @@ span.label {
 
 .ion-nifty-modal {
     top:10%;
-    height:400px !important;
+    height:80% !important;
+}
+
+.input-date {
+    padding-top:0px !important;
 }

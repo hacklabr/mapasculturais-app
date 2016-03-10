@@ -11,6 +11,26 @@
                 <i class="icon icon_search placeholder-icon"></i>
                 <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Palavra-chave">
             </div>
+
+            <div class="item item-toggle">
+                <i class="icon icon_circle-slelected"></i>
+                Somente eventos verificados
+                <label class="toggle toggle-dark">
+                    <input type="checkbox" ng-model="temp.verified">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+            <div class="item">
+                <span class="input-label">Linguagem</span>
+                <select ng-options="linguagem for linguagem in linguagens" ng-model="temp.linguagem"></select>
+            </div>
+            <div class="item">
+                <span class="input-label">Data</span>
+                de <input type="date" class="input-date" ng-model="temp.from" style="display: inline-block;">
+                até <input type="date" class="input-date" ng-model="temp.to" style="display: inline-block;">
+            </div>
             <div class="item item-toggle">
                 <i class="icon icon_circle-slelected"></i>
                 Ocultar eventos passados
@@ -20,14 +40,6 @@
                         <div class="handle"></div>
                     </div>
                 </label>
-            </div>
-            <div class="item">
-                <span class="input-label">De</span>
-                <input type="date" ng-model="temp.from" style="display: inline-block;">
-            </div>
-            <div class="item">
-                <span class="input-label">até</span>
-                <input type="date" ng-model="temp.to" style="display: inline-block;">
             </div>
         </ion-content>
         <ion-footer-bar align-title="left" class="bar-light">

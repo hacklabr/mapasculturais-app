@@ -36,12 +36,7 @@ angular.module('mapasculturais.controllers', [])
             $scope.groups = [];
             $scope.notFound = false;
 
-            $scope.filters = {
-                keyword: '',
-                from: moment().format('Y-MM-DD'),
-                to: moment().add(31, 'days').format('Y-MM-DD'),
-                hidePast: true
-            };
+            $scope.filters = {};
             
             
             $scope.moreDataCanBeLoaded = function () {
@@ -57,6 +52,14 @@ angular.module('mapasculturais.controllers', [])
                 
                 if($scope.filters.keyword){
                     params['@keyword'] = '%' + $scope.filters.keyword + '%';
+                }
+
+                if($scope.filters.linguagem){
+                    params['term:linguagem'] = $IN($scope.filters.linguagem);
+                }
+
+                if($scope.filters.verified){
+                    params['isVerified'] = $EQ('true');
                 }
 
                 if ($scope.findFunction) {

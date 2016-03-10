@@ -14,7 +14,9 @@ angular.module('mapasculturais.directives', ['ionic'])
                     keyword: '',
                     hidePast: true,
                     from: moment().toDate(),
-                    to: moment().add(1, 'months').toDate()
+                    to: moment().add(1, 'months').toDate(),
+                    linguagem: null,
+                    verified:false
                 };
 
                 $scope.filters = angular.extend($scope.filters, original);
@@ -57,10 +59,9 @@ angular.module('mapasculturais.directives', ['ionic'])
                 $scope.openModal = function () {
                     $scope.modal.show();
                 };
-                console.log(api);
+                
                 api.taxonomyTerms('linguagem').then(function(terms){
-                    console.log(terms);
-                    $scope.linguagem = terms;
+                    $scope.linguagens = terms;
                 });
             }
         };

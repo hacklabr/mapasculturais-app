@@ -31,6 +31,8 @@ angular.module('mapasculturais', [
 
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.scrolling.jsScrolling(false);
+    $ionicConfigProvider.views.forwardCache(true);
+
 });
 
 //@TODO: colocar isto num arquivo de configuração

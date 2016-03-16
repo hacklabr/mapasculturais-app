@@ -1,17 +1,17 @@
 <ion-view style="" title="Espaços">
-    <ion-content class="has-header" overflow-scroll="true" padding="true">
+    <ion-content class="has-header" overflow-scroll="true">
         <ion-list>
             <ion-item ng-repeat="entity in entities">
-                <h2><a ui-sref="menu.space({entity:entity.id})">{{entity.name}}</a></h2>
+                <h2><a ui-sref="menu.space({entity:entity.id})">{{::entity.name}}</a></h2>
                 <h3 ng-if="entity.subTitulo">{{entity.subTitle}}</h3>
-                <p class="short-description">
-                    <img ng-if="entity.$files.avatarSmall" ng-src="{{entity.$files.avatarSmall.url}}"/>
-                    {{entity.shortDescription}}
-                </p>
+                <div class="short-description">
+                    <img ng-if="entity.$files.avatarSmall" ng-src="{{::entity.$files.avatarSmall.url}}"/>
+                    <span ng-bind-html="entity.shortDescription"></span>
+                </div>
 
-                <p ng-if="entity.endereco"><i class="icon ion-home"></i> {{entity.endereco}}</p>
-                <p ng-if="entity.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:entity.project.id})">{{entity.project.name}}</a></p>
-                <p><strong>área de atuação:</strong> {{entity.terms.area.join(', ')}}</p>
+                <p ng-if="entity.endereco"><i class="icon ion-home"></i> {{::entity.endereco}}</p>
+                <p ng-if="entity.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:entity.project.id})">{{::entity.project.name}}</a></p>
+                <p><strong>área de atuação:</strong> {{::entity.terms.area.join(', ')}}</p>
 
             </ion-item>
         </ion-list>

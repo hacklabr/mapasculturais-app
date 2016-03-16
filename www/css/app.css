@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : Mar 2, 2016, 8:28:51 PM
     Author     : rafael
 */
@@ -20,9 +20,9 @@ a {
 }
 
 .short-description img {
-    float:left; 
-    width:4em; 
-    height:4em; 
+    float:left;
+    width:4em;
+    height:4em;
     margin-right:10px;
 }
 
@@ -79,9 +79,21 @@ span.label {
 
 .ion-nifty-modal {
     top:10%;
-    height:80% !important;
+    height:auto !important;
 }
 
 .input-date {
     padding-top:0px !important;
+}
+
+.main-menu li{
+  display: inline-block;
+  width: 23%;
+  text-align: center;
+  font-size: 25px;
+}
+
+.main-menu li.more{
+  display: inline-block;
+  width: 3%;
 }

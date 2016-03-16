@@ -27,7 +27,7 @@ angular.module('mapasculturais.controllers', [])
     .controller('eventsCtrl', [
         '$scope', 'mapas.service.event', 'FavoriteEvents', function ($scope, eventApi, FavoriteEvents) {
             var api = eventApi(window.config.url);
-            var _limit = 75;
+            var _limit = 25;
             var _page = 1;
             var _endData = false;
             var _lastGroup = null;
@@ -37,8 +37,8 @@ angular.module('mapasculturais.controllers', [])
             $scope.notFound = false;
 
             $scope.filters = {};
-            
-            
+
+
             $scope.moreDataCanBeLoaded = function () {
                 return !_endData;
             }
@@ -49,7 +49,7 @@ angular.module('mapasculturais.controllers', [])
                     '@limit': _limit,
                     '@page': _page
                 };
-                
+
                 if($scope.filters.keyword){
                     params['@keyword'] = '%' + $scope.filters.keyword + '%';
                 }
@@ -78,7 +78,7 @@ angular.module('mapasculturais.controllers', [])
                     rs.forEach(function(event) {
                         event.favorite = FavoriteEvents.isFavorite(event);
                     })
-                    
+
                     if(_page === 2 && rs.length === 0){
                         $scope.notFound = true;
                     }
@@ -136,7 +136,7 @@ angular.module('mapasculturais.controllers', [])
             $scope.favorite = FavoriteEvents.favorite;
 
             $scope.classificacao = classificacao;
-            
+
         }])
 
     .controller('spacesCtrl', [
@@ -347,5 +347,5 @@ angular.module('mapasculturais.controllers', [])
     })
 
     .controller('filterCtrl', function ($scope) {
-        
+
     })

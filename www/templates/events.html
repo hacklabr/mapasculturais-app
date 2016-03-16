@@ -23,15 +23,15 @@
                     <h3 ng-if="event.subTitulo">{{::event.subTitle}}</h3>
 
                     <p class="short-description">
-                        <img ng-if="event.$files.avatarSmall" ng-src="{{event.$files.avatarSmall.url}}"/>
-                        {{::event.shortDescription}}
+                        <img ng-if="event.$files.avatarSmall" ng-src="{{::event.$files.avatarSmall.url}}"/>
+                        <span ng-bind-html="event.shortDescription"></span>
                     </p>
 
                     <p ng-if="event.subtitle">{{::event.subtitle}}</p>
                     <p ng-if="event.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
                     <p><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a></p>
                     <p><i class="icon ion-clock"></i> {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</p>
-                    <p><i class="icon ion-social-usd"></i> {{event.rule.price}}</p>
+                    <p><i class="icon ion-social-usd"></i> {{::event.rule.price}}</p>
                     <p><strong>classificação:</strong> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
                     <p><strong>linguagem:</strong> {{::event.terms.linguagem.join(', ')}}</p>
 

@@ -3,7 +3,7 @@ angular.module('mapasculturais.directives', ['ionic'])
     .directive('filterEvents', ['$ionicModal', 'mapas.service.api', function ($ionicModal, mapasApi) {
         return {
             restrict: 'E',
-            templateUrl: '/templates/filter.events.html',
+            templateUrl: 'templates/filter-events.html',
             scope: {
                 filters: '=',
                 onApply: '='
@@ -21,7 +21,7 @@ angular.module('mapasculturais.directives', ['ionic'])
 
                 $scope.filters = angular.extend($scope.filters, original);
                 $scope.temp = angular.copy(original);
-                
+
                 function apply(){
                     $scope.onApply();
                     $scope.modal.hide();
@@ -31,7 +31,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                     Object.keys($scope.temp).forEach(function (k) {
                         $scope.filters[k] = $scope.temp[k];
                     });
-                    
+
                     apply();
                 };
 
@@ -59,7 +59,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                 $scope.openModal = function () {
                     $scope.modal.show();
                 };
-                
+
                 api.taxonomyTerms('linguagem').then(function(terms){
                     $scope.linguagens = terms;
                 });

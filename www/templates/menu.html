@@ -1,31 +1,19 @@
-<ion-side-menus enable-menu-with-back-views="false" ng-controller="navCtrl">
-    <ion-side-menu-content>
-        <ion-nav-bar class="bar-stable">
-            <ion-nav-back-button></ion-nav-back-button>
-            <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-            </ion-nav-buttons>
-            <ion-nav-buttons side="right">
-                <div ng-show="show_filter_search_menu"
-                     class="button icon ion-android-more-vertical" menu-toggle="right">
-                </div>
-            </ion-nav-buttons>
-        </ion-nav-bar>
-        <ion-nav-view name="app"></ion-nav-view>
-    </ion-side-menu-content>
-    <ion-side-menu id=left-menu side="left" ng-hide="hide_left_menu">
-        <ion-header-bar class="bar-stable">
-            <div class="title">Menu</div>
-        </ion-header-bar>
-        <ion-content padding="false" class="side-menu-left has-header">
-            <ion-list style="">
-                <ion-item style="" menu-close="" ui-sref="menu.events">Eventos</ion-item>
-                <ion-item style="" menu-close="" ui-sref="menu.spaces">Espaços</ion-item>
-                <ion-item style="" menu-close="" ui-sref="menu.favorites">Favoritos</ion-item>
-                <ion-item style="" menu-close="" ui-sref="menu.map">Mapa</ion-item>
-                <ion-item style="" menu-close="" ui-sref="menu.messages">Mensagens</ion-item>
-                <ion-item style="" menu-close="" ui-sref="menu.about">Sobre</ion-item>
-            </ion-list>
-        </ion-content>
-    </ion-side-menu>
-</ion-side-menus>
+<ul class="main-menu">
+    <li>
+        <i class="icon ion-ios-calendar" ui-sref="menu.events"></i>
+    </li>
+    <li>
+        <i class="icon ion-ios-home" ui-sref="menu.spaces"></i>
+    </li>
+    <li>
+        <i class="icon ion-earth" ui-sref="menu.map"></i>
+    </li>
+    <li>
+        <i class="icon ion-ios-star" ui-sref="menu.favorites"></i>
+    </li>
+    <li class="more">
+        <i class="icon ion-android-more-vertical"></i>
+    </li>
+</ul>
+
+<ion-nav-view name="app"></ion-nav-view>

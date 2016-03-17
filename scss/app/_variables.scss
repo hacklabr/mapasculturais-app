@@ -32,7 +32,11 @@ $brand-default: $gray-light !default;
 $font-size-base:          1rem !default; // 16px
 $font-size-small:         .875rem !default; // 14px
 $font-size-smaller:       .75rem !default; // 12px
-$line-height-base:   1.5rem !default; // 24px
+$line-height-base:        1.5rem !default; // 24px
+$line-height-half:        0.75rem !default; // 12px
+
+//** Border styles to create dividing rows.
+$thin-row: 1px solid $gray-lighter !default;
 
 //== Components
 //

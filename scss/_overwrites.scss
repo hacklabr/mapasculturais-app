@@ -42,6 +42,5 @@ $icon-font-name:            'ElegantIcons' !default;
 //** Element ID within SVG icon file.
 $icon-font-svg-id:          'ElegantIcons' !default;
 
-//## Specify Ionicons location and filename.
-$ionicons-font-path:        $font-path !default;
-$ionicons-font-family:      "Ionicons" !default;
+$ionicons-font-path:        "../lib/ionic/fonts/" !default;
+

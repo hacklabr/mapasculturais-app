@@ -1,6 +1,7 @@
 //** Styles from main menu
 .main-menu {
-    padding-bottom: 35px;
+    position: relative;
+    z-index: 10;
     > li {
         list-style-type: none;
         float: left;
@@ -25,7 +26,7 @@
             width: $line-height-base;
             height: $line-height-base;
             margin: 0 auto .25rem;
-            font-size: $font-size-base;
+            font-size: 1rem;
             line-height: $line-height-base;
             border-radius: $border-radius-base;
         }

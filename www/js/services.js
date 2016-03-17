@@ -9,6 +9,7 @@ angular.module('mapasculturais.services', [])
 }])
 
 .service('MenuState', ['$rootScope', function($rootScope) {
+    $rootScope.activeMenu = 'events';
     this.activeMenu = function(activeMenu){
         $rootScope.activeMenu = activeMenu;
     };

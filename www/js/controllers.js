@@ -340,12 +340,15 @@ angular.module('mapasculturais.controllers', [])
                     MenuState.activeMenu('map');
                     break;
                     
+                case 'menu.favorites':
+                    MenuState.activeMenu('favorites');
+                    break;
+                    
                 case 'menu.about':
                     MenuState.activeMenu('about');
                     break;
                     
             }
-            console.log(toState);
             
             if (toState.name == 'menu.events') {
                 $scope.show_filter_search_menu = true;
@@ -353,41 +356,9 @@ angular.module('mapasculturais.controllers', [])
                 $scope.show_filter_search_menu = false;
             }
             $ionicLoading.show();
-            // TODO: show share buttom goes here.
-            // if (newVal == '') {
-            //     $scope.show_share_buttom = true;
-            // } else {
-            //     $scope.show_share_buttom = false;
-            // }
         });
 
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-            if (fromState.name == 'menu.map') {
-                
-                $timeout(function(){
-                    $scope.hide_right_menu = false;
-                    $scope.hide_left_menu = false;
-                }, 1000);
-            }
             $ionicLoading.hide();
-        });
-
-        var is_map_active = false;
-
-        $scope.$watch(function(){
-            return $ionicSideMenuDelegate.getOpenRatio();
-        }, function(newValue, oldValue) {
-            if ((newValue == 0) && ($location.path() == '/app/map')){
-                $scope.hide_left_menu = true;
-                $scope.hide_right_menu = true;
-                is_map_active = true;
-            } else if ((newValue == 0) && (is_map_active == true)) {
-                // Hide left menu when leaving the maps. Make transition smoothier
-                $scope.hide_left_menu = true;
-                is_map_active = false;
-                // $ionicLoading.show();
-            } else {
-                $scope.hide_left_menu = false;
-            }
         });
     })

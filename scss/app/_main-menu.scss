@@ -1,12 +1,12 @@
 //** Styles from main menu
 .main-menu {
+    overflow: hidden;
     position: relative;
     z-index: 10;
     .more {
         float: left;
-        padding: .25rem;
+        padding: 10px 5px;
         text-align: center;
-        line-height: 1.25rem;
         width: 8%;
                 box-shadow: 1px 0 0 0 $gray-lighter inset;
         -webkit-box-shadow: 1px 0 0 0 $gray-lighter inset;
@@ -21,38 +21,37 @@
         list-style-type: none;
         float: left;
         box-sizing: border-box;
+        height: 52px;
         padding: .25rem;
+        position: relative;
         width: 23%;
         text-align: center;
         border-top: 3px solid $brand-accent;
                 box-shadow: 1px 0 0 0 $gray-lighter inset;
         -webkit-box-shadow: 1px 0 0 0 $gray-lighter inset;
-        > a {
-            display: block;
-            vertical-align: middle;
-            line-height: 1.25rem;
-            text-align: center;
-            &:hover {
-                text-decoration: none;
-            }
-        }
         .elegant-icon {
             margin: 0 auto .25rem;
             font-size: 1.1rem;
             line-height: $line-height-base;
             border-radius: $border-radius-base;
         }
-        .menu-item-label {
-            display: none;
+        .label {
+            display: block;
+            font-size: 10px;
+            line-height: $line-height-small;
         }
         &:first-child {
                     box-shadow: none;
             -webkit-box-shadow: none;
         }
-        &:hover {
-            border-top-color: $brand-primary;
-            > a {
-                color: $brand-primary;
+        &.active {
+            .label {
+                display: none;
+            }
+            &:after {
+                top: 42px;
+                left: 50%;
+                margin-left: -8px;
             }
         }
 

@@ -28,7 +28,6 @@
 @mixin arrow($direction, $size, $color) {
     content: "";
     position: absolute;
-    top: -$size;
 
     @if $direction == down {
         border-left: $size solid transparent;

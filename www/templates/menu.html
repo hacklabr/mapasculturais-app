@@ -1,14 +1,14 @@
 <ul class="main-menu">
-    <li class="menu-event">
+    <li class="menu-event" ng-class="{active: activeMenu === 'events'}">
         <span class="elegant-icon icon-event" ui-sref="menu.events"></span>
     </li>
-    <li class="menu-space">
+    <li class="menu-space" ng-class="{active: activeMenu === 'spaces'}">
         <span class="elegant-icon icon-space" ui-sref="menu.spaces"></span>
     </li>
-    <li class="menu-map">
+    <li class="menu-map" ng-class="{active: activeMenu === 'map'}">
         <span class="elegant-icon icon-map" ui-sref="menu.map"></span>
     </li>
-    <li class="menu-favorite">
+    <li class="menu-favorite" ng-class="{active: activeMenu === 'favorites'}">
         <span class="elegant-icon icon-favorite" ui-sref="menu.favorites"></span>
     </li>
     <li class="menu-more">

@@ -8,6 +8,12 @@ angular.module('mapasculturais.services', [])
 
 }])
 
+.service('MenuState', ['$rootScope', function($rootScope) {
+    this.activeMenu = function(activeMenu){
+        $rootScope.activeMenu = activeMenu;
+    };
+}])
+
 .service('FavoriteEvents', ['$localStorage', function($localStorage) {
 
     var self = this

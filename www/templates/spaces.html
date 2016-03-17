@@ -1,18 +1,19 @@
 <ion-view style="" title="Espaços">
     <ion-content class="has-header" overflow-scroll="true">
-        <ion-list>
+        <ion-list class="place-item">
             <ion-item ng-repeat="entity in entities">
-                <h2><a ui-sref="menu.space({entity:entity.id})">{{::entity.name}}</a></h2>
-                <h3 ng-if="entity.subTitulo">{{entity.subTitle}}</h3>
-                <div class="short-description">
-                    <img ng-if="entity.$files.avatarSmall" ng-src="{{::entity.$files.avatarSmall.url}}"/>
+                <h2 class="title"><a class="name" ui-sref="menu.space({entity:entity.id})">{{::entity.name}}</a></h2>
+                <h3 class="subtitle" ng-if="entity.subTitulo">{{entity.subTitle}}</h3>
+                <img class="thumb" ng-if="entity.$files.avatarSmall" ng-src="{{::entity.$files.avatarSmall.url}}"/>
+                <div class="description">
                     <span ng-bind-html="entity.shortDescription"></span>
                 </div>
 
-                <p ng-if="entity.endereco">{{::entity.endereco}}</p>
+                <ul class="ocurrences" ng-if="entity.endereco"><li>{{::entity.endereco}}</li></ul>
                 <p ng-if="entity.project.id"><a ui-sref="menu.project({entity:entity.project.id})">{{::entity.project.name}}</a></p>
-                <p><strong>área de atuação:</strong> {{::entity.terms.area.join(', ')}}</p>
-
+                <div class="information">
+                    <p><span class="label">Área de atuação:</span> {{::entity.terms.area.join(', ')}}</p>
+                </div>
             </ion-item>
         </ion-list>
         <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>

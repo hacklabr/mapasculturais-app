@@ -49,7 +49,7 @@
         width: 4rem;
         height: 4rem;
         line-height: $line-height-large;
-        margin: $padding-base-vertical $padding-large-vertical 0 0;
+        margin: $padding-base-vertical $padding-large-vertical $padding-base-vertical 0;
         background-color: $gray;
     }
     .ocurrences {
@@ -67,6 +67,8 @@
         p {
             font-size: $font-size-small;
             line-height: $line-height-large;
+            white-space: normal !important;
+            overflow: auto !important;
         }
         .label {
             font-size: 11px;

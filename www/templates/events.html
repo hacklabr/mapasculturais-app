@@ -15,8 +15,8 @@
                 <ion-item ng-repeat="event in group.events track by $index">
                     <h2>
                         <a ng-click="favorite(event)" class="favotite">
-                            <i ng-show="event.favorite" class="icon ion-ios-star"></i>
-                            <i ng-show="!event.favorite" class="icon ion-ios-star-outline"></i>
+                            <i ng-show="event.favorite" class="elegant-icon icon-favorited"></i>
+                            <i ng-show="!event.favorite" class="elegant-icon icon-favorite"></i>
                         </a>
                         <a ui-sref="menu.event({entity:event.id})">{{::event.name}}</a>
                     </h2>
@@ -28,12 +28,12 @@
                     </p>
 
                     <p ng-if="event.subtitle">{{::event.subtitle}}</p>
-                    <p ng-if="event.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
-                    <p><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a></p>
-                    <p><i class="icon ion-clock"></i> {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</p>
-                    <p><i class="icon ion-social-usd"></i> {{::event.rule.price}}</p>
-                    <p><strong>classificação:</strong> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
-                    <p><strong>linguagem:</strong> {{::event.terms.linguagem.join(', ')}}</p>
+                    <p ng-if="event.project.id"><a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
+                    <ul><li><a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a>,
+                    {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</li></ul>
+                    <p>{{::event.rule.price}}</p>
+                    <p><strong>Classificação:</strong> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
+                    <p><strong>Linguagem:</strong> {{::event.terms.linguagem.join(', ')}}</p>
 
                 </ion-item>
             </ion-list>

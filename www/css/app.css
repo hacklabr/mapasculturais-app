@@ -15,8 +15,7 @@ a {
     text-decoration: none;
 }
 .short-description {
-    white-space: normal !important;
-    overflow: auto !important;
+
 }
 
 .short-description img {
@@ -26,10 +25,6 @@ a {
     margin-right:10px;
 }
 
-.event-item h2 {
-    white-space: normal !important;
-    overflow: auto !important;
-}
 
 span.label {
     font-weight: bold;

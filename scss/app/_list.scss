@@ -1,0 +1,42 @@
+//
+// List
+// --------------------------------------------------
+
+.list {
+    h2 {
+        font-size: $font-size-large;
+        margin-bottom: $line-height-small;
+        padding-bottom: $padding-base;
+        line-height: $line-height-base;
+        border-bottom: 1px solid $gray-lighter;
+        white-space: normal !important;
+        overflow: auto !important;
+        .name {
+            color: #000;
+        }
+        .subtitle {
+            display: block;
+            font-size: .875rem;
+            font-weight: normal;
+        }
+        .make-favorite {
+            color: $brand-favorite;
+            padding: 0 5px;
+            font-size: $font-size-large;
+            float: right;
+        }
+    }
+    .description {
+        font-size: $font-size-smaller;
+        line-height: $line-height-base;
+        white-space: normal !important;
+        overflow: auto !important;
+    }
+    .thumb {
+        float: left;
+        width: 4rem;
+        height: 4rem;
+        margin: 0 $line-height-small 0 0;
+        background-color: $gray;
+    }
+}

@@ -85,15 +85,3 @@ span.label {
 .input-date {
     padding-top:0px !important;
 }
-
-.main-menu li{
-  display: inline-block;
-  width: 23%;
-  text-align: center;
-  font-size: 25px;
-}
-
-.main-menu li.more{
-  display: inline-block;
-  width: 3%;
-}

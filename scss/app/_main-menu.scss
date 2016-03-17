@@ -1,0 +1,141 @@
+//** Styles from main menu
+.main-menu {
+    padding-bottom: 35px;
+    > li {
+        list-style-type: none;
+        float: left;
+        box-sizing: border-box;
+        padding: .25rem;
+        width: 20%;
+        text-align: center;
+        border-top: 3px solid $brand-accent;
+                box-shadow: 1px 0 0 0 $gray-lighter inset;
+        -webkit-box-shadow: 1px 0 0 0 $gray-lighter inset;
+        > a {
+            display: block;
+            vertical-align: middle;
+            font-size: $font-size-smaller;
+            line-height: 1.25rem;
+            text-align: center;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        .elegant-icon {
+            width: $line-height-base;
+            height: $line-height-base;
+            margin: 0 auto .25rem;
+            font-size: $font-size-base;
+            line-height: $line-height-base;
+            border-radius: $border-radius-base;
+        }
+        .menu-item-label {
+            display: none;
+        }
+        &:first-child {
+                    box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+        &:hover {
+            border-top-color: $brand-primary;
+            > a {
+                color: $brand-primary;
+            }
+        }
+
+        //** Events
+        &.menu-event {
+            border-top-color: $brand-event;
+            color: $brand-event;
+            a {
+                color: $brand-event;
+            }
+            &.active {
+                &:after {
+                    @include arrow(up, $caret-width-base, $brand-event);
+                }
+            }
+        }
+        //** Agents
+        &.menu-agent {
+            border-top-color: $brand-agent;
+            color: $brand-agent;
+            a {
+                color: $brand-agent;
+            }
+            &.active {
+                &:after {
+                    @include arrow(up, $caret-width-base, $brand-agent);
+                }
+            }
+        }
+        //** Spaces
+        &.menu-space {
+            border-top-color: $brand-space;
+            color: $brand-space;
+            a {
+                color: $brand-space;
+            }
+            &.active {
+                &:after {
+                    @include arrow(up, $caret-width-base, $brand-space);
+                }
+            }
+        }
+        //** Projects
+        &.menu-project {
+            border-top-color: $brand-project;
+            color: $brand-project;
+            a {
+                color: $brand-project;
+            }
+            &.active {
+                &:after {
+                    @include arrow(up, $caret-width-base, $brand-project);
+                }
+            }
+        }
+
+        //** Map
+        &.menu-map {
+            border-top-color: $brand-default;
+            color: $brand-default;
+            a {
+                color: $brand-default;
+            }
+            &.active {
+                &:after {
+                    @include arrow(up, $caret-width-base, $brand-default);
+                }
+            }
+        }
+
+        //** Favorite
+        &.menu-favorite {
+            border-top-color: $brand-default;
+            color: $brand-default;
+            a {
+                color: $brand-default;
+            }
+            &.active {
+                &:after {
+                    @include arrow(up, $caret-width-base, $brand-default);
+                }
+            }
+        }
+
+        //** More
+        &.menu-more {
+            border-top-color: $brand-default;
+            color: $brand-default;
+            a {
+                color: $brand-default;
+            }
+            &.active {
+                &:after {
+                    @include arrow(up, $caret-width-base, $brand-default);
+                }
+            }
+        }
+    }
+}

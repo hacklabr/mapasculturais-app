@@ -1,17 +1,17 @@
-<ul class="main-menu">
-    <li class="menu-event" ng-class="{active: activeMenu === 'events'}">
+<ul class="main-menu" ng-controller="navCtrl">
+    <li class="menu-item menu-event" ng-class="{active: activeMenu === 'events'}">
         <span class="elegant-icon icon-event" ui-sref="menu.events"></span>
     </li>
-    <li class="menu-space" ng-class="{active: activeMenu === 'spaces'}">
+    <li class="menu-item menu-space" ng-class="{active: activeMenu === 'spaces'}">
         <span class="elegant-icon icon-space" ui-sref="menu.spaces"></span>
     </li>
-    <li class="menu-map" ng-class="{active: activeMenu === 'map'}">
+    <li class="menu-item menu-map" ng-class="{active: activeMenu === 'map'}">
         <span class="elegant-icon icon-map" ui-sref="menu.map"></span>
     </li>
-    <li class="menu-favorite" ng-class="{active: activeMenu === 'favorites'}">
+    <li class="menu-item menu-favorite" ng-class="{active: activeMenu === 'favorites'}">
         <span class="elegant-icon icon-favorite" ui-sref="menu.favorites"></span>
     </li>
-    <li class="menu-more">
+    <li class="more">
         <span class="icon ion-android-more-vertical"></span>
     </li>
 </ul>

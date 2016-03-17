@@ -6,4 +6,4 @@ platforms/
 plugins/
 www/lib/
 nbproject/
-www/css/ionic*
+www/css/ionic.app.css

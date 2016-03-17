@@ -25,7 +25,7 @@ function classificacao(event) {
 angular.module('mapasculturais.controllers', [])
 
     .controller('eventsCtrl', [
-        '$scope', 'MenuState', 'mapas.service.event', 'FavoriteEvents', function ($scope, MenuState, eventApi, FavoriteEvents) {
+        '$scope', 'mapas.service.event', 'FavoriteEvents', function ($scope, eventApi, FavoriteEvents) {
             var api = eventApi(window.config.url);
             var _limit = 25;
             var _page = 1;
@@ -33,8 +33,6 @@ angular.module('mapasculturais.controllers', [])
             var _lastGroup = null;
             var _now = moment().format('YMMDDHH') - 2;
             
-            MenuState.activeMenu('events');
-
             $scope.groups = [];
             $scope.notFound = false;
 
@@ -125,12 +123,10 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('eventCtrl', [
-        '$scope', 'MenuState', '$stateParams', 'mapas.service.event', 'FavoriteEvents', function ($scope, MenuState, $stateParams, eventApi, FavoriteEvents) {
+        '$scope', '$stateParams', 'mapas.service.event', 'FavoriteEvents', function ($scope, $stateParams, eventApi, FavoriteEvents) {
             var api = eventApi(window.config.url);
             api.util.applyMe.apply($scope);
             
-            MenuState.activeMenu('events');
-
             $scope.entity = null;
 
             api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
@@ -199,12 +195,9 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('spaceCtrl', [
-        '$scope', 'MenuState', '$stateParams', 'mapas.service.space', 'mapas.service.event', function ($scope, MenuState, $stateParams, spaceApi, eventApi) {
+        '$scope', '$stateParams', 'mapas.service.space', 'mapas.service.event', function ($scope, $stateParams, spaceApi, eventApi) {
             var api = spaceApi(window.config.url);
             api.util.applyMe.apply($scope);
-            
-            MenuState.activeMenu('spaces');
-
 
             $scope.entity = null;
 
@@ -214,11 +207,9 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('agentCtrl', [
-        '$scope', 'MenuState', '$stateParams', 'mapas.service.agent', 'mapas.service.event', function ($scope, MenuState, $stateParams, agentApi, eventApi) {
+        '$scope', '$stateParams', 'mapas.service.agent', 'mapas.service.event', function ($scope, $stateParams, agentApi, eventApi) {
             var api = agentApi(window.config.url);
             api.util.applyMe.apply($scope);
-            
-            MenuState.activeMenu('agents');
 
             $scope.entity = null;
 
@@ -228,11 +219,9 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('projectCtrl', [
-        '$scope', 'MenuState', '$stateParams', 'mapas.service.project', 'mapas.service.event', function ($scope, MenuState, $stateParams, projectApi, eventApi) {
+        '$scope', '$stateParams', 'mapas.service.project', 'mapas.service.event', function ($scope, $stateParams, projectApi, eventApi) {
             var api = projectApi(window.config.url);
             api.util.applyMe.apply($scope);
-            
-            MenuState.activeMenu('projects');
 
             $scope.entity = null;
 
@@ -242,11 +231,9 @@ angular.module('mapasculturais.controllers', [])
         }])
 
 
-    .controller('mapCtrl', function ($scope, MenuState, $ionicPlatform, MapState) {
+    .controller('mapCtrl', function ($scope, $ionicPlatform, MapState) {
 
         var map;
-    
-        MenuState.activeMenu('map');
 
         $scope.map_state = MapState;
 
@@ -312,13 +299,54 @@ angular.module('mapasculturais.controllers', [])
 
     })
 
-    .controller('navCtrl', function ($scope, $location, $ionicSideMenuDelegate, $timeout, $ionicLoading) {
+    .controller('navCtrl', function ($scope, MenuState, $location, $ionicSideMenuDelegate, $timeout, $ionicLoading) {
 
         $scope.show_filter_search_menu = true;
         $scope.show_share_buttom = false;
         $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             // var new_location_path = newVal.split('#')[1];
             // var old_location_path = oldVal.split('#')[1];
+            
+            switch(toState.name){
+                case 'menu.spaces':
+                    MenuState.activeMenu('spaces');
+                    break;
+                case 'menu.space':
+                    MenuState.activeMenu('spaces');
+                    break;
+                    
+                case 'menu.agents':
+                    MenuState.activeMenu('agents');
+                    break;
+                case 'menu.agent':
+                    MenuState.activeMenu('agents');
+                    break;
+                    
+                case 'menu.projects':
+                    MenuState.activeMenu('projects');
+                    break;
+                case 'menu.project':
+                    MenuState.activeMenu('projects');
+                    break;
+                    
+                case 'menu.events':
+                    MenuState.activeMenu('events');
+                    break;
+                case 'menu.event':
+                    MenuState.activeMenu('events');
+                    break;
+                    
+                case 'menu.map':
+                    MenuState.activeMenu('map');
+                    break;
+                    
+                case 'menu.about':
+                    MenuState.activeMenu('about');
+                    break;
+                    
+            }
+            console.log(toState);
+            
             if (toState.name == 'menu.events') {
                 $scope.show_filter_search_menu = true;
             } else {
@@ -335,6 +363,7 @@ angular.module('mapasculturais.controllers', [])
 
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
             if (fromState.name == 'menu.map') {
+                
                 $timeout(function(){
                     $scope.hide_right_menu = false;
                     $scope.hide_left_menu = false;

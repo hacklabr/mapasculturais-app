@@ -3,10 +3,21 @@
 // --------------------------------------------------
 
 .list {
+    background-color: $gray-lighter;
+    .item {
+        background-color: #fff;
+        border: 0;
+        margin: $padding-base-vertical 0; 
+        padding: $padding-large-vertical;
+    }
+    .item-divider {
+        font-weight: bold;
+        margin: 0; 
+    }
     h2 {
         font-size: $font-size-large;
-        margin-bottom: $line-height-small;
-        padding-bottom: $padding-base;
+        margin-bottom: $padding-large-vertical;
+        padding-bottom: $padding-large-vertical;
         line-height: $line-height-base;
         border-bottom: 1px solid $gray-lighter;
         white-space: normal !important;
@@ -27,8 +38,9 @@
         }
     }
     .description {
-        font-size: $font-size-smaller;
-        line-height: $line-height-base;
+        font-size: $font-size-small;
+        line-height: $line-height-large;
+        margin-bottom: $padding-large-vertical;
         white-space: normal !important;
         overflow: auto !important;
     }
@@ -36,7 +48,30 @@
         float: left;
         width: 4rem;
         height: 4rem;
-        margin: 0 $line-height-small 0 0;
+        line-height: $line-height-large;
+        margin: $padding-base-vertical $padding-large-vertical 0 0;
         background-color: $gray;
+    }
+    .ocurrences {
+        font-size: $font-size-small;
+        font-style: italic;
+        padding-left: $padding-base;
+        margin: 0 0 $padding-large-vertical 0;
+        clear: both;
+        a {
+            color: $gray-darker;
+            font-weight: bold;
+        }
+    }
+    .information {
+        p {
+            font-size: $font-size-small;
+            line-height: $line-height-large;
+        }
+        .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
     }
 }

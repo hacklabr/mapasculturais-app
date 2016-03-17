@@ -13,14 +13,14 @@
 
             <ion-list class="event-item">
                 <ion-item ng-repeat="event in group.events track by $index">
-                    <h2>
-                        <a ng-click="favorite(event)" class="favotite">
+                    <h2 class="event-title">
+                        <a ng-click="favorite(event)" class="make-favorite">
                             <i ng-show="event.favorite" class="elegant-icon icon-favorited"></i>
                             <i ng-show="!event.favorite" class="elegant-icon icon-favorite"></i>
                         </a>
-                        <a ui-sref="menu.event({entity:event.id})">{{::event.name}}</a>
+                        <a ui-sref="menu.event({entity:event.id})" class="event-name">{{::event.name}}</a>
                     </h2>
-                    <h3 ng-if="event.subTitulo">{{::event.subTitle}}</h3>
+                    <h3 class="event-subtitle" ng-if="event.subTitulo">{{::event.subTitle}}</h3>
 
                     <p class="short-description">
                         <img ng-if="event.$files.avatarSmall" ng-src="{{::event.$files.avatarSmall.url}}"/>

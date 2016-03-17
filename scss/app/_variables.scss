@@ -19,8 +19,8 @@ $brand-event:     #b3b921 !default;
 $brand-agent:     #1dabc6 !default;
 $brand-space:     #e83f96 !default;
 $brand-project:   #cc0033 !default;
-$brand-map:       #eee !default;
-$brand-favorite:  #eee !default;
+$brand-map:       #eee    !default;
+$brand-favorite:  #e6b500 !default;
 
 $brand-developer: #9966cc !default;
 
@@ -31,11 +31,12 @@ $brand-success: #66cc66 !default;
 $brand-default: $gray-light !default;
 
 //** Default font stack
-$font-size-base:          1rem !default; // 16px
-$font-size-small:         .875rem !default; // 14px
-$font-size-smaller:       .75rem !default; // 12px
-$line-height-base:        1.5rem !default; // 24px
-$line-height-half:        0.75rem !default; // 12px
+$font-size-big:        1.15rem   !default;
+$font-size-base:       1rem      !default;
+$font-size-small:      .875rem   !default;
+$font-size-smaller:    .75rem    !default;
+$line-height-base:     1.5rem    !default;
+$line-height-half:     0.75rem   !default;
 
 //** Border styles to create dividing rows.
 $thin-row: 1px solid $gray-lighter !default;

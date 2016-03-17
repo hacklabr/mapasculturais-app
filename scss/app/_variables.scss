@@ -6,14 +6,14 @@
 //
 //## Gray and brand colors for use across application.
 
-$gray-darker:   #333 !default;
-$gray-dark: #666 !default;
-$gray: #ccc !default;
-$gray-light: #e2e2e2 !default;
-$gray-lighter: #eee !default;
+$gray-darker:     #333 !default;
+$gray-dark:       #666 !default;
+$gray:            #ccc !default;
+$gray-light:      #e2e2e2 !default;
+$gray-lighter:    #eee !default;
 
-$brand-primary: #1c5690 !default;
-$brand-accent: #000000 !default;
+$brand-primary:   #1c5690 !default;
+$brand-accent:    #000000 !default;
 
 $brand-event:     #b3b921 !default;
 $brand-agent:     #1dabc6 !default;
@@ -24,31 +24,23 @@ $brand-favorite:  #e6b500 !default;
 
 $brand-developer: #9966cc !default;
 
-$brand-info: #40b4b4 !default;
-$brand-warning: #cc9933 !default;
-$brand-danger: #cc3333 !default;
-$brand-success: #66cc66 !default;
-$brand-default: $gray-light !default;
-
-//** Default font stack
-$font-size-big:        1.15rem   !default;
-$font-size-base:       1rem      !default;
-$font-size-small:      .875rem   !default;
-$font-size-smaller:    .75rem    !default;
-$line-height-base:     1.5rem    !default;
-$line-height-half:     0.75rem   !default;
+$brand-info:      #40b4b4 !default;
+$brand-warning:   #cc9933 !default;
+$brand-danger:    #cc3333 !default;
+$brand-success:   #66cc66 !default;
+$brand-default:   $gray-light !default;
 
 //** Border styles to create dividing rows.
 $thin-row: 1px solid $gray-lighter !default;
 
 //== Components
 //
-//## Define common padding and border radius sizes and more. Values based on 16px text and 1.5 line-height (24px).
-$padding-base:       $line-height-base/2 !default; // 12px
+//## Define common padding and border radius sizes and more.
+$padding-base:       $line-height-base  !default;
 
-$padding-large:      $line-height-base !default; // 24px
+$padding-large:      $line-height-large !default;
 
-$padding-small:      $line-height-base/3 !default; // 8px
+$padding-small:      $line-height-small !default;
 
 $border-radius-base: 2px !default;
 

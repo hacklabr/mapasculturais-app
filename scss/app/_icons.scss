@@ -1,0 +1,230 @@
+//== Icons
+//## Use it whenever you want to add these rules to an element that displays an icon
+
+%icon {
+    display: inline-block;
+    &:before {
+        display: inline-block;
+        font-family: $icon-font-family;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        vertical-align: top;
+    }
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+//** Icons base class
+
+.elegant-icon {
+    @extend %icon;
+}
+
+//** All icons classes
+
+.icon-show-advanced-search {
+    &:before {
+        content: $unicode-show-advanced-search;
+    }
+}
+.icon-select-arrow {
+    &:before {
+        content: $unicode-select-arrow;
+    }
+}
+.icon-arrow-up {
+    &:before {
+        content: $unicode-arrow-up;
+    }
+}
+.icon-arrow-left {
+    &:before {
+        content: $unicode-arrow-left;
+    }
+}
+.icon-arrow-right {
+    &:before {
+        content: $unicode-arrow-right;
+    }
+}
+.icon-go-back {
+    &:before {
+        content: $unicode-go-back;
+    }
+}
+.icon-space {
+    &:before {
+        content: $unicode-space;
+    }
+}
+.icon-api {
+    &:before {
+        content: $unicode-api;
+    }
+}
+.icon-event {
+    &:before {
+        content: $unicode-event;
+    }
+}
+.icon-check {
+    margin-right: .5rem;
+    background: #fff;
+    color: $gray;
+    padding: 2px;
+    border-radius: $border-radius-base;
+    line-height: 1;
+    vertical-align: middle;
+    &:before {
+        content: $unicode-check;
+    }
+    &:hover {
+        color: $brand-accent;
+    }
+    &.selected {
+        background: $brand-accent;
+        color: #fff !important;
+    }
+}
+.icon-close {
+    &:before {
+        content: $unicode-close;
+    }
+}
+.icon-notifications {
+    &:before {
+        content: $unicode-notifications;
+    }
+}
+.icon-project {
+    &:before {
+        content: $unicode-project;
+    }
+}
+.icon-download {
+    &:before {
+        content: $unicode-download;
+    }
+}
+.icon-about {
+    &:before {
+        content: $unicode-about;
+    }
+}
+.icon-panel {
+    &:before {
+        content: $unicode-panel;
+    }
+}
+.icon-home {
+    &:before {
+        content: $unicode-home;
+    }
+}
+.icon-login {
+    &:before {
+        content: $unicode-login;
+    }
+}
+.icon-private-info {
+    &:before {
+        content: $unicode-private-info;
+    }
+}
+.icon-publication-status-open {
+    &:before {
+        content: $unicode-space-publication-status-open;
+    }
+}
+.icon-publication-status-locked {
+    &:before {
+        content: $unicode-space-publication-status-locked;
+    }
+}
+.icon-show-search-on-map {
+    &:before {
+        content: $unicode-show-search-on-map;
+    }
+}
+.icon-show-search-on-list {
+    &:before {
+        content: $unicode-show-search-on-list;
+    }
+}
+.icon-show-map {
+    &:before {
+        content: $unicode-show-map;
+    }
+}
+.icon-add {
+    &:before {
+        content: $unicode-add;
+    }
+}
+.icon-agent {
+    &:before {
+        content: $unicode-agent;
+    }
+}
+.icon-help {
+    &:before {
+        content: $unicode-help;
+    }
+}
+.icon-search {
+    &:before {
+        content: $unicode-search;
+    }
+}
+.icon-developers {
+    &:before {
+        content: $unicode-developers;
+    }
+}
+.icon-em-cartaz {
+    &:before {
+        content: $unicode-em-cartaz;
+    }
+}
+
+/* social icons */
+.icon-share {
+    &:before {
+        content: $unicode-share;
+    }
+}
+.icon-twitter {
+    color: #00acee !important;
+    &:before {
+        content: $unicode-twitter;
+    }
+}
+.icon-facebook {
+    color: #3b5998 !important;
+    &:before {
+        content: $unicode-facebook;
+    }
+}
+.icon-googleplus {
+    color: #dd4b39 !important;
+    &:before {
+        content: $unicode-googleplus;
+    }
+}
+
+.icon-favorite {
+    &:before {
+        content: $unicode-favorite;
+    }
+}
+
+.icon-favorited {
+    &:before {
+        content: $unicode-favorited;
+    }
+}

@@ -1,0 +1,236 @@
+//
+// Variables
+// --------------------------------------------------
+
+//== Colors
+//
+//## Gray and brand colors for use across application.
+
+$gray-darker: #333 !default;
+$gray-dark: #666 !default;
+$gray: #ccc !default;
+$gray-light: #e2e2e2 !default;
+$gray-lighter: #eee !default;
+
+$brand-primary: #1c5690 !default;
+$brand-accent: #000000 !default;
+
+$brand-event: #b3b921 !default;
+$brand-agent: #1dabc6 !default;
+$brand-space: #e83f96 !default;
+$brand-project: #cc0033 !default;
+
+$brand-developer: #9966cc !default;
+
+$brand-info: #40b4b4 !default;
+$brand-warning: #cc9933 !default;
+$brand-danger: #cc3333 !default;
+$brand-success: #66cc66 !default;
+$brand-default: $gray-light !default;
+
+//
+// Base
+// -------------------------------
+
+//** Load fonts from this directory.
+$font-path:                    '../fonts/' !default;
+
+$font-family-sans-serif:       '-apple-system', 'Open Sans', 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif !default;
+
+$font-family-light-sans-serif: '-apple-system', 'Open Sans', 'HelveticaNeue-Light', 'Roboto-Light', 'Segoe UI-Light', sans-serif-light !default;
+
+//** Font file names and svg ids
+$font-regular-name:         'OpenSans-Regular-webfont' !default;
+$font-regular-svg-id:       'open_sansregular' !default;
+$font-italic-name:          'OpenSans-Italic-webfont' !default;
+$font-italic-svg-id:        'open_sansitalic' !default;
+$font-bold-name:            'OpenSans-Bold-webfont' !default;
+$font-bold-svg-id:          'open_sansbold' !default;
+$font-bolditalic-name:      'OpenSans-BoldItalic-webfont' !default;
+$font-bolditalic-svg-id:    'open_sansbold_italic' !default;
+
+//** Default font stack
+$font-stack-base:           $font-family-sans-serif !default;
+$font-family-base:          $font-family-sans-serif !default;
+
+//** Headings font family name
+$headings-font-family:      'aleo' !default;
+
+//** Headings font file name
+$headings-font-name:        'aleo-regular-webfont' !default;
+$headings-font-svg-id:      'aleoregular' !default;
+
+//== Iconography
+//
+//## Specify custom location and filename of the included ElegantIcons icon font.
+//** Load fonts from this directory.
+$icon-font-path:            $font-path !default;
+//** Icon font family name
+$icon-font-family:          'ElegantIcons' !default;
+//** File name for all font files.
+$icon-font-name:            'ElegantIcons' !default;
+//** Element ID within SVG icon file.
+$icon-font-svg-id:          'ElegantIcons' !default;
+
+//
+// Icons Unicode 
+// -------------------------------
+
+//** About icon
+// used on .icon-about on _icons.scss file
+$unicode-about:                 "\e060" !default;
+
+//** Add icon
+// used on .icon-add on _icons.scss
+$unicode-add:                   "\4c"   !default;
+
+//** Add button icon
+// used on .add on _buttons.scss
+$unicode-add-button:            "\e050" !default;
+
+//** Agent icon
+// used on:
+// .icon-agent on _icons.scss file
+$unicode-agent:                 "\e08a" !default;
+
+//** API icon
+// used on:
+// .icon-api on _icons.scss file
+$unicode-api:                   "\e102" !default;
+
+
+//** Arrow icons
+// used on .icon-arrow-left and .icon-arrow-right on _icons.scss file (Image Gallery)
+$unicode-arrow-left:            "\34" !default;
+$unicode-arrow-right:           "\35" !default;
+
+//** Check icon
+// used on .check on _icons.scss file
+$unicode-check:                 "\4e"   !default;
+
+//** Close icon
+// used on .icon-close on _icons.scss file
+$unicode-close:                 "\4d"   !default;
+
+// used on .delete on _buttons.scss file
+$unicode-delete:                "\e051"   !default;
+
+//** Datepicker's arrows icons
+// used on .ui-datepicker-prev and .ui-datepicker-next on _datepicker.scss file
+$unicode-datepicker-arrow-left:  "\e045" !default;
+$unicode-datepicker-arrow-right: "\e046" !default;
+
+//** Developers icon
+// used on .icon-developers on _icons.scss
+$unicode-developers:            "\e035" !default;
+
+//** Download icon
+// used on .download _icons.scss file
+$unicode-download:              "\e092" !default;
+
+//** Em cartaz icon
+// used on .icon-em-cartaz on icons.scss
+$unicode-em-cartaz:             "\e033" !default;
+
+//** Event icon
+// used on .icon-event on _icons.scss file
+$unicode-event:                 "\e023" !default;
+
+//** Go back icon
+// used on .icon-go-back on _icons.scss file
+$unicode-go-back:               "\23" !default;
+
+//** Panel icon
+// used on .icon-panel on _icons.scss file
+$unicode-panel:                 "\e0f2" !default;
+
+//** Panel icon
+// used on .icon-home on _icons.scss file
+$unicode-home:                  "\e074" !default;
+
+//** How to use icon
+// used on .icon-help on _icons.scss
+$unicode-help:                  "\e064" !default;
+
+//** Lock icon
+// lock icons
+$unicode-lock:                  "\e06c" !default;
+$unicode-lock-open:             "\e000" !default;
+
+// alias for $unicode-lock
+// used on .icon-login on _icons.scss file
+$unicode-login:                 $unicode-lock !default;
+
+// alias for $unicode-lock
+// used on .icon-private-info on _icons.scss file
+$unicode-private-info:          $unicode-lock !default;
+
+// alias for $unicode-lock
+// used on .icon-publication-status-locked on _icons.scss file
+$unicode-space-publication-status-locked: $unicode-lock !default;
+
+// alias for $unicode-lock-open
+// used on .icon-publication-status-open on _icons.scss file
+$unicode-space-publication-status-open:   $unicode-lock-open !default;
+
+//** Notifications icon
+// used on .icon-notifications on _icons.scss file
+$unicode-notifications:         "\e065" !default;
+
+//** Project icon
+// used on .icon-project on _icons.scss file
+$unicode-project:               "\68"   !default;
+
+//** Search icon
+// used on .icon-search on _icons.scss
+$unicode-search:                "\55"   !default;
+
+//** Select arrow icon
+// used on .icon-select-arrow on _icons.scss file
+$unicode-select-arrow:          "\33"   !default;
+
+//** Up arrow icon
+// used on .icon-arrow-up on _icon.scss file
+$unicode-arrow-up:              "\32"   !default;
+
+//** Show advanced search icon
+// used on .icon-show-advanced-search on _icons.scss file
+$unicode-show-advanced-search:  "\67"   !default;
+
+//** Show map icon
+// used on .icon-show-map on _icons.scss
+$unicode-show-map:              "\e081" !default;
+
+//** Show search on list icon
+// used on .icon-show-search-on-list on _icons.scss file
+$unicode-show-search-on-list:   "\e056" !default;
+
+//** Show search on map icon
+// used on .icon-show-search-on-map on _icons.scss file
+$unicode-show-search-on-map:    "\e083" !default;
+
+//** Space icon
+// used on .icon-space on _icons.scss file
+$unicode-space:                 "\e0ef" !default;
+
+//** Social icons
+// used on .icon-share on _icons.scss file
+$unicode-share:                 "\e0a0" !default;
+// used on .icon-twitter on _icons.scss file
+$unicode-twitter:               "\e094" !default;
+// used on .icon-facebook on _icons.scss file
+$unicode-facebook:              "\e093" !default;
+// used on .icon-googleplus on _icons.scss filepm
+$unicode-googleplus:            "\e096" !default;
+
+//** Favourite icon
+// used on .icon-favorite on icons.scss file
+$unicode-favorite:              "\e031" !default;
+
+//** Favorited icon
+// used on .icon-favorited on icons.scss file
+$unicode-favorited:             "\e033" !default;
+
+//** Information icon
+// used on .icon-favorited on icons.scss file
+$unicode-favorited:             "\e033" !default;

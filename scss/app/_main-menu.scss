@@ -58,12 +58,12 @@
 
         //** Events
         &.menu-event {
-            border-top-color: $brand-event;
-            color: $brand-event;
-            a {
-                color: $brand-event;
-            }
             &.active {
+                border-top-color: $brand-event;
+                color: $brand-event;
+                a {
+                    color: $brand-event;
+                }
                 &:after {
                     @include arrow(up, $caret-width-base, $brand-event);
                 }
@@ -71,12 +71,12 @@
         }
         //** Agents
         &.menu-agent {
-            border-top-color: $brand-agent;
-            color: $brand-agent;
-            a {
-                color: $brand-agent;
-            }
             &.active {
+                border-top-color: $brand-agent;
+                color: $brand-agent;
+                a {
+                    color: $brand-agent;
+                }
                 &:after {
                     @include arrow(up, $caret-width-base, $brand-agent);
                 }
@@ -84,12 +84,12 @@
         }
         //** Spaces
         &.menu-space {
-            border-top-color: $brand-space;
-            color: $brand-space;
-            a {
-                color: $brand-space;
-            }
             &.active {
+                border-top-color: $brand-space;
+                color: $brand-space;
+                a {
+                    color: $brand-space;
+                }
                 &:after {
                     @include arrow(up, $caret-width-base, $brand-space);
                 }
@@ -97,12 +97,12 @@
         }
         //** Projects
         &.menu-project {
-            border-top-color: $brand-project;
-            color: $brand-project;
-            a {
-                color: $brand-project;
-            }
             &.active {
+                border-top-color: $brand-project;
+                color: $brand-project;
+                a {
+                    color: $brand-project;
+                }
                 &:after {
                     @include arrow(up, $caret-width-base, $brand-project);
                 }
@@ -111,12 +111,12 @@
 
         //** Map
         &.menu-map {
-            border-top-color: $brand-map;
-            color: $brand-map;
-            a {
-                color: $brand-map;
-            }
             &.active {
+                border-top-color: $brand-map;
+                color: $brand-map;
+                a {
+                    color: $brand-map;
+                }
                 &:after {
                     @include arrow(up, $caret-width-base, $brand-map);
                 }
@@ -125,12 +125,12 @@
 
         //** Favorite
         &.menu-favorite {
-            border-top-color: $brand-favorite;
-            color: $brand-favorite;
-            a {
-                color: $brand-favorite;
-            }
             &.active {
+                border-top-color: $brand-favorite;
+                color: $brand-favorite;
+                a {
+                    color: $brand-favorite;
+                }
                 &:after {
                     @include arrow(up, $caret-width-base, $brand-favorite);
                 }

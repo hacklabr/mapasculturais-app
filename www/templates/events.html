@@ -31,7 +31,7 @@
                     <p ng-if="event.project.id"><a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
                     <ul><li><a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a>,
                     {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</li></ul>
-                    <p>{{::event.rule.price}}</p>
+                    <p><strong>Preço:</strong> {{::event.rule.price}}</p>
                     <p><strong>Classificação:</strong> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
                     <p><strong>Linguagem:</strong> {{::event.terms.linguagem.join(', ')}}</p>
 

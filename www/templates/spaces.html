@@ -9,8 +9,8 @@
                     <span ng-bind-html="entity.shortDescription"></span>
                 </div>
 
-                <p ng-if="entity.endereco"><i class="icon ion-home"></i> {{::entity.endereco}}</p>
-                <p ng-if="entity.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:entity.project.id})">{{::entity.project.name}}</a></p>
+                <p ng-if="entity.endereco">{{::entity.endereco}}</p>
+                <p ng-if="entity.project.id"><a ui-sref="menu.project({entity:entity.project.id})">{{::entity.project.name}}</a></p>
                 <p><strong>área de atuação:</strong> {{::entity.terms.area.join(', ')}}</p>
 
             </ion-item>

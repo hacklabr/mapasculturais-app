@@ -99,28 +99,28 @@
 
         //** Map
         &.menu-map {
-            border-top-color: $brand-default;
-            color: $brand-default;
+            border-top-color: $brand-map;
+            color: $brand-map;
             a {
-                color: $brand-default;
+                color: $brand-map;
             }
             &.active {
                 &:after {
-                    @include arrow(up, $caret-width-base, $brand-default);
+                    @include arrow(up, $caret-width-base, $brand-map);
                 }
             }
         }
 
         //** Favorite
         &.menu-favorite {
-            border-top-color: $brand-default;
-            color: $brand-default;
+            border-top-color: $brand-favorite;
+            color: $brand-favorite;
             a {
-                color: $brand-default;
+                color: $brand-favorite;
             }
             &.active {
                 &:after {
-                    @include arrow(up, $caret-width-base, $brand-default);
+                    @include arrow(up, $caret-width-base, $brand-favorite);
                 }
             }
         }

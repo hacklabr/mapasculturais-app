@@ -1,4 +1,8 @@
 <ion-view style="" title="Espaços">
+    <div class="header space">
+        <div class="name">Espaços</div>
+        <div class="filter"><filter-events on-apply="applyFilters" filters="filters"></filter-events></div>
+    </div>  
     <ion-content class="has-header" overflow-scroll="true">
         <ion-list class="space-item">
             <ion-item ng-repeat="entity in entities">

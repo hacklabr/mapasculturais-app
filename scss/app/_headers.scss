@@ -1,0 +1,23 @@
+.header {
+    padding: $padding-large-vertical;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    &.event {
+        background-color: $brand-event;
+    }
+    &.space {
+        background-color: $brand-space;
+    }
+    &.favorite {
+        background-color: $brand-favorite;
+    }
+    .name {
+        font-size: $font-size-base;
+        float: left;
+    }
+    .filter {
+        font-size: $font-size-large;
+        float: right;
+    }
+}

@@ -1,6 +1,9 @@
 <ion-view title="Eventos">
-    <ion-content class="has-header" overflow-scroll="true">
-        <filter-events on-apply="applyFilters" filters="filters"></filter-events>
+    <div class="header event">
+        <div class="name">Eventos</div>
+        <div class="filter"><filter-events on-apply="applyFilters" filters="filters"></filter-events></div>
+    </div>    
+    <ion-content class="has-header" overflow-scroll="true">   
         
         <ion-list ng-if="groups.length > 0" ng-repeat="group in groups track by $index">
 

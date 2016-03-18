@@ -6,7 +6,8 @@
 @import "list";
 @import "single";
 @import "item";
+@import "headers";
 
 .has-header {
-    top: 0;
+    top: 40px;
 }

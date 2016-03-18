@@ -4,13 +4,18 @@
         .list {
             background: transparent;
         }
-        .item-divider {
-            font-size: $font-size-base;
-            margin: 0; 
+        .item {
+            display: table;
             padding: 0;
+        }
+        .make-favorite {
+            display: table-cell;
+            vertical-align: top;
         }
         .ocurrences {
             font-weight: bold;
+            display: table-cell;
+            vertical-align: top;
         }
     }
 }

@@ -7,12 +7,12 @@
             <h3 ng-if="entity.subTitle">{{::entity.subtitle}}</h3>
 
             <div class="information">
+                <p ng-if="entity.longDescription" ng-bind-html="entity.longDescription"></p>
+                <p ng-if="!entity.longDescription" ng-bind-html="entity.shortDescription"></p>
+
                 <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
                 <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
                 <p><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity: entity.owner.id})">{{::entity.owner.name}}</a></p>
-
-                <p ng-if="entity.longDescription" ng-bind-html="entity.longDescription"></p>
-                <p ng-if="!entity.longDescription" ng-bind-html="entity.shortDescription"></p>
             </div>
 
             <div class="where" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByEvent'; findEntityId = entity.id">
@@ -20,29 +20,15 @@
                 
                 <ion-list ng-repeat="group in groups">
 
-                    <ul ng-if="showCalendar(group.date)" class="ocurrences">
-                        <li>
-                            {{::group.date.calendar()}}
-                        </li>
-                    </ul>
-                    <ul ng-if="!showCalendar(group.date)" class="ocurrences">
-                        <li>
-                            {{::group.date.format('LLL')}}
-                        </li>
-                    </ul>
-
                     <ion-list>
                         <ion-item ng-repeat="event in group.events">
-                            <a ng-click="favorite(event)" class="favorite">
+                            <ul class="ocurrences">
+                                <li><a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a>, {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}, {{::event.space.endereco}}, <strong>{{::event.rule.price}}</strong></li>
+                            </ul>
+                            <a ng-click="favorite(event)" class="make-favorite">
                                 <i ng-show="event.favorite" class="elegant-icon icon-favorited"></i>
                                 <i ng-show="!event.favorite" class="elegant-icon icon-favorite"></i>
                             </a>
-                            <div class="information">
-                                <p><span class="label">Local:</span> <a ui-sref="menu.space({entity:event.space.id})">{{::event.space.id}} {{::event.space.name}}</a> <br>
-                                {{::event.space.endereco}}</p>
-                                <p><span class="label">Horário:</span> {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</p>
-                                <p><span class="label">Preço:</span> {{::event.rule.price}}</p>
-                            </div>
                         </ion-item>
                     </ion-list>
                 </ion-list>

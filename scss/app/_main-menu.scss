@@ -27,8 +27,7 @@
         width: 23%;
         text-align: center;
         border-top: 3px solid $brand-accent;
-                box-shadow: 1px 0 0 0 $gray-lighter inset;
-        -webkit-box-shadow: 1px 0 0 0 $gray-lighter inset;
+        border-left: 1px solid $gray-lighter;
         .elegant-icon {
             margin: 0 auto .25rem;
             font-size: 1.1rem;
@@ -41,8 +40,7 @@
             line-height: $line-height-small;
         }
         &:first-child {
-                    box-shadow: none;
-            -webkit-box-shadow: none;
+            border-left: none;
         }
         &.active {
             .label {

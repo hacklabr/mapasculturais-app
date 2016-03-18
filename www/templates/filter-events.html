@@ -1,14 +1,14 @@
-<h3 ng-click="openModal()"><i class="elegant-icon icon-search"></i></h3>
+<h3 ng-click="openModal()"><span class="elegant-icon icon-show-advanced-search"></span> </h3>
 
 <!--<button ng-click="applyFilters()">aplicar</button>-->
 <script id="my-modal.html" type="text/ng-template">
     <ion-modal-view class="ion-nifty-modal">
         <ion-header-bar>
-            <h1 class="title"><i class="elegant-icon icon-search"></i> Filtros</h1>
+            <h1 class="title"><span class="elegant-icon icon-show-advanced-search"></span> Filtros</h1>
         </ion-header-bar>
         <ion-content style="background:white">
             <div class="item item-input">
-                <i class="elegant-icon icon-search placeholder-icon"></i>
+                <span class="elegant-icon icon-show-advanced-search"></span>
                 <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Palavra-chave">
             </div>
 

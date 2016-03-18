@@ -1,5 +1,5 @@
 .single {
-    .where {
+    .spaces {
         margin-top: $padding-large-vertical;
         .list {
             background: transparent;
@@ -16,6 +16,16 @@
             font-weight: bold;
             display: table-cell;
             vertical-align: top;
+        }
+    }
+    .events {
+        margin: 10px -10px;
+        .schedule-title {
+            margin: $padding-large-vertical 0; 
+            padding: $padding-large-vertical;
+        }
+        .list {
+            margin-top: 6px;
         }
     }
 }

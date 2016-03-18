@@ -15,7 +15,7 @@
                 <p><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity: entity.owner.id})">{{::entity.owner.name}}</a></p>
             </div>
 
-            <div class="where" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByEvent'; findEntityId = entity.id">
+            <div class="spaces" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByEvent'; findEntityId = entity.id">
                 <div class="label">Quando e onde:</div>
                 
                 <ion-list ng-repeat="group in groups">

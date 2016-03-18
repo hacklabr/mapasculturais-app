@@ -1,0 +1,17 @@
+.single {
+    .where {
+        margin-top: $padding-large-vertical;
+        .list {
+            background: transparent;
+        }
+        .item-divider {
+            font-size: $font-size-base;
+            margin: 0; 
+            padding: 0;
+        }
+        .ocurrences {
+            font-weight: bold;
+        }
+    }
+}
+

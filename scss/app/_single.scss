@@ -1,0 +1,22 @@
+.single {
+    .where {
+        margin-top: $padding-large-vertical;
+        .list {
+            background: transparent;
+        }
+        .item {
+            display: table;
+            padding: 0;
+        }
+        .make-favorite {
+            display: table-cell;
+            vertical-align: top;
+        }
+        .ocurrences {
+            font-weight: bold;
+            display: table-cell;
+            vertical-align: top;
+        }
+    }
+}
+

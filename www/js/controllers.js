@@ -231,12 +231,18 @@ angular.module('mapasculturais.controllers', [])
         }])
 
 
-    .controller('mapCtrl', function ($scope, $ionicPlatform, MapState) {
-
+    .controller('mapCtrl', ['$scope', '$ionicPlatform', 'MapState', 'mapas.service.space', function ($scope, $ionicPlatform, MapState, spaceApi) {
+        var api = spaceApi(window.config.url);
+        api.util.applyMe.apply($scope);
         var map;
 
         $scope.map_state = MapState;
-
+        
+        var _spaces = api.findByEvents({
+            '@from': '2016-03-18',
+            '@to': '2016-04-18'
+        });
+        
         $ionicPlatform.ready(function(MapState) {
 
             var map_wrapper = angular.element(document.querySelector("#map-wrapper"));
@@ -251,7 +257,29 @@ angular.module('mapasculturais.controllers', [])
             map.setClickable(true);
             // Capturing event when Map load are ready.
             map.addEventListener(plugin.google.maps.event.MAP_READY, function(){
-
+                _spaces.then(function(spaces){
+                    spaces.forEach(function(space){
+                        var pin = {
+                            title: space.name,
+    //                        icon: iconName,
+                            visible: true,
+                            position: new plugin.google.maps.LatLng(
+                                space.location.latitude,
+                                space.location.longitude),
+                        };
+                        
+                        map.addMarker(pin, function(marker){
+                            space.marker = marker;
+//                            marker.addEventListener(
+//                                plugin.google.maps.event.MARKER_CLICK,
+//                                function(){
+//                                    marker.hideInfoWindow();
+//                                    map.setClickable(false);
+//                                    $scope.showConfirm(space);
+//                                });
+                        });
+                    });
+                });
                 // Defining markers for demo
                 // var markers = [{
                 //     position: setPosition(-19.9178713, -43.9603117),
@@ -282,7 +310,7 @@ angular.module('mapasculturais.controllers', [])
             //     return new plugin.google.maps.LatLng(lat, lng);
             // }
       });
-    })
+    }])
 
     .controller('aboutCtrl', function ($scope) {
 

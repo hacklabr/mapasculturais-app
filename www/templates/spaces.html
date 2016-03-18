@@ -1,6 +1,6 @@
 <ion-view style="" title="Espaços">
     <ion-content class="has-header" overflow-scroll="true">
-        <ion-list class="place-item">
+        <ion-list class="space-item">
             <ion-item ng-repeat="entity in entities">
                 <h2 class="title"><a class="name" ui-sref="menu.space({entity:entity.id})">{{::entity.name}}</a></h2>
                 <h3 class="subtitle" ng-if="entity.subTitulo">{{entity.subTitle}}</h3>

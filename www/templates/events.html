@@ -27,10 +27,11 @@
                     </div>
 
                     <p ng-if="event.subtitle">{{::event.subtitle}}</p>
-                    <p ng-if="event.project.id"><a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
+                    
                     <ul class="ocurrences"><li><a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a>,
                     {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</li></ul>
                     <div class="information">
+                        <p ng-if="event.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
                         <p><span class="label">Preço:</span> {{::event.rule.price}}</p>
                         <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
                         <p><span class="label">Linguagem:</span> {{::event.terms.linguagem.join(', ')}}</p>

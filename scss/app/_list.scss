@@ -79,6 +79,33 @@
     }
 }
 
+.event-item {
+    .information {
+        a {
+            color: $brand-event;
+            font-weight: bold;
+        }
+    }
+}
+
+.space-item {
+    .information {
+        a {
+            color: $brand-space;
+            font-weight: bold;
+        }
+    }
+}
+
+.favorite-item {
+    .information {
+        a {
+            color: $brand-favorite;
+            font-weight: bold;
+        }
+    }
+}
+
 .classificacao { 
     padding: 2px 5px;
 }

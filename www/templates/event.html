@@ -1,15 +1,15 @@
 <ion-view title="Evento">
     <div class="header event"><span class="name">Eventos</span></div>  
     <ion-content class="has-header single" overflow-scroll="true"> 
-        <img ng-if="entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
+        <img ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
         
         <div class="item event-item"> 
             <h2 class="title">{{::entity.name}}</h2>
-            <h3 ng-if="entity.subTitle">{{::entity.subtitle}}</h3>
+            <h3 ng-if="::entity.subTitle">{{::entity.subtitle}}</h3>
 
             <div class="information">
-                <p ng-if="entity.longDescription" ng-bind-html="entity.longDescription"></p>
-                <p ng-if="!entity.longDescription" ng-bind-html="entity.shortDescription"></p>
+                <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
+                <p ng-if="::!entity.longDescription" ng-bind-html="::entity.shortDescription"></p>
 
                 <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
                 <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
@@ -27,8 +27,8 @@
                                 <li><a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a>, {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}, {{::event.space.endereco}}, <strong>{{::event.rule.price}}</strong></li>
                             </ul>
                             <a ng-click="favorite(event)" class="make-favorite">
-                                <i ng-show="event.favorite" class="elegant-icon icon-favorited"></i>
-                                <i ng-show="!event.favorite" class="elegant-icon icon-favorite"></i>
+                                <i ng-show="::event.favorite" class="elegant-icon icon-favorited"></i>
+                                <i ng-show="::!event.favorite" class="elegant-icon icon-favorite"></i>
                             </a>
                         </ion-item>
                     </ion-list>

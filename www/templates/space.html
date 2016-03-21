@@ -7,8 +7,8 @@
             <h2 class="title">{{::entity.name}}</h2>
 
             <div class="information">
-                <p ng-if="entity.longDescription" ng-bind-html="entity.longDescription"></p>
-                <p ng-if="!entity.longDescription" ng-bind-html="entity.shortDescription"></p>
+                <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
+                <p ng-if="::!entity.longDescription" ng-bind-html="::entity.shortDescription"></p>
 
                 <p><span class="label">Endereço:</span> {{::entity.endereco}}</p>
                 <p><span class="label">Tipo:</span> {{::entity.type.name}}</p>
@@ -26,10 +26,10 @@
                 
                 <ion-list ng-repeat="group in groups">
 
-                    <div ng-if="showCalendar(group.date)" class="item item-divider">
+                    <div ng-if="::showCalendar(group.date)" class="item item-divider">
                         {{::group.date.calendar()}}
                     </div>
-                    <div ng-if="!showCalendar(group.date)" class="item item-divider">
+                    <div ng-if="::!showCalendar(group.date)" class="item item-divider">
                         {{::group.date.format('LLL')}}
                     </div>
 
@@ -42,15 +42,15 @@
                                 </a>
                                 <a class="name" ui-sref="menu.event({entity:event.id})">{{::event.name}}</a>
                             </h2>
-                            <h3 class="subtitle" ng-if="event.subTitulo">{{::event.subTitle}}</h3>
-                            <img class="thumb" ng-if="event.$files.avatarSmall" ng-src="{{::event.$files.avatarSmall.url}}"/>
+                            <h3 class="subtitle" ng-if="::event.subTitulo">{{::event.subTitle}}</h3>
+                            <img class="thumb" ng-if="::event.$files.avatarSmall" ng-src="{{::event.$files.avatarSmall.url}}"/>
                             <div class="description">
                                 {{::event.shortDescription}}
                             </div>
-                            <p ng-if="event.subtitle">{{::event.subtitle}}</p>
+                            <p ng-if="::event.subtitle">{{::event.subtitle}}</p>
                             
                             <div class="information">
-                                <p ng-if="event.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
+                                <p ng-if="::event.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
                                 <p><span class="label">Data:</span> {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</p>
                                 <p><span class="label">Preço:</span> {{::event.rule.price}}</p>
                                 <p><span class="label">classificação:</span> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>

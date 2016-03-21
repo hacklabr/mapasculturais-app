@@ -9,7 +9,7 @@
                 <p><span class="label">Endereço:</span> {{::entity.endereco}}</p>
                 <p><span class="label">Tipo:</span> {{::entity.type.name}}</p>
                 <p><span class="label">Area de atuação:</span> {{::entity.terms.area.join(', ')}}</p>
-                <p ng-if="::entity.owner.id"><i class="icon ion-person"></i> <span class="label">publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})">{{::entity.owner.name}}</a></p>
+                <p ng-if="::entity.owner.id"><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})">{{::entity.owner.name}}</a></p>
                 
                 <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
                 <p ng-if="::!entity.longDescription" ng-bind-html="::entity.shortDescription"></p>

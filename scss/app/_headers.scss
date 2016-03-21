@@ -16,6 +16,9 @@
     &.agent {
         background-color: $brand-agent;
     }
+    &.project {
+        background-color: $brand-project;
+    }
     .name {
         font-size: $font-size-base;
         float: left;

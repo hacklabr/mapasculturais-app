@@ -33,6 +33,15 @@
     }
 }
 
+.agent-item {
+    .information {
+        a {
+            color: $brand-agent;
+            font-weight: bold;
+        }
+    }
+}
+
 .classificacao { 
     padding: 2px 5px;
 }

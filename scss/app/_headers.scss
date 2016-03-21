@@ -13,6 +13,9 @@
     &.favorite {
         background-color: $brand-favorite;
     }
+    &.agent {
+        background-color: $brand-agent;
+    }
     .name {
         font-size: $font-size-base;
         float: left;

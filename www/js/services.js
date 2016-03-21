@@ -36,7 +36,9 @@ angular.module('mapasculturais.services', [])
 
     var getKey = function(event) {
         // console.log(event.start.toString())
-        return event.start.toString() + '|' + event.occurrence_id
+        var key = moment(event.start.toString()).format('X') + '|' + event.occurrence_id;
+        return key;
+        
     }
 
     this.favorite = function(event) {

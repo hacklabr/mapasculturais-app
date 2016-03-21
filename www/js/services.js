@@ -55,6 +55,11 @@ angular.module('mapasculturais.services', [])
     this.isFavorite = function(event) {
         return !!$localStorage.favoriteEvents[getKey(event)]
     }
+    
+    this.clear = function(){
+        $localStorage.favoriteEvents = {};
+        sync();
+    }
 
 }])
 

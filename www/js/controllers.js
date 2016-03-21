@@ -317,8 +317,6 @@ angular.module('mapasculturais.controllers', [])
     })
 
     .controller('favoritesCtrl', ['$scope', 'MenuState', 'FavoriteEvents', function ($scope, MenuState, FavoriteEvents) {
-        MenuState.activeMenu('map');
-
         $scope.events = FavoriteEvents.favorites;
         $scope.favorite = FavoriteEvents.favorite;
     }])
@@ -327,14 +325,36 @@ angular.module('mapasculturais.controllers', [])
 
     })
 
-    .controller('navCtrl', function ($scope, MenuState, $location, $ionicSideMenuDelegate, $timeout, $ionicLoading) {
+    .controller('navCtrl', function ($scope, FavoriteEvents, MenuState, $location, $timeout, $ionicLoading, $window) {
 
         $scope.show_filter_search_menu = true;
         $scope.show_share_buttom = false;
-        $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            // var new_location_path = newVal.split('#')[1];
-            // var old_location_path = oldVal.split('#')[1];
-            
+        
+        $scope.clearFavorites = function(){
+            if(confirm('Você está certo de que deseja apagar todos os seus eventos favoritados?'))
+            FavoriteEvents.clear();
+        };
+        
+        
+        $scope.openMenuMore = function(){
+            $scope.showMenuMore = true;
+        };
+
+        $scope.closeMenuMore = function(){
+            $scope.showMenuMore = false;
+        };
+
+        $scope.toggleMenuMore = function($event){
+            $scope.showMenuMore = $scope.showMenuMore ? false : true;
+            $event.stopPropagation();
+        };
+        
+        angular.element($window).on('click', function(e){
+            $scope.closeMenuMore();
+            $scope.$apply();
+        });
+        
+        function activeMenu (toState){
             switch(toState.name){
                 case 'menu.spaces':
                     MenuState.activeMenu('spaces');
@@ -377,6 +397,13 @@ angular.module('mapasculturais.controllers', [])
                     break;
                     
             }
+        }
+        
+        $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            // var new_location_path = newVal.split('#')[1];
+            // var old_location_path = oldVal.split('#')[1];
+            
+            activeMenu(toState);
             
             if (toState.name == 'menu.events') {
                 $scope.show_filter_search_menu = true;
@@ -387,6 +414,7 @@ angular.module('mapasculturais.controllers', [])
         });
 
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+            activeMenu(toState);
             $ionicLoading.hide();
         });
     })

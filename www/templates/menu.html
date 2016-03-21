@@ -1,23 +1,29 @@
-<ul class="main-menu" ng-controller="navCtrl">
-    <li class="menu-item menu-event" ng-class="{active: activeMenu === 'events'}" ui-sref="menu.events">
-        <span class="elegant-icon icon-event"></span>
-        <span class="label">eventos</span>
-    </li>
-    <li class="menu-item menu-space" ng-class="{active: activeMenu === 'spaces'}" ui-sref="menu.spaces">
-        <span class="elegant-icon icon-space"></span>
-        <span class="label">espaços</span>
-    </li>
-    <li class="menu-item menu-map" ng-class="{active: activeMenu === 'map'}" ui-sref="menu.map">
-        <span class="elegant-icon icon-map"></span>
-        <span class="label">mapas</span>
-    </li>
-    <li class="menu-item menu-favorite" ng-class="{active: activeMenu === 'favorites'}" ui-sref="menu.favorites">
-        <span class="elegant-icon icon-favorite"></span>
-        <span class="label">favoritos</span>
-    </li>
-    <li class="more">
-        <span class="icon ion-android-more-vertical"></span>
-    </li>
-</ul>
-
+<div ng-controller="navCtrl">
+    <ul class="main-menu">
+        <li class="menu-item menu-event" ng-class="{active: activeMenu === 'events'}" ui-sref="menu.events">
+            <span class="elegant-icon icon-event"></span>
+            <span class="label">eventos</span>
+        </li>
+        <li class="menu-item menu-space" ng-class="{active: activeMenu === 'spaces'}" ui-sref="menu.spaces">
+            <span class="elegant-icon icon-space"></span>
+            <span class="label">espaços</span>
+        </li>
+        <li class="menu-item menu-map" ng-class="{active: activeMenu === 'map'}" ui-sref="menu.map">
+            <span class="elegant-icon icon-map"></span>
+            <span class="label">mapas</span>
+        </li>
+        <li class="menu-item menu-favorite" ng-class="{active: activeMenu === 'favorites'}" ui-sref="menu.favorites">
+            <span class="elegant-icon icon-favorite"></span>
+            <span class="label">favoritos</span>
+        </li>
+        <li class="more" ng-click="toggleMenuMore($event)">
+            <span class="icon ion-android-more-vertical"></span>
+        </li>
+    </ul>
+    <ul ng-show="showMenuMore" id="menu-more" class="menu-more" style="padding:5px 20px; line-height: 3em; position:absolute; top:40px; right:10px; background:white; border:#ddd; z-index:10000; text-align: right; box-shadow: -5px 10px 30px 0px rgba(0,0,0,0.55);">
+        <li ng-click="clearFavorites()">Limpar Favoritos</li>
+        <li class="divider"></li>
+        <li>Sobre</li>
+    </ul>
+</div>
 <ion-nav-view name="app"></ion-nav-view>

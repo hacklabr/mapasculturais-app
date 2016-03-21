@@ -1,8 +1,10 @@
 //** Styles from main menu
 .main-menu {
+    background-color: #fff;
     overflow: hidden;
-    position: relative;
-    z-index: 10;
+    position: absolute;
+    width: 100%;
+    z-index: 10; 
     .more {
         float: left;
         padding: 10px 5px;

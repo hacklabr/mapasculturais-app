@@ -1,7 +1,8 @@
 .header {
     padding: $padding-large-vertical;
-    position: fixed;
+    position: absolute;
     width: 100%;
+    top: 52px;
     z-index: 10;
     &.event {
         background-color: $brand-event;

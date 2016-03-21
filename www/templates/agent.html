@@ -42,7 +42,7 @@
                         </p>
 
                         <p ng-if="event.subtitle">{{::event.subtitle}}</p>
-                        <p ng-if="event.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:event.project.id})">{{::::event.project.name}}</a></p>
+                        <p ng-if="event.project.id"><i class="icon ion-document-text"></i> <a ui-sref="menu.project({entity:event.project.id})">{{::event.project.name}}</a></p>
                         <p><i class="icon ion-home"></i> <a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a></p>
                         <p><i class="icon ion-clock"></i> {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</p>
                         <p><i class="icon ion-social-usd"></i> {{::event.rule.price}}</p>

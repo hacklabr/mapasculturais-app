@@ -42,7 +42,8 @@ $icon-font-name:            'ElegantIcons' !default;
 //** Element ID within SVG icon file.
 $icon-font-svg-id:          'ElegantIcons' !default;
 
-$ionicons-font-path:        "../lib/ionic/fonts/" !default;
+//** Load ionic icons font from this directory
+//$ionicons-font-path:        "../lib/ionic/fonts/" !default;
 
 $line-height-base:                1.5  !default;
 $line-height-large:               2    !default;

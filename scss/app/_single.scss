@@ -30,3 +30,41 @@
     }
 }
 
+.single-tabs {
+    background: #fff;
+    display: table;
+    margin-top: $padding-large-vertical;   
+    width: 100%;
+    .tab {
+        border-bottom: 3px solid #666;
+        border-left: 1px solid $gray-lighter;
+        color: #666;
+        display: table-cell;
+        font-family: "Open Sans";
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: $padding-large-vertical 0;
+        text-align: center;
+        text-transform: uppercase;
+        &:first-child {
+            border-left: none;
+        }
+        &.tab-event.active {
+            border-bottom-color: $brand-event;
+            color: $brand-event;
+        }
+        &.tab-agent.active {
+            border-bottom-color: $brand-agent; 
+            color: $brand-agent;
+        }
+        &.tab-project.active {
+            border-bottom-color: $brand-project; 
+            color: $brand-project;
+        }
+        &.tab-space.active {
+            border-bottom-color: $brand-space; 
+            color: $brand-space;
+        }
+    }
+}

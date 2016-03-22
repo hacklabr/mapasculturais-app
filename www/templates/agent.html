@@ -18,10 +18,14 @@
             
             <div class="events list" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByOwner'; findEntityId = entity.id">
 
-                <div class="item-divider schedule-title">
-                    <span class="name">Programação:</span>
-                    <filter-events on-apply="applyFilters" filters="filters" style="float:right"></filter-events>
-                </div>
+                <ul class="single-tabs">
+                    <li class="tab tab-event active">Eventos</li>
+                    <li class="tab tab-space">Espaços</li>
+                    <li class="tab tab-agent">Subagentes</li>
+                    <li class="tab tab-project">Projetos</li>
+                </ul>
+
+                <filter-events on-apply="applyFilters" filters="filters" style="float:right"></filter-events>
                 
                 <ion-list ng-repeat="group in groups">
 

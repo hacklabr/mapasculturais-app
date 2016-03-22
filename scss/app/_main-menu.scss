@@ -10,8 +10,7 @@
         padding: 10px 5px;
         text-align: center;
         width: 8%;
-                box-shadow: 1px 0 0 0 $gray-lighter inset;
-        -webkit-box-shadow: 1px 0 0 0 $gray-lighter inset;
+        border-left: 1px solid $gray-lighter;
         .icon {
             margin: 0 auto .25rem;
             font-size: 1.4rem;

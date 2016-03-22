@@ -32,6 +32,7 @@ angular.module('mapasculturais', [
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.scrolling.jsScrolling(false);
     $ionicConfigProvider.views.forwardCache(true);
+//    $ionicConfigProvider.views.maxCache(0);
 
 });
 

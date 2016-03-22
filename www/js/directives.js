@@ -1,6 +1,6 @@
 angular.module('mapasculturais.directives', ['ionic'])
 
-    .directive('filterEvents', ['$ionicModal', 'mapas.service.api', function ($ionicModal, mapasApi) {
+    .directive('filterEvents', ['mapas.service.api', '$anchorScroll', '$timeout', function (mapasApi, $anchorScroll, $timeout) {
         return {
             restrict: 'E',
             templateUrl: 'templates/filter-events.html',
@@ -12,7 +12,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                 var api = mapasApi(window.config.url);
                 var original = {
                     keyword: '',
-                    hidePast: true,
+                    showPast: false,
                     from: moment().toDate(),
                     to: moment().add(1, 'months').toDate(),
                     linguagem: null,
@@ -24,7 +24,7 @@ angular.module('mapasculturais.directives', ['ionic'])
 
                 function apply(){
                     $scope.onApply();
-                    $scope.modal.hide();
+                    $scope.close();
                 }
 
                 $scope.applyFilters = function () {
@@ -37,7 +37,7 @@ angular.module('mapasculturais.directives', ['ionic'])
 
                 $scope.cancel = function () {
                     $scope.temp = angular.copy($scope.filters);
-                    $scope.modal.hide();
+                    $scope.close();
                 };
 
                 $scope.reset = function () {
@@ -47,18 +47,18 @@ angular.module('mapasculturais.directives', ['ionic'])
                     $scope.temp = angular.copy($scope.filters);
                     apply();
                 };
-
-                // modal ==========================
-                $ionicModal.fromTemplateUrl('my-modal.html', {
-                    scope: $scope,
-                    animation: 'fade-in-scale',
-                    focusFirstInput: true
-                }).then(function (modal) {
-                    $scope.modal = modal;
-                });
-                $scope.openModal = function () {
-                    $scope.modal.show();
+                
+                $scope.open = function () {
+                    $scope.showFilter = true;
+                    console.log('heim?');
+                    $timeout(function(){
+                        $anchorScroll('event-filter');
+                    });
                 };
+                
+                $scope.close = function () {
+                    $scope.showFilter = false;
+                }
 
                 api.taxonomyTerms('linguagem').then(function(terms){
                     $scope.linguagens = terms;

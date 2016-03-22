@@ -1,53 +1,50 @@
-<div ng-click="openModal()"><span class="elegant-icon icon-show-advanced-search"></span></div>
+<div ng-click="open()" id="event-filter" ><span class="elegant-icon icon-show-advanced-search"></span></div>
 
-<!--<button ng-click="applyFilters()">aplicar</button>-->
-<script id="my-modal.html" type="text/ng-template">
-    <ion-modal-view class="ion-nifty-modal">
-        <ion-header-bar>
-            <h1 class="title"><span class="elegant-icon icon-show-advanced-search"></span> Filtros</h1>
-        </ion-header-bar>
-        <ion-content style="background:white">
-            <div class="item item-input">
-                <span class="elegant-icon icon-search"></span>
-                <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Palavra-chave">
-            </div>
+<div ng-show="showFilter" style="position:absolute; left:0; right:0; background:white; z-index:10000;">
+    <header>
+        <h1 class="title"><span class="elegant-icon icon-show-advanced-search"></span> Filtros</h1>
+    </header>
+    <div>
+        <div class="item item-input">
+            <span class="elegant-icon icon-search"></span>
+            <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Palavra-chave">
+        </div>
 
-            <div class="item item-toggle">
-                <i class="icon icon_circle-slelected"></i>
-                Somente eventos verificados
-                <label class="toggle toggle-dark">
-                    <input type="checkbox" ng-model="temp.verified">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </div>
-            <div class="item">
-                <span class="input-label">Linguagem</span>
-                <select ng-options="linguagem for linguagem in linguagens" ng-model="temp.linguagem"></select>
-            </div>
-            <div class="item">
-                <span class="input-label">Data</span>
-                de <input type="date" class="input-date" ng-model="temp.from" style="display: inline-block;">
-                até <input type="date" class="input-date" ng-model="temp.to" style="display: inline-block;">
-            </div>
-            <div class="item item-toggle">
-                <i class="icon icon_circle-slelected"></i>
-                Ocultar eventos passados
-                <label class="toggle toggle-dark">
-                    <input type="checkbox" ng-model="temp.hidePast">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </div>
-        </ion-content>
-        <ion-footer-bar align-title="left" class="bar-light">
+        <div class="item item-toggle">
+            <i class="icon icon_circle-slelected"></i>
+            Somente eventos verificados
+            <label class="toggle toggle-dark">
+                <input type="checkbox" ng-model="temp.verified">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+        </div>
+        <div class="item">
+            <span class="input-label">Linguagem</span>
+            <select ng-options="linguagem for linguagem in linguagens" ng-model="temp.linguagem"></select>
+        </div>
+        <div class="item">
+            <span class="input-label">Data</span>
+            de <input type="date" class="input-date" ng-model="temp.from" style="display: inline-block;">
+            até <input type="date" class="input-date" ng-model="temp.to" style="display: inline-block;">
+        </div>
+        <div class="item item-toggle">
+            <i class="icon icon_circle-slelected"></i>
+            Mostrar eventos antigos
+            <label class="toggle toggle-dark">
+                <input type="checkbox" ng-model="temp.showPast">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+        </div>
+        <footer>
             <div class="button-bar">
                 <a class="button button-large icon-left ion-close-circled" ng-click="cancel()">Cancelar</a>
                 <a class="button button-large icon-left ion-close-circled" ng-click="reset()">Limpar</a>
                 <a class="button button-large icon-left ion-checkmark-circled" ng-click="applyFilters()">Aplicar</a>
             </div>
-        </ion-footer-bar>
-    </ion-modal-view>
-</script>
+        </footer>
+    </div>
+</div>

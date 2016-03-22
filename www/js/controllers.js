@@ -44,11 +44,17 @@ angular.module('mapasculturais.controllers', [])
             }
 
             $scope.loadMore = function () {
-                var events;
+                var events, from;
                 var params = {
                     '@limit': _limit,
                     '@page': _page
                 };
+                
+                if($scope.filters.showPast){
+                    from = $scope.filters.from;
+                } else {
+                    from = moment().toDate();
+                }
 
                 if($scope.filters.keyword){
                     params['@keyword'] = '%' + $scope.filters.keyword + '%';
@@ -64,9 +70,9 @@ angular.module('mapasculturais.controllers', [])
 
                 if ($scope.findFunction) {
                     var entityId = $scope.findEntityId;
-                    events = api[$scope.findFunction](entityId, $scope.filters.from, $scope.filters.to, params);
+                    events = api[$scope.findFunction](entityId, from, $scope.filters.to, params);
                 } else {
-                    events = api.find($scope.filters.from, $scope.filters.to, params);
+                    events = api.find(from, $scope.filters.to, params);
                 }
 
                 _page++;
@@ -86,7 +92,7 @@ angular.module('mapasculturais.controllers', [])
                     var _groups = api.group('YYYY-MM-DD HH:mm', rs);
 
                     _groups.forEach(function (e) {
-                        if ($scope.filters.hidePast && e.date.format('YMMDDHH') < _now) {
+                        if (!$scope.filters.showPast && e.date.format('YMMDDHH') < _now) {
                             return;
                         }
 

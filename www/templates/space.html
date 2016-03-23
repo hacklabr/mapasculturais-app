@@ -28,11 +28,8 @@
                 
                 <ion-list ng-repeat="group in groups">
 
-                    <div ng-if="::showCalendar(group.date)" class="item item-divider">
-                        {{::group.date.calendar()}}
-                    </div>
-                    <div ng-if="::!showCalendar(group.date)" class="item item-divider">
-                        {{::group.date.format('LLL')}}
+                    <div class="item item-divider">
+                        {{::dividerText(group)}}
                     </div>
 
                     <ion-list class="event-item">

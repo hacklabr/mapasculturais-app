@@ -31,7 +31,7 @@ angular.module('mapasculturais.controllers', [])
             var _page = 1;
             var _endData = false;
             var _lastGroup = null;
-            var _now = moment().format('YMMDDHH') - 2;
+            var _now = moment().format('X');
             
             $scope.groups = [];
             $scope.notFound = false;
@@ -78,32 +78,53 @@ angular.module('mapasculturais.controllers', [])
                 _page++;
 
                 events.then(function (rs) {
+                    var happening;
+                    
                     if (rs.length < _limit) {
                         _endData = true;
                     }
                     rs.forEach(function(event) {
                         event.favorite = FavoriteEvents.isFavorite(event);
-                    })
+                    });
 
                     if(_page === 2 && rs.length === 0){
                         $scope.notFound = true;
                     }
+                    
+                    // remove os eventos antigos se o
+                    if (!$scope.filters.showPast) {
+                        happening = rs.filter(function(r){
+                            var end = r.end.format('X');
+                            var start = r.start.format('X');
+                            
+                            if (start < _now && end > _now){
+                                return r;
+                            }
+                        });
+                        
+                        rs = rs.filter(function(r){
+                            var start = r.start.format('X');
+                            
+                            if(start > _now){
+                                return r;
+                            }
+                        });
+                    }
 
                     var _groups = api.group('YYYY-MM-DD HH:mm', rs);
-
-                    _groups.forEach(function (e) {
-                        if (!$scope.filters.showPast && e.date.format('YMMDDHH') < _now) {
-                            return;
-                        }
-
-                        if (_lastGroup && _lastGroup.date.format('YYYY-MM-DD HH:mm') === e.date.format('YYYY-MM-DD HH:mm')) {
-                            e.events.forEach(function (event) {
+                    
+                    if(happening.length > 0){
+                        _groups.unshift({happening: true, events: happening});
+                    }
+                    _groups.forEach(function (grp) {
+                        if (_lastGroup && (_lastGroup.happening && grp.happening || _lastGroup.date && grp.date && _lastGroup.date.format('YYYY-MM-DD HH:mm') === grp.date.format('YYYY-MM-DD HH:mm'))) {
+                            grp.events.forEach(function (event) {
                                 _lastGroup.events.push(event);
                             });
                         } else {
-                            $scope.groups.push(e);
+                            $scope.groups.push(grp);
                         }
-                        _lastGroup = e;
+                        _lastGroup = grp;
                     });
                     $scope.$broadcast('scroll.infiniteScrollComplete');
 
@@ -118,9 +139,15 @@ angular.module('mapasculturais.controllers', [])
                 _endData = false;
             }
 
-            $scope.showCalendar = function (group) {
-                var numDays = 6
-                return group.format('X') < moment().add(numDays, 'days').format('X')
+            $scope.dividerText = function (group) {
+                var numDays = 6;
+                if(group.happening){
+                    return "Acontecendo agora";
+                } else if(group.date.format('X') < moment().add(numDays, 'days').format('X')) {
+                    return group.date.calendar();
+                } else {
+                    return group.date.format('LLL');
+                }
             }
 
             $scope.classificacao = classificacao;

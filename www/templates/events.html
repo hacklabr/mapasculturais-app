@@ -6,12 +6,8 @@
     <ion-content class="has-header" overflow-scroll="true">   
         
         <ion-list ng-if="groups.length > 0" ng-repeat="group in groups track by $index">
-
-            <div ng-if="::showCalendar(group.date)" class="item item-divider">
-                {{::group.date.calendar()}}
-            </div>
-            <div ng-if="::!showCalendar(group.date)" class="item item-divider">
-                {{::group.date.format('LLL')}}
+            <div class="item item-divider">
+                {{::dividerText(group)}}
             </div>
 
             <ion-list class="event-item">

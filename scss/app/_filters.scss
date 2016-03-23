@@ -68,3 +68,23 @@
         }
     }
 }
+
+.search-input {
+    margin: -6px 0;
+    background: transparent;
+    padding: 0;
+    width: 300px;
+}
+
+.event .search-input, .space .search-input {
+    input {
+        color: black;
+        background: transparent;
+    }
+    i {
+        color: black;
+    }
+    input::-webkit-input-placeholder {
+        color: black;
+    }
+}

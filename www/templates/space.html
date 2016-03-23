@@ -1,10 +1,9 @@
 <ion-view title="Espaço">
-    <div class="header space"><span class="name">Espaços</span></div>  
+    <div class="header space"><span class="name">{{::entity.name}}</span></div>  
     <ion-content class="has-header single" overflow-scroll="true">
         <img ng-if="entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
         
         <div class="item space-item"> 
-            <h2 class="title">{{::entity.name}}</h2>
 
             <div class="information">
                 <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
@@ -23,9 +22,9 @@
                     <li class="tab tab-event active">Eventos</li>
                     <li class="tab tab-space">Subespaços</li>
                 </ul>
-
-                <filter-events on-apply="applyFilters" filters="filters" style="float:right"></filter-events>
-                
+                <div ng-show="false" class="header event">
+                    <filter-events on-apply="applyFilters" filters="filters"></filter-events>
+                </div>
                 <ion-list ng-repeat="group in groups">
 
                     <div class="item item-divider">

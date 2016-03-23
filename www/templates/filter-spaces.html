@@ -2,7 +2,7 @@
     <form ng-show="!showFilter" ng-submit="applyFilters()">
         <label class="item item-input search-input">
             <i class="icon elegant-icon icon-search placeholder-icon"></i>
-            <input ng-model="temp.keyword" type="text" placeholder="Eventos">
+            <input ng-model="temp.keyword" type="text" placeholder="Espaços">
         </label>
 
         <button type="submit" style="position: absolute; left:-9000px;"></button>
@@ -10,43 +10,29 @@
     <span ng-show="showFilter" class="name">Filtro</span>
 </div>
 <div class="filter">
-    <div ng-click="toggle()" id="event-filter" ><span class="elegant-icon icon-show-advanced-search"></span></div>
+    <div ng-click="toggle()" id="space-filter" ><span class="elegant-icon icon-show-advanced-search"></span></div>
 </div>
 
 <div class="filters-modal" ng-show="showFilter">
 
     <div class="list">
         <label class="item item-input item-select">
-            <div class="input-label">Linguagem</div>
-            <select ng-options="linguagem for linguagem in linguagens" ng-model="temp.linguagem"></select>
-        </label>
-    </div>
-
-    <div class="list list-date">
-        <label class="item item-input">
-            <span class="input-label">Data</span>
-            <span>de</span> <input type="date" class="input-date" ng-model="temp.from">
-            <span>até</span> <input type="date" class="input-date" ng-model="temp.to">
+            <div class="input-label">Tipo</div>
+            <select ng-options="value.id as value.name for value in types" ng-model="temp.type"></select>
         </label>
     </div>
 
     <div class="list">
-        <div class="item item-toggle">
-            <i class="icon icon_circle-slelected"></i>
-            <span class="input-label">Mostrar eventos antigos</span>
-            <label class="toggle toggle-dark">
-                <input type="checkbox" ng-model="temp.showPast">
-                <div class="track">
-                    <div class="handle"></div>
-                </div>
-            </label>
-        </div>
+        <label class="item item-input item-select">
+            <div class="input-label">Área de atuação</div>
+            <select ng-options="value.id as value.name for value in areas" ng-model="temp.area"></select>
+        </label>
     </div>
 
     <div class="list">
         <div class="item item-toggle">
             <i class="icon icon_circle-selected"></i>
-            <span class="input-label">Somente eventos verificados</span>
+            <span class="input-label">Somente espaços verificados</span>
             <label class="toggle toggle-dark">
                 <input type="checkbox" ng-model="temp.verified">
                 <div class="track">

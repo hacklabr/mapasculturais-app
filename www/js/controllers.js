@@ -83,15 +83,17 @@ angular.module('mapasculturais.controllers', [])
                     if (rs.length < _limit) {
                         _endData = true;
                     }
-                    rs.forEach(function(event) {
-                        event.favorite = FavoriteEvents.isFavorite(event);
-                    });
 
                     if(_page === 2 && rs.length === 0){
                         $scope.notFound = true;
+                        return;
                     }
                     
-                    // remove os eventos antigos se o
+                    rs.forEach(function(event) {
+                        event.favorite = FavoriteEvents.isFavorite(event);
+                    });
+                    
+                    // remove os eventos antigos
                     if (!$scope.filters.showPast) {
                         happening = rs.filter(function(r){
                             var end = r.end.format('X');
@@ -131,12 +133,14 @@ angular.module('mapasculturais.controllers', [])
                 });
             };
 
-            $scope.applyFilters = function(){
+            $scope.applyFilters = function($event){
                 $scope.$broadcast('scroll.infiniteScrollComplete');
                 $scope.groups = [];
                 $scope.notFound = false;
                 _page = 1;
                 _endData = false;
+                
+                document.activeElement.blur();
             }
 
             $scope.dividerText = function (group) {
@@ -175,7 +179,7 @@ angular.module('mapasculturais.controllers', [])
     .controller('spacesCtrl', [
         '$scope', 'MenuState', 'mapas.service.space', function ($scope, MenuState, spaceApi) {
             var api = spaceApi(window.config.url);
-            var _limit = 50;
+            var _limit = 25;
             var _page = 1;
             var _endData = false;
 
@@ -185,9 +189,7 @@ angular.module('mapasculturais.controllers', [])
 
             $scope.entities = [];
 
-            $scope.filters = {
-                keyword: ''
-            };
+            $scope.filters = {};
 
             $scope.$watch('filters', function () {
                 $scope.entities = [];
@@ -206,9 +208,17 @@ angular.module('mapasculturais.controllers', [])
                     '@order': 'name ASC',
                     '@select': api._select + ',endereco'
                 };
-
+                
                 if($scope.filters.keyword){
-                    params['@keyword'] = $scope.filters.keyword;
+                    params['@keyword'] = '%' + $scope.filters.keyword + '%';
+                }
+
+                if($scope.filters.area){
+                    params['term:area'] = $IN($scope.filters.area);
+                }
+
+                if($scope.filters.type){
+                    params['type'] = $IN($scope.filters.type);
                 }
 
                 _page++;
@@ -217,6 +227,11 @@ angular.module('mapasculturais.controllers', [])
                     if (rs.length < _limit) {
                         _endData = true;
                     }
+                    
+                    if(_page === 2 && rs.length === 0){
+                        $scope.notFound = true;
+                        return;
+                    }
 
                     rs.forEach(function(entity){
                         $scope.entities.push(entity);
@@ -224,6 +239,16 @@ angular.module('mapasculturais.controllers', [])
 
                     $scope.$broadcast('scroll.infiniteScrollComplete');
                 });
+            }
+            
+            $scope.applyFilters = function($event){
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+                $scope.entities = [];
+                $scope.notFound = false;
+                _page = 1;
+                _endData = false;
+                
+                document.activeElement.blur();
             }
         }])
 
@@ -266,15 +291,14 @@ angular.module('mapasculturais.controllers', [])
 
     .controller('mapCtrl', ['$scope', '$ionicPlatform', 'MapState', 'mapas.service.space', function ($scope, $ionicPlatform, MapState, spaceApi) {
         var api = spaceApi(window.config.url);
-        api.util.applyMe.apply($scope);
         var map;
+        var from = moment().toDate()
+        var to = moment().add(1, 'months').toDate();
 
+        api.util.applyMe.apply($scope);
         $scope.map_state = MapState;
         
-        var _spaces = api.findByEvents({
-            '@from': '2016-03-18',
-            '@to': '2016-04-18'
-        });
+        var _spaces = api.findByEvents(from, to, {'@select': 'id,name,location,endereco,type,terms'});
         
         $ionicPlatform.ready(function(MapState) {
 
@@ -291,25 +315,31 @@ angular.module('mapasculturais.controllers', [])
             // Capturing event when Map load are ready.
             map.addEventListener(plugin.google.maps.event.MAP_READY, function(){
                 _spaces.then(function(spaces){
+                    console.log(_spaces);
                     spaces.forEach(function(space){
                         var pin = {
                             title: space.name,
-    //                        icon: iconName,
+                            snippet: 
+                                "endereço: " + space.endereco + "\n" +
+                                "tipo: " + space.type.name + "\n" +
+                                "área de atuação: " + space.terms.area.join(', '),
                             visible: true,
                             position: new plugin.google.maps.LatLng(
                                 space.location.latitude,
                                 space.location.longitude),
+                                
+                            styles: {
+                                maxWidth: "90%"
+                            }
                         };
                         
                         map.addMarker(pin, function(marker){
                             space.marker = marker;
-//                            marker.addEventListener(
-//                                plugin.google.maps.event.MARKER_CLICK,
-//                                function(){
-//                                    marker.hideInfoWindow();
-//                                    map.setClickable(false);
-//                                    $scope.showConfirm(space);
-//                                });
+                            marker.addEventListener(
+                                plugin.google.maps.event.INFO_CLICK,
+                                function(){
+                                    document.location.hash = '/app/space/' + space.id;
+                                });
                         });
                     });
                 });

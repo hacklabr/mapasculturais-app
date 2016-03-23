@@ -21,10 +21,14 @@ angular.module('mapasculturais.services', [])
     this.favorites = [];
 
     var sync = function() {
-        while (self.favorites.length > 0)
-            self.favorites.pop()
+        while (self.favorites.length > 0){
+            self.favorites.pop();
+        }
         for (var key in $localStorage.favoriteEvents) {
-            self.favorites.push($localStorage.favoriteEvents[key]);
+            var event = $localStorage.favoriteEvents[key];
+            event.start = moment(event.start);
+            event.end = moment(event.end);
+            self.favorites.push(event);
         }
     }
 

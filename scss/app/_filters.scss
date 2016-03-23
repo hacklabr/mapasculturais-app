@@ -1,0 +1,70 @@
+.filters-modal {
+    position: absolute;
+    top: 41px;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 10000;
+
+    .list {
+        background: transparent;
+        margin: 0; 
+
+        &.list-date {
+            span {
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            input {
+                padding-right: 0;
+            }
+        }
+    }
+
+    .item {
+        border-bottom: 1px solid $gray-lighter;
+        font-size: $font-size-small;
+        line-height: $line-height-small;
+        margin: 0;
+
+        h2 {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        &.item-toggle {
+            min-height: 52px;
+
+            .input-label {
+                padding-top: 10px;
+            }
+        }
+    }
+
+    .input-label, select, input {
+        font-size: $font-size-small;
+        line-height: $line-height-small;
+    }
+
+    .input-label {
+        display: flex;
+        font-weight: bold;
+    }
+
+    select {
+        display: flex;
+    }
+
+    .button-bar {
+        border-bottom: 1px solid $gray-lighter;
+        a.button .icon:before, a.button.icon-left:before,
+        a.button.icon-right:before, a.button.icon:before {
+            margin-top: 0;
+        }
+        .button {
+            padding-bottom: $padding-large-vertical;
+            padding-top: $padding-large-vertical;
+        }
+    }
+}

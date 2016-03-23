@@ -1,49 +1,63 @@
 <div ng-click="open()" id="event-filter" ><span class="elegant-icon icon-show-advanced-search"></span></div>
 
-<div ng-show="showFilter" style="position:absolute; left:0; right:0; background:white; z-index:10000;">
-    <header>
-        <h1 class="title"><span class="elegant-icon icon-show-advanced-search"></span> Filtros</h1>
+<div class="filters-modal" ng-show="showFilter">
+    <header class="item">
+        <h2 class="title">Filtros</h2>
     </header>
     <div>
-        <div class="item item-input">
-            <span class="elegant-icon icon-search"></span>
-            <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Palavra-chave">
+        <div class="list list-inset list-search">
+            <label class="item item-input">
+                <i class="icon elegant-icon icon-search placeholder-icon"></i>
+                <input ng-model="temp.keyword" ng-keydown="keyLog($event)" type="text" placeholder="Palavra-chave">
+            </label>
         </div>
 
-        <div class="item item-toggle">
-            <i class="icon icon_circle-slelected"></i>
-            Somente eventos verificados
-            <label class="toggle toggle-dark">
-                <input type="checkbox" ng-model="temp.verified">
-                <div class="track">
-                    <div class="handle"></div>
-                </div>
+        <div class="list">
+            <div class="item item-toggle">
+                <i class="icon icon_circle-selected"></i>
+                <span class="input-label">Somente eventos verificados</span>
+                <label class="toggle toggle-dark">
+                    <input type="checkbox" ng-model="temp.verified">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">Linguagem</div>
+                <select ng-options="linguagem for linguagem in linguagens" ng-model="temp.linguagem"></select>
             </label>
         </div>
-        <div class="item">
-            <span class="input-label">Linguagem</span>
-            <select ng-options="linguagem for linguagem in linguagens" ng-model="temp.linguagem"></select>
-        </div>
-        <div class="item">
-            <span class="input-label">Data</span>
-            de <input type="date" class="input-date" ng-model="temp.from" style="display: inline-block;">
-            até <input type="date" class="input-date" ng-model="temp.to" style="display: inline-block;">
-        </div>
-        <div class="item item-toggle">
-            <i class="icon icon_circle-slelected"></i>
-            Mostrar eventos antigos
-            <label class="toggle toggle-dark">
-                <input type="checkbox" ng-model="temp.showPast">
-                <div class="track">
-                    <div class="handle"></div>
-                </div>
+
+        <div class="list list-date">
+            <label class="item item-input">
+                <span class="input-label">Data</span>
+                <span>de</span> <input type="date" class="input-date" ng-model="temp.from">
+                <span>até</span> <input type="date" class="input-date" ng-model="temp.to"></div>
             </label>
         </div>
+
+        <div class="list">
+            <div class="item item-toggle">
+                <i class="icon icon_circle-slelected"></i>
+                <span class="input-label">Mostrar eventos antigos</span>
+                <label class="toggle toggle-dark">
+                    <input type="checkbox" ng-model="temp.showPast">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
         <footer>
             <div class="button-bar">
-                <a class="button button-large icon-left ion-close-circled" ng-click="cancel()">Cancelar</a>
-                <a class="button button-large icon-left ion-close-circled" ng-click="reset()">Limpar</a>
-                <a class="button button-large icon-left ion-checkmark-circled" ng-click="applyFilters()">Aplicar</a>
+                <a class="button button-small icon-left ion-close-circled" ng-click="cancel()">Cancelar</a>
+                <a class="button button-small icon-left ion-close-circled" ng-click="reset()">Limpar</a>
+                <a class="button button-small icon-left ion-checkmark-circled" ng-click="applyFilters()">Aplicar</a>
             </div>
         </footer>
     </div>

@@ -4,7 +4,6 @@
         <img ng-if="entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
         
         <div class="item space-item"> 
-
             <div class="information">
                 <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
                 <p ng-if="::!entity.longDescription" ng-bind-html="::entity.shortDescription"></p>
@@ -22,7 +21,7 @@
                     <li class="tab tab-event active">Eventos</li>
                     <li class="tab tab-space">Subespaços</li>
                 </ul>
-                <div ng-show="false" class="header event">
+                <div class="header event">
                     <filter-events on-apply="applyFilters" filters="filters"></filter-events>
                 </div>
                 <ion-list ng-repeat="group in groups">

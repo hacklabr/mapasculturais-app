@@ -1,10 +1,9 @@
 <ion-view title="Projeto">
-    <div class="header project"><span class="name">Projeto</span></div>  
+    <div class="header project"><span class="name">{{::entity.name}}</span></div>  
     <ion-content class="has-header single" overflow-scroll="true">
         <img ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
         
         <div class="item project-item"> 
-            <h2>{{::entity.name}}</h2>
             <div class="information">
                 <p><span class="label">Endereço:</span> {{::entity.type.name}}</p>
                 <p ng-if="entity.owner.id"><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})">{{::entity.owner.name}}</a></p>
@@ -21,7 +20,9 @@
                     <li class="tab tab-project">Subprojetos</li>
                 </ul>
                 
-                <filter-events on-apply="applyFilters" filters="filters" style="float:right"></filter-events>
+                <div class="header event">
+                    <filter-events on-apply="applyFilters" filters="filters"></filter-events>
+                </div>
                 
                 <ion-list ng-repeat="group in groups">
 

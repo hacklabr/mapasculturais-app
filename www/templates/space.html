@@ -1,9 +1,11 @@
 <ion-view title="Espaço">
-    <div class="header space"><span class="name">{{::entity.name}}</span></div>  
+    <div class="header space">Espaço</div>  
     <ion-content class="has-header single" overflow-scroll="true">
         <img ng-if="entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
-        
+
         <div class="item space-item"> 
+            <h2 class="name">{{::entity.name}}</h2>
+
             <div class="information">
                 <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
                 <p ng-if="::!entity.longDescription" ng-bind-html="::entity.shortDescription"></p>

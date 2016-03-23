@@ -1,9 +1,11 @@
 <ion-view title="Evento">
-    <div class="header event"><span class="name">{{::entity.name}}</span></div>  
+    <div class="header event">Evento</div>  
     <ion-content class="has-header single" overflow-scroll="true"> 
         <img ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
         
         <div class="item event-item"> 
+            <h2 class="name">{{::entity.name}}</h2>
+
             <h3 ng-if="::entity.subTitle">{{::entity.subtitle}}</h3>
 
             <div class="information">

@@ -1,6 +1,14 @@
+.show-filters {
+    font-size: $font-size-large;
+    top: 11px;
+    right: $padding-small-vertical;
+    position: absolute;
+    z-index: 10;
+}
+
 .filters-modal {
     position: absolute;
-    top: 41px;
+    top: 43px;
     left: 0;
     right: 0;
     background: white;
@@ -57,7 +65,7 @@
     }
 
     .button-bar {
-        border-bottom: 1px solid $gray-lighter;
+        border-bottom: 3px solid #000;
         a.button .icon:before, a.button.icon-left:before,
         a.button.icon-right:before, a.button.icon:before {
             margin-top: 0;

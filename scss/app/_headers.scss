@@ -1,4 +1,5 @@
 .header {
+    min-height: 43px;
     padding: $padding-large-vertical;
     position: absolute;
     width: 100%;
@@ -22,9 +23,6 @@
     .name {
         font-size: $font-size-base;
         float: left;
-    }
-    .filter {
-        font-size: $font-size-large;
-        float: right;
+        line-height: 1.8;
     }
 }

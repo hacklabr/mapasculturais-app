@@ -16,7 +16,7 @@
                             <i ng-show="entity.favorite" class="elegant-icon icon-favorited"></i>
                             <i ng-show="!entity.favorite" class="elegant-icon icon-favorite"></i>
                         </a>
-                        <a ui-sref="menu.event({entity:event.id})" class="name">{{::entity.name}}</a>
+                        <a ui-sref="menu.event({entity:entity.id})" class="name">{{::entity.name}}</a>
                     </h2>
                 
                     <h3 class="subtitle" ng-if="::entity.subTitulo">{{::entity.subTitle}}</h3>
@@ -28,7 +28,7 @@
 
                     <p ng-if="::entity.subtitle">{{::entity.subtitle}}</p>
                     
-                    <ul class="ocurrences"><li><a ui-sref="menu.space({entity:event.space.id})">{{::entity.space.name}}</a>,
+                    <ul class="ocurrences"><li><a ui-sref="menu.space({entity:entity.space.id})">{{::entity.space.name}}</a>,
                     {{::entity.start.format('LL')}} das {{::entity.start.format('HH:mm')}} às {{::entity.end.format('HH:mm')}}</li></ul>
                     
                     <div ng-if="entity.isVerified" class="information">
@@ -36,7 +36,7 @@
                     </div>
                     
                     <div class="information">
-                        <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})">{{::entity.project.name}}</a></p>
+                        <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})">{{::entity.project.name}}</a></p>
                         <p><span class="label">Preço:</span> {{::entity.rule.price}}</p>
                         <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
                         <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>

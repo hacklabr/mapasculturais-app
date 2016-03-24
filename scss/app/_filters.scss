@@ -19,12 +19,23 @@
         margin: 0; 
 
         &.list-date {
-            span {
-                font-weight: bold;
-                margin-right: 10px;
+            display: table;
+            width: 100%;
+            .input-label {
+                width: 70px;
+            }
+            .text {
+                width: 50px;
+            }
+            .box {
+                display: table-cell;
+                vertical-align: middle;
             }
             input {
-                padding-right: 0;
+                font-size: 11px;
+            }
+            span {
+                font-weight: bold;
             }
         }
     }

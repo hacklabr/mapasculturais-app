@@ -23,11 +23,19 @@
     </div>
 
     <div class="list list-date">
-        <label class="item item-input">
-            <span class="input-label">Data</span>
-            <span>de</span> <input type="date" class="input-date" ng-model="temp.from">
-            <span>até</span> <input type="date" class="input-date" ng-model="temp.to">
-        </label>
+        <div class="item">
+            <div class="box input-label">Data</div>
+            <div class="box">
+                <div class="line">
+                    <span class="box text">de</span>
+                    <div class="box"><input type="date" class="input-date" ng-model="temp.from"></div>
+                </div>
+                <div class="box">
+                    <span class="box text">até</span>
+                    <div class="box"><input type="date" class="input-date" ng-model="temp.to"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="list">

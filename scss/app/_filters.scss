@@ -4,6 +4,10 @@
     right: $padding-small-vertical;
     position: absolute;
     z-index: 10;
+    div {
+        margin: -10px;
+        padding: 10px;
+    }
 }
 
 .filters-modal {

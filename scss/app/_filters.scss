@@ -25,26 +25,28 @@
         &.list-date {
             display: table;
             width: 100%;
-            .item {
-                padding-top: 0;
-                padding-bottom: 0;
-            }
             .input-label {
-                width: 70px;
+                padding-right: 40px;
             }
             .text {
-                width: 50px;
+                padding-right: 10px;
             }
             .box {
                 display: table-cell;
                 vertical-align: middle;
             }
-            input {
-                font-size: 11px;
-            }
             span {
                 font-weight: bold;
             }
+            input {
+                background: #fff;
+                font-size: 11px;
+                width: 100px;
+            }
+            span, input {
+                display: inline-block;
+            }
+            
         }
     }
 

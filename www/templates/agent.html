@@ -1,7 +1,7 @@
 <ion-view title="Agente">
     <div class="header agent"><span class="name">{{::entity.name}}</span></div>  
     <ion-content class="has-header single" overflow-scroll="true">
-        <img ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}" style="width:100%">
+        <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
 
         <div class="item agent-item"> 
             <div class="information">

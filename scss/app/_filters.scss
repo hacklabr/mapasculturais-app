@@ -117,3 +117,9 @@
         color: black;
     }
 }
+
+// Hide search button
+.search-btn {
+    position: absolute;
+    left:-9000px;
+}

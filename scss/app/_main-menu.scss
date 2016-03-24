@@ -150,3 +150,27 @@
         }
     }
 }
+
+// .menu-more dropdown 
+
+.menu-more-dropdown {
+    background: #fff;
+    border: 1px solid $gray-lighter;
+    font-size:  $font-size-small;
+    line-height: $line-height-large;
+    text-align: right;
+    position: absolute;
+    top: 53px;
+    right: 0px;
+    z-index:10000;    
+
+    li {
+        border-bottom: 1px solid $gray-lighter;
+        font-weight: bold;
+        padding: $padding-large-vertical $padding-large-horizontal;
+        text-transform: lowercase;
+        &:last-child {
+            border: 0;
+        }
+    }
+}

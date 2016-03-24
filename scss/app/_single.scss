@@ -1,4 +1,20 @@
 .single {
+    .list {
+        .header {
+            margin: $padding-base-horizontal 0;
+            position: relative;
+            top: 0;
+        }
+        .filters-modal {
+            margin: -10px;
+            position: static;
+            margin-top: 35px;
+            top: 0;
+            .list {
+                margin-top: 0;
+            }
+        }
+    }
     .spaces {
         margin-top: $padding-large-vertical;
         .list {

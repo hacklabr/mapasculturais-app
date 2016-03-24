@@ -25,6 +25,10 @@
         &.list-date {
             display: table;
             width: 100%;
+            .item {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
             .input-label {
                 width: 70px;
             }

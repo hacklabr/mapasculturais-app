@@ -20,6 +20,9 @@
     &.project {
         background-color: $brand-project;
     }
+    &.map {
+        background-color: $brand-map;
+    }
     .name {
         font-size: $font-size-base;
         float: left;

@@ -11,10 +11,10 @@
             <div class="information">
                 <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
                 <p ng-if="::!entity.longDescription" ng-bind-html="::entity.shortDescription"></p>
-
+                <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>
                 <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
                 <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
-                <p><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity: entity.owner.id})">{{::entity.owner.name}}</a></p>
+                <p><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity: entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
             </div>
 
             <div class="spaces" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByEvent'; findEntityId = entity.id">
@@ -25,7 +25,7 @@
                     <ion-list>
                         <ion-item ng-repeat="event in group.events">
                             <ul class="ocurrences">
-                                <li><a ui-sref="menu.space({entity:event.space.id})">{{::event.space.name}}</a>, {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}, {{::event.space.endereco}}, <strong>{{::event.rule.price}}</strong></li>
+                                <li><a ui-sref="menu.space({entity:event.space.id})" class="link-space">{{::event.space.name}}</a>, {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}, {{::event.space.endereco}}, <strong>{{::event.rule.price}}</strong></li>
                             </ul>
                             <a ng-click="favorite(event)" class="make-favorite">
                                 <i ng-show="::event.favorite" class="elegant-icon icon-favorited"></i>

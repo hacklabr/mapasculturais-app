@@ -1,0 +1,25 @@
+a {
+    &.link-agent {
+        text-decoration: underline;
+        color: $brand-agent !important;
+    }
+
+    &.link-project {
+        text-decoration: underline;
+        color: $brand-project !important;
+    }
+
+    &.link-event {
+        text-decoration: underline;
+        color: $brand-event !important;
+    }
+
+    &.link-space {
+        text-decoration: underline;
+        color: $brand-space !important;
+    }
+    
+    &.name {
+        text-decoration: none;
+    }
+}

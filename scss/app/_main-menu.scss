@@ -27,7 +27,8 @@
         position: relative;
         width: 23%;
         text-align: center;
-        border-top: 3px solid $brand-accent;
+        border-top: 3px solid;
+        
         border-left: 1px solid $gray-lighter;
         .elegant-icon {
             margin: 0 auto .25rem;
@@ -37,7 +38,7 @@
         }
         .label {
             display: block;
-            font-size: 10px;
+            font-size: 12px;
             line-height: $line-height-small;
         }
         &:first-child {
@@ -56,8 +57,9 @@
 
         //** Events
         &.menu-event {
+            
+            border-top-color: $brand-event;
             &.active {
-                border-top-color: $brand-event;
                 color: $brand-event;
                 a {
                     color: $brand-event;
@@ -69,8 +71,8 @@
         }
         //** Agents
         &.menu-agent {
+            border-top-color: $brand-agent;
             &.active {
-                border-top-color: $brand-agent;
                 color: $brand-agent;
                 a {
                     color: $brand-agent;
@@ -82,8 +84,8 @@
         }
         //** Spaces
         &.menu-space {
+            border-top-color: $brand-space;
             &.active {
-                border-top-color: $brand-space;
                 color: $brand-space;
                 a {
                     color: $brand-space;
@@ -95,8 +97,8 @@
         }
         //** Projects
         &.menu-project {
+            border-top-color: $brand-project;
             &.active {
-                border-top-color: $brand-project;
                 color: $brand-project;
                 a {
                     color: $brand-project;
@@ -109,8 +111,8 @@
 
         //** Map
         &.menu-map {
+            border-top-color: $brand-map;
             &.active {
-                border-top-color: $brand-map;
                 color: $brand-map;
                 a {
                     color: $brand-map;
@@ -123,8 +125,8 @@
 
         //** Favorite
         &.menu-favorite {
+            border-top-color: $brand-favorite;
             &.active {
-                border-top-color: $brand-favorite;
                 color: $brand-favorite;
                 a {
                     color: $brand-favorite;

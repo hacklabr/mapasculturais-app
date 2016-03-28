@@ -86,7 +86,7 @@ angular.module('mapasculturais.services', [])
         },
         'camera': {
             'latLng': center,
-            'zoom': 14,
+            'zoom': 11,
         }
     };
     this.markers = [];

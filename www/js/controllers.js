@@ -50,7 +50,7 @@ angular.module('mapasculturais.controllers', [])
                     '@page': _page
                 };
                 
-                if($scope.filters.showPast){
+                if($scope.filters.showPast || ($scope.filters.from && moment($scope.filters.from).toDate() > moment().toDate())){
                     from = $scope.filters.from;
                 } else {
                     from = moment().toDate();

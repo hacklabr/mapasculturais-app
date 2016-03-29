@@ -1,6 +1,6 @@
 angular.module('mapasculturais.directives', ['ionic'])
 
-    .directive('filterEvents', ['mapas.service.api', '$anchorScroll', '$timeout', function (mapasApi, $anchorScroll, $timeout) {
+    .directive('filterEvents', ['mapas.service.api', '$anchorScroll', '$timeout', 'ConfigState', function (mapasApi, $anchorScroll, $timeout, config) {
         return {
             restrict: 'E',
             templateUrl: 'templates/filter-events.html',
@@ -9,7 +9,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                 onApply: '='
             },
             link: function ($scope, el, attrs) {
-                var api = mapasApi(window.config.url);
+                var api = mapasApi(config.dataSource.url);
                 var original = {
                     keyword: '',
                     showPast: false,
@@ -74,7 +74,7 @@ angular.module('mapasculturais.directives', ['ionic'])
         };
     }])
 
-    .directive('filterSpaces', ['mapas.service.api', 'mapas.service.space', '$anchorScroll', '$timeout', function (mapasApi, _spaceApi, $anchorScroll, $timeout) {
+    .directive('filterSpaces', ['mapas.service.api', 'mapas.service.space', '$anchorScroll', '$timeout', 'ConfigState', function (mapasApi, _spaceApi, $anchorScroll, $timeout, config) {
         return {
             restrict: 'E',
             templateUrl: 'templates/filter-spaces.html',
@@ -83,8 +83,8 @@ angular.module('mapasculturais.directives', ['ionic'])
                 onApply: '='
             },
             link: function ($scope, el, attrs) {
-                var api = mapasApi(window.config.url);
-                var spaceApi = _spaceApi(window.config.url);
+                var api = mapasApi(config.dataSource.url);
+                var spaceApi = _spaceApi(config.dataSource.url);
                 var original = {
                     keyword: '',
                     area: '',

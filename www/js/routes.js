@@ -1,6 +1,8 @@
 angular.module('mapasculturais.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
+    
+    window.$stateProvider = $stateProvider;
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -90,6 +92,16 @@ angular.module('mapasculturais.routes', [])
       'app': {
         templateUrl: 'templates/about.html',
         controller: 'aboutCtrl'
+      }
+    }
+  })
+  
+  .state('menu.config', {
+    url: '/config',
+    views: {
+      'app': {
+        templateUrl: 'templates/config.html',
+        controller: 'configCtrl'
       }
     }
   })

@@ -15,7 +15,46 @@ angular.module('mapasculturais.services', [])
     };
 }])
 
-.service('FavoriteEvents', ['$localStorage', function($localStorage) {
+.service('ConfigState', function($localStorage, $location) {
+    this.dataSources = [
+        {
+            prefix: 'spcultura',
+            name: 'SpCultura',
+            url: 'http://spcultura.prefeitura.sp.gov.br/',
+            map: {
+                latutude: -23.5408, 
+                longitude: -46.6400,
+                zoom: 11
+            }
+        },
+        {
+            prefix: 'estadodacultura',
+            name: 'SP Estado da Cultura',
+            url: 'http://estadodacultura.sp.gov.br/',
+            map: {
+                latutude: -22.61401087437029, 
+                longitude: -49.2132568359375,
+                zoom: 7
+            }
+        }
+    ];
+    
+    this.defineDataSource = function(dataSource){
+        $localStorage.config.dataSource = dataSource;
+        
+        this.dataSource = dataSource;
+    }
+
+    if($localStorage.config){
+        this.dataSource = $localStorage.config.dataSource;
+    } else {
+        $localStorage.config = {};
+        
+        this.defineDataSource(this.dataSources[0]);
+    }
+})
+
+.service('FavoriteEvents', ['$localStorage', 'ConfigState', function($localStorage, config) {
 
     var self = this
     this.favorites = [];
@@ -39,9 +78,8 @@ angular.module('mapasculturais.services', [])
     }
 
     var getKey = function(event) {
-        // console.log(event.start.toString())
         var key = moment(event.start.toString()).format('X') + '|' + event.occurrence_id;
-        return window.config.prefix + ':' + key;
+        return config.dataSource.prefix + ':' + key;
         
     }
 
@@ -67,9 +105,9 @@ angular.module('mapasculturais.services', [])
 
 }])
 
-.service('MapState', function(){
+.service('MapState', function(ConfigState){
     // return function(mapTypeId, center){
-    var center = new plugin.google.maps.LatLng(-23.5408, -46.6400);
+    var center = new plugin.google.maps.LatLng(ConfigState.dataSource.map.latitude, ConfigState.dataSource.map.longitude);
     this.options = {
         'backgroundColor': 'transparent',
         'mapType': plugin.google.maps.MapTypeId.ROADMAP,
@@ -86,7 +124,7 @@ angular.module('mapasculturais.services', [])
         },
         'camera': {
             'latLng': center,
-            'zoom': 11,
+            'zoom': ConfigState.dataSource.map.zoom,
         }
     };
     this.markers = [];

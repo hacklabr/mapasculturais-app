@@ -35,10 +35,3 @@ angular.module('mapasculturais', [
 //    $ionicConfigProvider.views.maxCache(0);
 
 });
-
-//@TODO: colocar isto num arquivo de configuração
-window.config = {
-    // url da instalação
-    url: 'http://spcultura.prefeitura.sp.gov.br/',
-    prefix: 'spcultura'
-};

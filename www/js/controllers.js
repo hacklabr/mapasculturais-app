@@ -25,8 +25,8 @@ function classificacao(event) {
 angular.module('mapasculturais.controllers', [])
 
     .controller('eventsCtrl', [
-        '$scope', 'mapas.service.event', 'FavoriteEvents', function ($scope, eventApi, FavoriteEvents) {
-            var api = eventApi(window.config.url);
+        '$scope', 'mapas.service.event', 'FavoriteEvents', 'ConfigState', function ($scope, eventApi, FavoriteEvents, config) {
+            var api = eventApi(config.dataSource.url);
             var _limit = 25;
             var _page = 1;
             var _endData = false;
@@ -160,8 +160,8 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('eventCtrl', [
-        '$scope', '$stateParams', 'mapas.service.event', 'FavoriteEvents', function ($scope, $stateParams, eventApi, FavoriteEvents) {
-            var api = eventApi(window.config.url);
+        '$scope', '$stateParams', 'mapas.service.event', 'FavoriteEvents', 'ConfigState', function ($scope, $stateParams, eventApi, FavoriteEvents, config) {
+            var api = eventApi(config.dataSource.url);
             api.util.applyMe.apply($scope);
             
             $scope.entity = null;
@@ -177,8 +177,8 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('spacesCtrl', [
-        '$scope', 'MenuState', 'mapas.service.space', function ($scope, MenuState, spaceApi) {
-            var api = spaceApi(window.config.url);
+        '$scope', 'MenuState', 'mapas.service.space', 'ConfigState', function ($scope, MenuState, spaceApi, config) {
+            var api = spaceApi(config.dataSource.url);
             var _limit = 25;
             var _page = 1;
             var _endData = false;
@@ -253,8 +253,8 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('spaceCtrl', [
-        '$scope', '$stateParams', 'mapas.service.space', 'mapas.service.event', function ($scope, $stateParams, spaceApi, eventApi) {
-            var api = spaceApi(window.config.url);
+        '$scope', '$stateParams', 'mapas.service.space', 'mapas.service.event', 'ConfigState', function ($scope, $stateParams, spaceApi, eventApi, config) {
+            var api = spaceApi(config.dataSource.url);
             api.util.applyMe.apply($scope);
 
             $scope.entity = null;
@@ -265,8 +265,8 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('agentCtrl', [
-        '$scope', '$stateParams', 'mapas.service.agent', 'mapas.service.event', function ($scope, $stateParams, agentApi, eventApi) {
-            var api = agentApi(window.config.url);
+        '$scope', '$stateParams', 'mapas.service.agent', 'mapas.service.event', 'ConfigState', function ($scope, $stateParams, agentApi, eventApi, config) {
+            var api = agentApi(config.dataSource.url);
             api.util.applyMe.apply($scope);
 
             $scope.entity = null;
@@ -277,8 +277,8 @@ angular.module('mapasculturais.controllers', [])
         }])
 
     .controller('projectCtrl', [
-        '$scope', '$stateParams', 'mapas.service.project', 'mapas.service.event', function ($scope, $stateParams, projectApi, eventApi) {
-            var api = projectApi(window.config.url);
+        '$scope', '$stateParams', 'mapas.service.project', 'mapas.service.event', 'ConfigState', function ($scope, $stateParams, projectApi, eventApi, config) {
+            var api = projectApi(config.dataSource.url);
             api.util.applyMe.apply($scope);
 
             $scope.entity = null;
@@ -289,8 +289,8 @@ angular.module('mapasculturais.controllers', [])
         }])
 
 
-    .controller('mapCtrl', ['$scope', '$ionicPlatform', 'MapState', 'mapas.service.space', function ($scope, $ionicPlatform, MapState, spaceApi) {
-        var api = spaceApi(window.config.url);
+    .controller('mapCtrl', ['$scope', '$ionicPlatform', 'MapState', 'mapas.service.space', 'ConfigState', function ($scope, $ionicPlatform, MapState, spaceApi, config) {
+        var api = spaceApi(config.dataSource.url);
         var map;
         var from = moment().toDate()
         var to = moment().add(1, 'months').toDate();
@@ -379,6 +379,25 @@ angular.module('mapasculturais.controllers', [])
 
     })
 
+    .controller('configCtrl', function ($scope, FavoriteEvents, ConfigState, $window) {
+        $scope.dataSources = ConfigState.dataSources;
+        $scope.config = {
+            dataSource: ConfigState.dataSource
+        };
+        
+        console.log($scope.config);
+        
+        $scope.apply = function(){
+            ConfigState.defineDataSource($scope.config.dataSource);
+            $window.location.reload(true)
+        };
+        
+        $scope.clearFavorites = function () {
+            if (confirm('Você está certo de que deseja apagar todos os seus eventos favoritados?'))
+                FavoriteEvents.clear();
+        };
+    })
+
     .controller('favoritesCtrl', ['$scope', 'MenuState', 'FavoriteEvents', function ($scope, MenuState, FavoriteEvents) {
         $scope.events = FavoriteEvents.favorites;
         $scope.favorite = FavoriteEvents.favorite;
@@ -388,16 +407,10 @@ angular.module('mapasculturais.controllers', [])
 
     })
 
-    .controller('navCtrl', function ($scope, FavoriteEvents, MenuState, $location, $timeout, $ionicLoading, $window) {
+    .controller('navCtrl', function ($scope, ConfigState, MenuState, $location, $timeout, $ionicLoading, $window) {
 
         $scope.show_filter_search_menu = true;
         $scope.show_share_buttom = false;
-        
-        $scope.clearFavorites = function(){
-            if(confirm('Você está certo de que deseja apagar todos os seus eventos favoritados?'))
-            FavoriteEvents.clear();
-        };
-        
         
         $scope.openMenuMore = function(){
             $scope.showMenuMore = true;

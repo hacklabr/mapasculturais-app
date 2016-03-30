@@ -93,3 +93,24 @@
     font-size: $font-size-small;
     line-height: $line-height-large;
 }
+
+.config {
+    label {
+        font-size: $font-size-small;
+        line-height: $line-height-small;
+        white-space: initial;
+    }
+    .item-select {
+        padding: 0;
+        select {
+            direction: ltr;
+            font-size: $font-size-small;
+            line-height: $line-height-large;
+            padding-left: 0;
+            position: relative;
+            margin-top: 10px;
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+}

@@ -2,7 +2,7 @@
     <form ng-show="!showFilter" ng-submit="applyFilters()">
         <label class="item item-input search-input">
             <i class="icon elegant-icon icon-search placeholder-icon"></i>
-            <input ng-model="temp.keyword" type="text" placeholder="Eventos">
+            <input ng-model="temp.keyword" type="text" placeholder="Buscar eventos">
         </label>
 
         <button class="search-btn" type="submit"></button>
@@ -12,7 +12,7 @@
 <div class="show-filters">
     <div ng-click="toggle()" id="event-filter" ><span class="elegant-icon icon-show-advanced-search"></span></div>
 </div>
-
+<div ng-if="showFilter" style="position: fixed; left:0; right:0; bottom:0; top:100px; background: rgba(0,0,0,.6)"></div>
 <div class="filters-modal" ng-show="showFilter">
 
     <div class="list">

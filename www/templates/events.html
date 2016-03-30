@@ -25,8 +25,6 @@
                     <div class="description">
                         <span ng-bind-html="::entity.shortDescription"></span>
                     </div>
-
-                    <p ng-if="::entity.subtitle">{{::entity.subtitle}}</p>
                     
                     <ul class="ocurrences"><li><a ui-sref="menu.space({entity:entity.space.id})" class="link-space">{{::entity.space.name}}</a>,
                     {{::entity.start.format('LL')}} das {{::entity.start.format('HH:mm')}} às {{::entity.end.format('HH:mm')}}</li></ul>
@@ -37,7 +35,7 @@
                     
                     <div class="information">
                         <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>
-                        <p><span class="label">Preço:</span> {{::entity.rule.price}}</p>
+                        <p><span ng-if="::entity.rule.price" class="label">Preço:</span> {{::entity.rule.price}}</p>
                         <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
                         <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
                     </div>
@@ -46,7 +44,7 @@
             </ion-list>
         </ion-list>
         
-        <p ng-if="notFound" class="not-found">Nenhum evento encontrado, refaça a busca.</p>
+        <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhum evento encontrado, refaça a busca.</p>
 
         <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="30%"></ion-infinite-scroll>
     </ion-content>

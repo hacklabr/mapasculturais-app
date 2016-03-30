@@ -1,15 +1,22 @@
 <ion-view title="Projeto">
-    <div class="header project"><span class="name">{{::entity.name}}</span></div>  
+    <div class="header project">Projeto</div>  
     <ion-content class="has-header single" overflow-scroll="true">
         <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
         
-        <div class="item project-item"> 
+        <div ng-if="entity.id" class="item project-item"> 
+            <h2 class="name">{{::entity.name}}</h2>
             <div class="information">
-                <p><span class="label">Endereço:</span> {{::entity.type.name}}</p>
-                <p ng-if="entity.owner.id"><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
                 
-                <p ng-if="::entity.longDescription" ng-bind-html="::entity.longDescription"></p>
-                <p ng-if="::!entity.longDescription" ng-bind-html="::entity.shortDescription"></p>
+                <p ng-bind-html="::entity.shortDescription"></p>
+                
+                <hr>
+                <div ng-if="entity.isVerified" class="information">
+                    <span class="label"> este projeto é verificado</span>
+                </div>
+                
+                <p><span class="label">Tipo:</span> {{::entity.type.name}}</p>
+                
+                <p ng-if="entity.owner.id"><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
             </div>
 
             
@@ -43,17 +50,15 @@
                             
                             <img class="thumb" ng-if="event.$files.avatarSmall" ng-src="{{::event.$files.avatarSmall.url}}"/>
                             
-                            <p class="description">
-                                {{::event.shortDescription}}
-                            </p>
+                            <div class="description">
+                                <span ng-bind-html="::entity.shortDescription"></span>
+                            </div>
 
-                            <p ng-if="::event.subtitle">{{::event.subtitle}}</p>
-                            
                             <ul class="ocurrences"><li><a ui-sref="menu.space({entity:event.space.id})" class="link-space">{{::event.space.name}}</a>,
                             {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</li></ul>
 
                             <div class="information">
-                                <p><span class="label">Preço:</span> {{::event.rule.price}}</p>
+                                <p><span ng-if="::event.rule.price" class="label">Preço:</span> {{::event.rule.price}}</p>
                                 <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
                                 <p><span class="label">Linguagem:</span> {{::event.terms.linguagem.join(', ')}}</p>
                             </div>

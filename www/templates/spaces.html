@@ -24,7 +24,7 @@
             </ion-item>
         </ion-list>
         
-        <p ng-if="notFound" class="not-found">Nenhum espaço encontrado, refaça a busca.</p>
+        <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhum espaço encontrado, refaça a busca.</p>
         
         <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
     </ion-content>

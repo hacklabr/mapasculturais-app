@@ -382,13 +382,11 @@ angular.module('mapasculturais.controllers', [])
     .controller('configCtrl', function ($scope, FavoriteEvents, ConfigState, $window) {
         $scope.dataSources = ConfigState.dataSources;
         $scope.config = {
-            dataSource: ConfigState.dataSource
+            prefix: ConfigState.dataSource.prefix
         };
         
-        console.log($scope.config);
-        
         $scope.apply = function(){
-            ConfigState.defineDataSource($scope.config.dataSource);
+            ConfigState.defineDataSource($scope.config.prefix);
             $window.location.reload(true)
         };
         

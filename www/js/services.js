@@ -16,8 +16,8 @@ angular.module('mapasculturais.services', [])
 }])
 
 .service('ConfigState', function($localStorage, $location) {
-    this.dataSources = [
-        {
+    this.dataSources = {
+        'spcultura': {
             prefix: 'spcultura',
             name: 'SpCultura',
             url: 'http://spcultura.prefeitura.sp.gov.br/',
@@ -27,7 +27,7 @@ angular.module('mapasculturais.services', [])
                 zoom: 11
             }
         },
-        {
+        estadodacultura: {
             prefix: 'estadodacultura',
             name: 'SP Estado da Cultura',
             url: 'http://estadodacultura.sp.gov.br/',
@@ -37,20 +37,20 @@ angular.module('mapasculturais.services', [])
                 zoom: 7
             }
         }
-    ];
+    };
     
-    this.defineDataSource = function(dataSource){
-        $localStorage.config.dataSource = dataSource;
+    this.defineDataSource = function(prefix){
+        $localStorage.config.dataSource = prefix;
         
-        this.dataSource = dataSource;
+        this.dataSource = this.dataSources[prefix];
     }
 
     if($localStorage.config){
-        this.dataSource = $localStorage.config.dataSource;
+        this.dataSource = this.dataSources[$localStorage.config.dataSource];
     } else {
         $localStorage.config = {};
         
-        this.defineDataSource(this.dataSources[0]);
+        this.defineDataSource(this.dataSources[Object.keys(this.dataSources)[0]].prefix);
     }
 })
 

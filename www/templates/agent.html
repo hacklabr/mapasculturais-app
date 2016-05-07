@@ -63,7 +63,7 @@
                             <div class="information">
                                 <p ng-if="::event.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})" class="link-project">{{::event.project.name}}</a></p>
                                 <p><span ng-if="::event.rule.price" class="label">Preço:</span> {{::event.rule.price}}</p>
-                                <p><span class="label">Classificação:</span> </strong> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
+                                <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
                                 <p><span class="label">Linguagem:</span> {{::event.terms.linguagem.join(', ')}}</p>
                             </div>
 

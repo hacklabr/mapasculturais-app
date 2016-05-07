@@ -470,6 +470,10 @@ angular.module('mapasculturais.controllers', [])
                     MenuState.activeMenu('about');
                     break;
                     
+                case 'menu.config':
+                    MenuState.activeMenu('about');
+                    break;
+                    
             }
         }
         

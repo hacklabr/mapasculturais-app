@@ -36,7 +36,58 @@ angular.module('mapasculturais.services', [])
                 longitude: -49.2132568359375,
                 zoom: 7
             }
-        }
+        },
+        ceara: {
+            prefix: 'ceara',
+            name: 'Mapa Cultural do Ceará',
+            url: 'http://mapa.cultura.ce.gov.br/',
+            map: {
+                latutude: -5.063586123720585, 
+                longitude: -39.4134521484375,
+                zoom: 7
+            }
+        },
+        blumenau: {
+            prefix: 'blumenau',
+            name: 'Blumenau Mais Cultura',
+            url: 'http://blumenaumaiscultura.com.br/',
+            map: {
+                latutude: -26.883952223378103, 
+                longitude: -49.08708572387695,
+                zoom: 12
+            }
+        },
+        bh: {
+            prefix: 'bh',
+            name: 'Mapeamento Cultural de BH',
+            url: 'http://mapeamentoculturalbh.pbh.gov.br/',
+            map: {
+                latutude: -19.919614676628896, 
+                longitude: -43.97294998168945,
+                zoom: 12
+            }
+        },
+        mapasmt: {
+            prefix: 'mapasmt',
+            name: 'Mapas MT',
+            url: 'https://mapas.cultura.mt.gov.br/',
+            map: {
+                latutude: -13.549881446917126, 
+                longitude: -56.085205078125,
+                zoom: 6
+            }
+        },
+        /* precisa atualizar o mapas para funcionar
+        lugaresdacultura: {
+            prefix: 'lugaresdacultura',
+            name: 'Lugares da Cultura',
+            url: 'http://lugaresdacultura.org.br/',
+            map: {
+                latutude: -23.105628416305972, 
+                longitude: -45.84800720214843,
+                zoom: 10
+            }
+        }, */
     };
     
     this.defineDataSource = function(prefix){

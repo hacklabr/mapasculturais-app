@@ -78,7 +78,7 @@ angular.module('mapasculturais.controllers', [])
                 _page++;
 
                 events.then(function (rs) {
-                    var happening;
+                    var happening = [];
                     
                     if (rs.length < _limit) {
                         _endData = true;

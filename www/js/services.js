@@ -87,7 +87,6 @@ angular.module('mapasculturais.services', [])
                 zoom: 5
             }
         },
-        /* precisa atualizar o mapas para funcionar
         lugaresdacultura: {
             prefix: 'lugaresdacultura',
             name: 'Lugares da Cultura',
@@ -97,7 +96,78 @@ angular.module('mapasculturais.services', [])
                 longitude: -45.84800720214843,
                 zoom: 10
             }
-        }, */
+        },
+        riograndedosul: {
+            prefix: 'riograndedosul',
+            name: 'Rio Grande do Sul',
+            url: 'http://mapa.cultura.rs.gov.br',
+            map: {
+                    latitude: -30.012030680358613,
+                    longitude: -53.1463623046875,
+                    zoom: 7
+            }
+        },
+        sobral: {
+            prefix: 'sobral',
+            name: 'Sobral',
+            url: 'http://cultura.sobral.ce.gov.br',
+            map: {
+                latitude: -3.6916816830416033,
+                longitude: -40.350680351257324,
+                zoom: 14
+            }
+        },
+        // Pendentes de atualização para o branch v2
+        // santoandre: {
+        //     prefix: 'santoandre',
+        //     name: 'Santo André',
+        //     url: 'http://culturaz.santoandre.sp.gov.br',
+        //     map: {
+        //         latitude: -23.666537435313803,
+        //         longitude: -46.52907371520996,
+        //         zoom: 13
+        //     }
+        // },
+        // tocantins: {
+        //     prefix: 'tocantins',
+        //     name: 'Tocantins',
+        //     url: 'http://mapa.cultura.to.gov.br',
+        //     map: {
+        //         latitude: -9.318990192397917,
+        //         longitude: -48.2244873046875,
+        //         zoom: 7
+        //     }
+        // },
+        // joaopessoa: {
+        //     prefix: 'joaopessoa',
+        //     name: 'João Pessoa',
+        //     url: 'http://jpcultura.joaopessoa.pb.gov.br',
+        //     map: {
+        //         latitude: -7.1330866953002605,
+        //         longitude: -34.85678672790527,
+        //         zoom: 13
+        //     }
+        // },
+        // londrina: {
+        //     prefix: 'londrina',
+        //     name: 'Londrina',
+        //     url: 'http://londrinacultura.londrina.pr.gov.br',
+        //     map: {
+        //         latitude: -23.30757674572749,
+        //         longitude: -51.16281509399414,
+        //         zoom: 12
+        //     }
+        // },
+        // ubatuba: {
+        //     prefix: 'ubatuba',
+        //     name: 'Ubatuba',
+        //     url: 'http://mapacultural.ubatuba.sp.gov.br',
+        //     map: {
+        //         latitude: -23.584126032644107,
+        //         longitude: -47.823486328125,
+        //         zoom: 6
+        //     }
+        // },
     };
 
     this.defineDataSource = function(prefix){

@@ -1,6 +1,6 @@
 # Mapas Culturais APP
 
-Este é o repositório do aplicativo Android do sistema [Mapas Culturais](https://github.com/hacklabr/mapasculturais). Entre suas principais funcionalidades, estão:
+Este é o repositório do aplicativo Android do sistema [Mapas Culturais](https://github.com/hacklabr/mapasculturais). Ele é orientado para funcionar como uma espécie de Agenda Cultural. Entre suas principais funcionalidades, estão:
 
 * Apresentar uma consulta dos dados (Eventos, Espaços, Agentes, Projetos) de todas as instâncias vigentes do Mapas Culturais; 
 * Permitir a seleção manual de uma determinada instalação;

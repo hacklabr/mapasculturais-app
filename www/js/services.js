@@ -19,7 +19,7 @@ angular.module('mapasculturais.services', [])
     this.dataSources = {
         'spcultura': {
             prefix: 'spcultura',
-            name: 'SpCultura',
+            name: 'SP Cultura',
             url: 'http://spcultura.prefeitura.sp.gov.br/',
             map: {
                 latitude: -23.5408,
@@ -59,8 +59,8 @@ angular.module('mapasculturais.services', [])
         },
         bh: {
             prefix: 'bh',
-            name: 'Mapeamento Cultural de BH',
-            url: 'http://mapeamentoculturalbh.pbh.gov.br/',
+            name: 'Mapa Cultural BH',
+            url: 'http://mapaculturalbh.pbh.gov.br/',
             map: {
                 latitude: -19.919614676628896,
                 longitude: -43.97294998168945,
@@ -79,7 +79,7 @@ angular.module('mapasculturais.services', [])
         },
         mapasgovbr: {
             prefix: 'mapasgovbr',
-            name: 'Mapas.cultura.gov.br',
+            name: 'Mapa da Cultura',
             url: 'http://mapas.cultura.gov.br/',
             map: {
                 latitude: -15.792253570362446,
@@ -99,8 +99,8 @@ angular.module('mapasculturais.services', [])
         },
         riograndedosul: {
             prefix: 'riograndedosul',
-            name: 'Rio Grande do Sul',
-            url: 'http://mapa.cultura.rs.gov.br',
+            name: 'Cultura RS',
+            url: 'http://mapa.cultura.rs.gov.br/',
             map: {
                     latitude: -30.012030680358613,
                     longitude: -53.1463623046875,
@@ -109,25 +109,45 @@ angular.module('mapasculturais.services', [])
         },
         sobral: {
             prefix: 'sobral',
-            name: 'Sobral',
-            url: 'http://cultura.sobral.ce.gov.br',
+            name: 'Sobral Cultura',
+            url: 'http://cultura.sobral.ce.gov.br/',
             map: {
                 latitude: -3.6916816830416033,
                 longitude: -40.350680351257324,
                 zoom: 14
             }
         },
+        distritofederal: {
+            prefix: 'distritofederal',
+            name: 'Mapa nas Nuvens',
+            url: 'http://mapa.cultura.df.gov.br/',
+            map: {
+                latitude: -15.788619534134423,
+                longitude: -47.85472869873047,
+                zoom: 11
+            }
+        },
+        santoandre: {
+            prefix: 'santoandre',
+            name: 'CulturAZ',
+            url: 'http://culturaz.santoandre.sp.gov.br/',
+            map: {
+                latitude: -23.666537435313803,
+                longitude: -46.52907371520996,
+                zoom: 13
+            }
+        },
+        joaopessoa: {
+            prefix: 'joaopessoa',
+            name: 'JP Cultura',
+            url: 'http://jpcultura.joaopessoa.pb.gov.br/',
+            map: {
+                latitude: -7.1330866953002605,
+                longitude: -34.85678672790527,
+                zoom: 13
+            }
+        },
         // Pendentes de atualização para o branch v2
-        // santoandre: {
-        //     prefix: 'santoandre',
-        //     name: 'Santo André',
-        //     url: 'http://culturaz.santoandre.sp.gov.br',
-        //     map: {
-        //         latitude: -23.666537435313803,
-        //         longitude: -46.52907371520996,
-        //         zoom: 13
-        //     }
-        // },
         // tocantins: {
         //     prefix: 'tocantins',
         //     name: 'Tocantins',
@@ -136,16 +156,6 @@ angular.module('mapasculturais.services', [])
         //         latitude: -9.318990192397917,
         //         longitude: -48.2244873046875,
         //         zoom: 7
-        //     }
-        // },
-        // joaopessoa: {
-        //     prefix: 'joaopessoa',
-        //     name: 'João Pessoa',
-        //     url: 'http://jpcultura.joaopessoa.pb.gov.br',
-        //     map: {
-        //         latitude: -7.1330866953002605,
-        //         longitude: -34.85678672790527,
-        //         zoom: 13
         //     }
         // },
         // londrina: {

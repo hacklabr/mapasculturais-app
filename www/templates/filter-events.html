@@ -2,7 +2,7 @@
     <form ng-show="!showFilter" ng-submit="applyFilters()">
         <label class="item item-input search-input">
             <i class="icon elegant-icon icon-search placeholder-icon"></i>
-            <input ng-model="temp.keyword" type="text" placeholder="Buscar eventos">
+            <input ng-model="temp.keyword" type="text" placeholder="Buscar ações">
         </label>
 
         <button class="search-btn" type="submit"></button>
@@ -39,7 +39,7 @@
     <div class="list">
         <div class="item item-toggle">
             <i class="icon icon_circle-slelected"></i>
-            <span class="input-label">Mostrar eventos antigos</span>
+            <span class="input-label">Mostrar ações antigas</span>
             <label class="toggle toggle-dark">
                 <input type="checkbox" ng-model="temp.showPast">
                 <div class="track">
@@ -52,7 +52,7 @@
     <div class="list">
         <div class="item item-toggle">
             <i class="icon icon_circle-selected"></i>
-            <span class="input-label">Somente eventos verificados</span>
+            <span class="input-label">Somente ações verificadas</span>
             <label class="toggle toggle-dark">
                 <input type="checkbox" ng-model="temp.verified">
                 <div class="track">

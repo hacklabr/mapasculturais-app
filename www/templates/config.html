@@ -1,23 +1,10 @@
 <ion-view style="" title="Configurações">
-    <div class="header">Configurações</div>  
+    <div class="header">Favoritos</div>  
     <ion-content class="has-header config single" overflow-scroll="true">
 
-        <div class="item">
-            <h2 class="name">Instalação do Mapas Culturais</h2>
-
-            <label for="select-installation">
-                Selecione a instalação do Mapas Culturais que o aplicativo deve consultar:
-            </label>
-
-            <div class="item-input item-select">
-                <select id="select-installation" ng-change="apply()" ng-options="value.prefix as value.name for value in dataSources" ng-model="config.prefix"></select>
-            </div>
-        </div>
-
-        <hr>
+        
 
         <div class="item">
-            <h2>Favoritos</h2>
             <button class="button button-block button-energized" ng-click="clearFavorites()"> Limpar Favoritos </button>
         </div>
 

@@ -100,7 +100,7 @@ angular.module('mapasculturais.services', [])
         riograndedosul: {
             prefix: 'riograndedosul',
             name: 'Rio Grande do Sul',
-            url: 'http://mapa.cultura.rs.gov.br',
+            url: 'http://mapa.cultura.rs.gov.br/',
             map: {
                     latitude: -30.012030680358613,
                     longitude: -53.1463623046875,
@@ -110,7 +110,7 @@ angular.module('mapasculturais.services', [])
         sobral: {
             prefix: 'sobral',
             name: 'Sobral',
-            url: 'http://cultura.sobral.ce.gov.br',
+            url: 'http://cultura.sobral.ce.gov.br/',
             map: {
                 latitude: -3.6916816830416033,
                 longitude: -40.350680351257324,
@@ -120,7 +120,7 @@ angular.module('mapasculturais.services', [])
         joaopessoa: {
             prefix: 'joaopessoa',
             name: 'João Pessoa',
-            url: 'http://jpcultura.joaopessoa.pb.gov.br',
+            url: 'http://jpcultura.joaopessoa.pb.gov.br/',
             map: {
                 latitude: -7.1330866953002605,
                 longitude: -34.85678672790527,
@@ -130,7 +130,7 @@ angular.module('mapasculturais.services', [])
         santoandre: {
             prefix: 'santoandre',
             name: 'Santo André',
-            url: 'http://culturaz.santoandre.sp.gov.br',
+            url: 'http://culturaz.santoandre.sp.gov.br/',
             map: {
                 latitude: -23.666537435313803,
                 longitude: -46.52907371520996,
@@ -140,7 +140,7 @@ angular.module('mapasculturais.services', [])
         tocantins: {
             prefix: 'tocantins',
             name: 'Tocantins',
-            url: 'http://mapa.cultura.to.gov.br',
+            url: 'http://mapa.cultura.to.gov.br/',
             map: {
                 latitude: -9.318990192397917,
                 longitude: -48.2244873046875,
@@ -150,7 +150,7 @@ angular.module('mapasculturais.services', [])
         sniic: {
             prefix: 'sniic',
             name: 'SNIIC',
-            url: 'http://mapas.cultura.gov.br',
+            url: 'http://mapas.cultura.gov.br/',
             map: {
                 latitude: -15.792253570362446,
                 longitude: 48.01025390625,
@@ -160,7 +160,27 @@ angular.module('mapasculturais.services', [])
         culturaviva: {
             prefix: 'culturaviva',
             name: 'Rede Cultura Viva',
-            url: 'http://culturaviva.gov.br',
+            url: 'http://culturaviva.gov.br/',
+            map: {
+                latitude: -15.792253570362446,
+                longitude: 48.01025390625,
+                zoom: 5
+            }
+        },
+        museus: {
+            prefix: 'museus',
+            name: 'Museus',
+            url: 'http://museus.cultura.gov.br/',
+            map: {
+                latitude: -15.792253570362446,
+                longitude: 48.01025390625,
+                zoom: 5
+            }
+        },
+        bibliotecas: {
+            prefix: 'bibliotecas',
+            name: 'Bibliotecas',
+            url: 'http://bibliotecas.cultura.gov.br/',
             map: {
                 latitude: -15.792253570362446,
                 longitude: 48.01025390625,

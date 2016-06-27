@@ -6,6 +6,10 @@
     @extend %icon;
 }
 
+.elegant-icon.icon-space, .elegant-icon.icon-event  {
+    @extend %icon-df;
+}
+
 //** All icons classes
 
 .icon-show-advanced-search {

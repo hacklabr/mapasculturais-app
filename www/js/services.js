@@ -117,37 +117,57 @@ angular.module('mapasculturais.services', [])
                 zoom: 14
             }
         },
+        joaopessoa: {
+            prefix: 'joaopessoa',
+            name: 'João Pessoa',
+            url: 'http://jpcultura.joaopessoa.pb.gov.br',
+            map: {
+                latitude: -7.1330866953002605,
+                longitude: -34.85678672790527,
+                zoom: 13
+            }
+        },
+        santoandre: {
+            prefix: 'santoandre',
+            name: 'Santo André',
+            url: 'http://culturaz.santoandre.sp.gov.br',
+            map: {
+                latitude: -23.666537435313803,
+                longitude: -46.52907371520996,
+                zoom: 13
+            }
+        },
+        tocantins: {
+            prefix: 'tocantins',
+            name: 'Tocantins',
+            url: 'http://mapa.cultura.to.gov.br',
+            map: {
+                latitude: -9.318990192397917,
+                longitude: -48.2244873046875,
+                zoom: 7
+            }
+        },
+        sniic: {
+            prefix: 'sniic',
+            name: 'SNIIC',
+            url: 'http://mapas.cultura.gov.br',
+            map: {
+                latitude: -15.792253570362446,
+                longitude: 48.01025390625,
+                zoom: 5
+            }
+        },
+        culturaviva: {
+            prefix: 'culturaviva',
+            name: 'Rede Cultura Viva',
+            url: 'http://culturaviva.gov.br',
+            map: {
+                latitude: -15.792253570362446,
+                longitude: 48.01025390625,
+                zoom: 5
+            }
+        },
         // Pendentes de atualização para o branch v2
-        // santoandre: {
-        //     prefix: 'santoandre',
-        //     name: 'Santo André',
-        //     url: 'http://culturaz.santoandre.sp.gov.br',
-        //     map: {
-        //         latitude: -23.666537435313803,
-        //         longitude: -46.52907371520996,
-        //         zoom: 13
-        //     }
-        // },
-        // tocantins: {
-        //     prefix: 'tocantins',
-        //     name: 'Tocantins',
-        //     url: 'http://mapa.cultura.to.gov.br',
-        //     map: {
-        //         latitude: -9.318990192397917,
-        //         longitude: -48.2244873046875,
-        //         zoom: 7
-        //     }
-        // },
-        // joaopessoa: {
-        //     prefix: 'joaopessoa',
-        //     name: 'João Pessoa',
-        //     url: 'http://jpcultura.joaopessoa.pb.gov.br',
-        //     map: {
-        //         latitude: -7.1330866953002605,
-        //         longitude: -34.85678672790527,
-        //         zoom: 13
-        //     }
-        // },
         // londrina: {
         //     prefix: 'londrina',
         //     name: 'Londrina',

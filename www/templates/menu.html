@@ -2,7 +2,7 @@
     <ul class="main-menu">
         <li class="menu-item menu-event" ng-class="{active: activeMenu === 'events'}" ui-sref="menu.events">
             <span class="elegant-icon icon-event"></span>
-            <span class="label">eventos</span>
+            <span class="label">ações</span>
         </li>
         <li class="menu-item menu-space" ng-class="{active: activeMenu === 'spaces'}" ui-sref="menu.spaces">
             <span class="elegant-icon icon-space"></span>
@@ -21,7 +21,7 @@
         </li>
     </ul>
     <ul ng-show="showMenuMore" id="menu-more" class="menu-more-dropdown">
-        <li ui-sref="menu.config()">Configurações</li>
+        <li ui-sref="menu.config()">Favoritos</li>
         <li ui-sref="menu.about()">Sobre</li>
     </ul>
 </div>

@@ -17,6 +17,16 @@ angular.module('mapasculturais.services', [])
 
 .service('ConfigState', function($localStorage, $location) {
     this.dataSources = {
+        'df': {
+            prefix: 'df',
+            name: 'DF',
+            url: 'http://mapa.cultura.df.gov.br/',
+            map: {
+                latitude: -15.7955,
+                longitude: -47.9566,
+                zoom: 11
+            }
+        },
         'spcultura': {
             prefix: 'spcultura',
             name: 'SpCultura',
@@ -221,7 +231,8 @@ angular.module('mapasculturais.services', [])
     } else {
         $localStorage.config = {};
 
-        this.defineDataSource(this.dataSources[Object.keys(this.dataSources)[0]].prefix);
+        //this.defineDataSource(this.dataSources[Object.keys(this.dataSources)[0]].prefix);
+        this.defineDataSource('df');
     }
 })
 

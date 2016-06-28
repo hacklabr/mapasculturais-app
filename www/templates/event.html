@@ -1,5 +1,5 @@
 <ion-view title="Evento">
-    <div class="header event">Evento</div>  
+    <div class="header event">Ação</div>  
     <ion-content class="has-header single" overflow-scroll="true"> 
         <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
         
@@ -14,7 +14,7 @@
                 
                 <hr>
                 <div ng-if="entity.isVerified" class="information">
-                    <span class="label"> este evento é verificado</span>
+                    <span class="label"> esta ação é verificada</span>
                 </div>
                 
                 <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>

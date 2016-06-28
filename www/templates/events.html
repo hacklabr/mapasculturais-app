@@ -30,7 +30,7 @@
                     {{::entity.start.format('LL')}} das {{::entity.start.format('HH:mm')}} às {{::entity.end.format('HH:mm')}}</li></ul>
                     
                     <div ng-if="entity.isVerified" class="information">
-                        <span class="label"> este evento é verificado</span>
+                        <span class="label"> esta ação é verificada</span>
                     </div>
                     
                     <div class="information">
@@ -44,7 +44,7 @@
             </ion-list>
         </ion-list>
         
-        <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhum evento encontrado, refaça a busca.</p>
+        <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhuma ação encontrada, refaça a busca.</p>
 
         <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="30%"></ion-infinite-scroll>
     </ion-content>

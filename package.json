@@ -1,7 +1,7 @@
 {
-  "name": "MapasCulturais",
+  "name": "MapanasNuves",
   "version": "1.0.0",
-  "description": "Mapas Culturais app",
+  "description": "Mapa nas Nuvens app",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

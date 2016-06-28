@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="br.com.hacklab.mapasculturais" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Mapas Culturais</name>
+<widget id="br.gov.df.cultura.mapa" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Mapa nas Nuvens</name>
   <description>
-        Aplicativo da Plataforma Mapas Culturais.
+        Aplicativo do Mapa nas Nuvens
     </description>
   <author email="contato@hacklab.com.br" href="http://hacklab.com.br/">
       hacklab/

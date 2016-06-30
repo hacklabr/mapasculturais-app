@@ -1,6 +1,6 @@
 {
   "name": "MapanasNuves",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mapa nas Nuvens app",
   "dependencies": {
     "gulp": "^3.5.6",

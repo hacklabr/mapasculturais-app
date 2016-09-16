@@ -16,6 +16,12 @@ angular.module('mapasculturais.services', [])
 }])
 
 .service('ConfigState', function($localStorage, $location) {
+    // Change fixedPrefix variable below to disable interface for choosing datasource.
+    // Used for mantaining a fork that communicates with only one installation
+    this.fixedPrefix = null;
+
+    this.dataSourceConfigurable = this.fixedPrefix == null;
+
     this.dataSources = {
         'spcultura': {
             prefix: 'spcultura',
@@ -237,12 +243,15 @@ angular.module('mapasculturais.services', [])
         this.dataSource = this.dataSources[prefix];
     }
 
-    if($localStorage.config){
-        this.dataSource = this.dataSources[$localStorage.config.dataSource];
+    if (this.dataSourceConfigurable) {
+        if($localStorage.config){
+            this.dataSource = this.dataSources[$localStorage.config.dataSource];
+        } else {
+            $localStorage.config = {};
+            this.defineDataSource(this.dataSources[Object.keys(this.dataSources)[0]].prefix);
+        }
     } else {
-        $localStorage.config = {};
-
-        this.defineDataSource(this.dataSources[Object.keys(this.dataSources)[0]].prefix);
+        this.defineDataSource(this.fixedPrefix);
     }
 })
 

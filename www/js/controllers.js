@@ -376,7 +376,12 @@ angular.module('mapasculturais.controllers', [])
     }])
 
     .controller('aboutCtrl', function ($scope) {
-
+        try {
+            cordova.getAppVersion(function(version) {
+                $scope.version = version;
+            })
+        } catch (e) {
+        }
     })
 
     .controller('configCtrl', function ($scope, FavoriteEvents, ConfigState, $window) {

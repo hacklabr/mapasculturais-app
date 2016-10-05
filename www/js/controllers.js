@@ -388,8 +388,10 @@ angular.module('mapasculturais.controllers', [])
 
         $scope.apply = function(){
             ConfigState.defineDataSource($scope.config.prefix);
+            $scope.url = ConfigState.dataSource.url;
             $window.location.reload(true)
         };
+        $scope.url = ConfigState.dataSource.url;
         
         $scope.clearFavorites = function () {
             if (confirm('Você está certo de que deseja apagar todos os seus eventos favoritados?'))

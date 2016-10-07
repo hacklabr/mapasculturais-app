@@ -309,28 +309,56 @@ angular.module('mapasculturais.services', [])
 }])
 
 .service('MapState', function(ConfigState){
-    // return function(mapTypeId, center){
-    var center = new plugin.google.maps.LatLng(ConfigState.dataSource.map.latitude, ConfigState.dataSource.map.longitude);
-    this.options = {
-        'backgroundColor': 'transparent',
-        'mapType': plugin.google.maps.MapTypeId.ROADMAP,
-        'controls': {
-            'myLocationButton': true,
-            'indoorPicker': true,
-            'zoom': true
-        },
-        'gestures': {
-            'scroll': true,
-            'tilt': true,
-            'rotate': false,
-            'zoom': true
-        },
-        'camera': {
-            'latLng': center,
-            'zoom': ConfigState.dataSource.map.zoom,
-        }
-    };
+    var self = this;
+
+    this.getOptions = function() {
+        var center = new plugin.google.maps.LatLng(ConfigState.dataSource.map.latitude, ConfigState.dataSource.map.longitude);
+        return {
+            'backgroundColor': 'transparent',
+            'mapType': plugin.google.maps.MapTypeId.ROADMAP,
+            'controls': {
+                'myLocationButton': true,
+                'indoorPicker': true,
+                'zoom': true
+            },
+            'gestures': {
+                'scroll': true,
+                'tilt': true,
+                'rotate': false,
+                'zoom': true
+            },
+            'camera': {
+                'latLng': center,
+                'zoom': ConfigState.dataSource.map.zoom,
+            }
+        };
+    }
+    this.initialize = function(div) {
+        self.map = plugin.google.maps.Map.getMap(div, self.getOptions());
+        self.map.setClickable(true);
+    }
+
+    this.setReadyCallback = function(callback) {
+        self.map.addEventListener(plugin.google.maps.event.MAP_READY, callback);
+    }
+
     this.markers = [];
+    this.addMarker = function(pin, addCallback, clickCallback) {
+        self.map.addMarker(pin, function(marker) {
+            self.markers.push(marker);
+            addCallback(marker);
+            marker.addEventListener(plugin.google.maps.event.INFO_CLICK, clickCallback);            
+        });        
+    }
+
+    this.reset = function() {
+        for (var i=0; i<self.markers.length; i++) {
+            self.markers[i].remove();
+        }
+        self.markers = [];
+        self.map.setOptions(self.getOptions());
+    }
+
         // map options that will be kept in memory ;)
     // }
 })

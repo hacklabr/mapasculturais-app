@@ -296,11 +296,10 @@ angular.module('mapasculturais.controllers', [])
         var to = moment().add(1, 'months').toDate();
 
         api.util.applyMe.apply($scope);
-        $scope.map_state = MapState;
         
         var _spaces = api.findByEvents(from, to, {'@select': 'id,name,location,endereco,type,terms'});
         
-        $ionicPlatform.ready(function(MapState) {
+        $ionicPlatform.ready(function() {
 
             var map_wrapper = angular.element(document.querySelector("#map-wrapper"));
             $scope.frameHeight = map_wrapper[0].clientHeight;
@@ -309,13 +308,12 @@ angular.module('mapasculturais.controllers', [])
             var div = document.getElementById("map_canvas");
 
             // Invoking Map using Google Map SDK v2 by dubcanada
-            map = plugin.google.maps.Map.getMap(div, $scope.map_state.options);
+            MapState.initialize(div)
 
-            map.setClickable(true);
+
             // Capturing event when Map load are ready.
-            map.addEventListener(plugin.google.maps.event.MAP_READY, function(){
+            MapState.setReadyCallback(function() {
                 _spaces.then(function(spaces){
-                    console.log(_spaces);
                     spaces.forEach(function(space){
                         var pin = {
                             title: space.name,
@@ -332,40 +330,13 @@ angular.module('mapasculturais.controllers', [])
                                 maxWidth: "90%"
                             }
                         };
-                        
-                        map.addMarker(pin, function(marker){
+                        MapState.addMarker(pin, function(marker){
                             space.marker = marker;
-                            marker.addEventListener(
-                                plugin.google.maps.event.INFO_CLICK,
-                                function(){
-                                    document.location.hash = '/app/space/' + space.id;
-                                });
+                        }, function() {
+                            document.location.hash = '/app/space/' + space.id;
                         });
                     });
                 });
-                // Defining markers for demo
-                // var markers = [{
-                //     position: setPosition(-19.9178713, -43.9603117),
-                //     title: "Marker 1"
-                // }, {
-                //     position: setPosition(-19.8363826, -43.9787167),
-                //     title: "Marker 2"
-                // }];
-                //
-                // // Bind markers
-                // for (var i = 0; i < markers.length; i++) {
-                //     map.addMarker({
-                //         'marker': markers[i],
-                //         'position': markers[i].position
-                //     }, function(marker) {
-                //
-                //         // Defining event for each marker
-                //         marker.on("click", function() {
-                //             alert(marker.get('marker').title);
-                //         });
-                //
-                //     });
-                // }
             });
 
             // Function that return a LatLng Object to Map
@@ -381,10 +352,11 @@ angular.module('mapasculturais.controllers', [])
                 $scope.version = version;
             })
         } catch (e) {
+            console.log(e);
         }
     })
 
-    .controller('configCtrl', function ($scope, FavoriteEvents, ConfigState, $window) {
+    .controller('configCtrl', function ($scope, FavoriteEvents, ConfigState, MapState, $window) {
         $scope.dataSourceConfigurable = ConfigState.dataSourceConfigurable;
         $scope.dataSources = ConfigState.dataSources;
         $scope.config = {
@@ -394,6 +366,7 @@ angular.module('mapasculturais.controllers', [])
         $scope.apply = function(){
             ConfigState.defineDataSource($scope.config.prefix);
             $scope.url = ConfigState.dataSource.url;
+            MapState.reset();
             $window.location.reload(true)
         };
         $scope.url = ConfigState.dataSource.url;

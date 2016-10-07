@@ -21,6 +21,7 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
+    "cordova-plugin-app-version",
     "ionic-plugin-keyboard",
     {
       "locator": "https://github.com/wf9a5m75/phonegap-googlemaps-plugin.git",

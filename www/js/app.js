@@ -12,7 +12,8 @@ angular.module('mapasculturais', [
     'mapasculturais.services',
     'mapasculturais.directives',
     'mapas.service',
-    'ngStorage'
+    'ngStorage',
+    'ngCordova',
 ])
 
 .run(function($ionicPlatform) {

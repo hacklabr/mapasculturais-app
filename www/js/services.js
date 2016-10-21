@@ -247,7 +247,7 @@ angular.module('mapasculturais.services', [])
         $localStorage.config = {};
 
     if (this.dataSourceConfigurable) {
-        if($localStorage.config.dataSource){
+        if($localStorage.config.dataSource && this.dataSources[$localStorage.config.dataSource]){
             this.dataSource = this.dataSources[$localStorage.config.dataSource];
         } else {
             this.defineDataSource(this.dataSources[Object.keys(this.dataSources)[0]].prefix);
@@ -347,8 +347,8 @@ angular.module('mapasculturais.services', [])
         self.map.addMarker(pin, function(marker) {
             self.markers.push(marker);
             addCallback(marker);
-            marker.addEventListener(plugin.google.maps.event.INFO_CLICK, clickCallback);            
-        });        
+            marker.addEventListener(plugin.google.maps.event.INFO_CLICK, clickCallback);
+        });
     }
 
     this.reset = function() {

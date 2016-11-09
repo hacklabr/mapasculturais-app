@@ -204,27 +204,27 @@ angular.module('mapasculturais.services', [])
                 zoom: 13
             }
         },
+        londrina: {
+            prefix: 'londrina',
+            name: 'Londrina',
+            url: 'http://londrinacultura.londrina.pr.gov.br',
+            map: {
+                latitude: -23.30757674572749,
+                longitude: -51.16281509399414,
+                zoom: 12
+            }
+        },
+        parnaiba: {
+            prefix: 'paranaiba',
+            name: 'Territori1',
+            url: 'http://mapa.territori1.org',
+            map: {
+                latitude: -2.9054960224414335,
+                longitude: -41.77328109741211,
+                zoom: 12
+            }
+        },
         // Pendentes de atualização para o branch v2
-        // tocantins: {
-        //     prefix: 'tocantins',
-        //     name: 'Tocantins',
-        //     url: 'http://mapa.cultura.to.gov.br',
-        //     map: {
-        //         latitude: -9.318990192397917,
-        //         longitude: -48.2244873046875,
-        //         zoom: 7
-        //     }
-        // },
-        // londrina: {
-        //     prefix: 'londrina',
-        //     name: 'Londrina',
-        //     url: 'http://londrinacultura.londrina.pr.gov.br',
-        //     map: {
-        //         latitude: -23.30757674572749,
-        //         longitude: -51.16281509399414,
-        //         zoom: 12
-        //     }
-        // },
         // ubatuba: {
         //     prefix: 'ubatuba',
         //     name: 'Ubatuba',

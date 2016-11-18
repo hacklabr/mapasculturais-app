@@ -14,7 +14,7 @@ Se você já tem o npm instalado, basta fazer:
 
 * Instalar o ionic globalmente
 ```
-$ sudo npm -g install cordova ionic bower
+$ sudo npm -g install cordova ionic bower gulp
 ```
 
 * Clonar o repositório

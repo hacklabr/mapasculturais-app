@@ -76,7 +76,7 @@ angular.module('mapasculturais.services', [])
         mapasmt: {
             prefix: 'mapasmt',
             name: 'Mapas MT',
-            url: 'https://mapas.cultura.mt.gov.br/',
+            url: 'https://mapas.mt.gov.br/',
             map: {
                 latitude: -13.549881446917126,
                 longitude: -56.085205078125,
@@ -193,7 +193,6 @@ angular.module('mapasculturais.services', [])
                 zoom: 5
             }
         },
-        // Pendentes de atualização para o branch v2
         joaopessoa: {
             prefix: 'joaopessoa',
             name: 'JP Cultura',
@@ -215,8 +214,8 @@ angular.module('mapasculturais.services', [])
             }
         },
         parnaiba: {
-            prefix: 'paranaiba',
-            name: 'Territori1',
+            prefix: 'parnaiba',
+            name: 'Parnaíba',
             url: 'http://mapa.territori1.org',
             map: {
                 latitude: -2.9054960224414335,
@@ -224,17 +223,36 @@ angular.module('mapasculturais.services', [])
                 zoom: 12
             }
         },
-        // Pendentes de atualização para o branch v2
-        // ubatuba: {
-        //     prefix: 'ubatuba',
-        //     name: 'Ubatuba',
-        //     url: 'http://mapacultural.ubatuba.sp.gov.br',
-        //     map: {
-        //         latitude: -23.584126032644107,
-        //         longitude: -47.823486328125,
-        //         zoom: 6
-        //     }
-        // },
+        ubatuba: {
+            prefix: 'ubatuba',
+            name: 'Ubatuba',
+            url: 'http://mapacultural.ubatuba.sp.gov.br',
+            map: {
+                latitude: -23.584126032644107,
+                longitude: -47.823486328125,
+                zoom: 8
+            }
+        },
+        espiritosanto: {
+            prefix: 'espiritosanto',
+            name: 'Espírito Santo',
+            url: 'http://mapacultural.es.gov.br/',
+            map: {
+                latitude: -19.570142140282975,
+                longitude: -40.1715087890625,
+                zoom: 7
+            }
+        },
+        amunesc : {
+            prefix: 'amunesc',
+            name: 'Amunesc Cultural',
+            url: 'http://amunesccultural.org.br/',
+            map: {
+                latitude: -26.23430203240673,
+                longitude: -49.03266906738281,
+                zoom: 10
+            }
+        },
     };
 
     this.defineDataSource = function(prefix){

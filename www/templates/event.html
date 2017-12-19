@@ -42,6 +42,9 @@
                     </ion-list>
                 </ion-list>
                 <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
+                <button ng-show="shareButton" ng-click="shareActionButton()"><span class="elegant-icon icon-share"></span> Compartilhar</button>
+
             </div>
         </div>
     </ion-content>

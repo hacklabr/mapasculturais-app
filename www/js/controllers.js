@@ -159,17 +159,24 @@ angular.module('mapasculturais.controllers', [])
     $scope.favorite = FavoriteEvents.favorite
   }])
 
-  .controller('LinguagensCtrl', function($window, $state, $localStorage,$scope ){
+  .controller('LinguagensCtrl', function($window, $state, $localStorage, $scope) {
     console.log("Got into ctrl Linguagens");
     $scope.linguagens = $localStorage.linguagens;
 
-      $scope.salvarPreferencias = function(){
+      $scope.salvarPreferencias = function() {
         $localStorage.linguagens = [];
         var elements = document.getElementsByClassName("tags");
-        angular.forEach(elements,function(element,index){
+        angular.forEach(elements,function(element, index){
           $localStorage.linguagens.push({"term": element.value, "checked": element.checked});
-          $window.history.back();
+
+          if(element.checked === true) {
+            window.FirebasePlugin.subscribe(element.value);
+          } else {
+            window.FirebasePlugin.unsubscribe(element.value);
+          }
         });
+
+        $window.history.back();
       }
     })
 
@@ -180,8 +187,44 @@ angular.module('mapasculturais.controllers', [])
 
         $scope.entity = null;
 
+        $scope.shareButton = false;
+
         api.findOne({id: $EQ($stateParams.entity)}).then(function (entity) {
           $scope.entity = entity;
+          
+          if (window.plugins) {
+            var eventMessage, eventTitle, eventId;
+            eventTitle = $scope.entity.name;
+            eventMessage = $scope.entity.shortDescription;
+            eventId = $scope.entity.id;
+
+            if (eventMessage.length > 50)
+              eventMessage = eventMessage.substring(0,50) + '...';
+
+            $scope.shareButton = true;
+
+            $scope.shareActionButton = function() {
+              var options = {
+                message: eventMessage, // not supported on some apps (Facebook, Instagram)
+                subject: '', // fi. for email
+                files: ['', ''], // an array of filenames either locally or remotely
+                url: 'http://estadodacultura.sp.gov.br/evento/' + eventId,
+                chooserTitle: eventTitle // Android only, you can override the default share sheet title
+              }
+
+              var onSuccess = function(result) {
+                console.log("Share completed? " + result.completed);
+                console.log("Shared to app: " + result.app);
+              }
+
+              var onError = function(msg) {
+                console.log("Sharing failed with message: " + msg);
+              }
+
+              window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+            };
+          }
+
         });
 
         $scope.favorite = FavoriteEvents.favorite;

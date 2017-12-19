@@ -23,9 +23,9 @@ angular.module('mapasculturais', [
     if(window.FirebasePlugin) {
       window.FirebasePlugin.onNotificationOpen(function(notification) {
 
-            if (notification.event_id) {
-              document.location.href = "#/app/event/" + notification.event_id;
-            }
+        if (notification.event_id) {
+          document.location.href = "#/app/event/" + notification.event_id;
+        }
 
       }, function(error) {
             //console.log(error);

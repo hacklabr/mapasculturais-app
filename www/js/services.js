@@ -268,7 +268,7 @@ if (this.dataSourceConfigurable) {
     while (self.favorites.length > 0){
       self.favorites.pop();
     }
-    for (var key in $localStorage.favoriteLinguagems) {
+    for (var key in $localStorage.favoriteLinguagens) {
       var linguagem = $localStorage.favoriteLinguagens[key];
       /*linguagem.start = moment(linguagem.start);
       linguagem.end = moment(linguagem.end);*/

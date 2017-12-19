@@ -159,7 +159,7 @@ angular.module('mapasculturais.controllers', [])
     $scope.favorite = FavoriteEvents.favorite
   }])
 
-  .controller('LinguagensCtrl', function($localStorage,$scope ){
+  .controller('LinguagensCtrl', function($window, $state, $localStorage,$scope ){
     console.log("Got into ctrl Linguagens");
     $scope.linguagens = $localStorage.linguagens;
 
@@ -168,6 +168,7 @@ angular.module('mapasculturais.controllers', [])
         var elements = document.getElementsByClassName("tags");
         angular.forEach(elements,function(element,index){
           $localStorage.linguagens.push({"term": element.value, "checked": element.checked});
+          $window.history.back();
         });
       }
     })
@@ -369,7 +370,7 @@ angular.module('mapasculturais.controllers', [])
                   }
                 })
 
-                .controller('configCtrl', function ($scope, FavoriteEvents, ConfigState, MapState, $window) {
+                .controller('configCtrl', function ($state,$scope, FavoriteEvents, ConfigState, MapState, $window) {
                   $scope.dataSourceConfigurable = ConfigState.dataSourceConfigurable;
                   $scope.dataSources = ConfigState.dataSources;
                   $scope.config = {
@@ -387,6 +388,10 @@ angular.module('mapasculturais.controllers', [])
                   $scope.clearFavorites = function () {
                     if (confirm('Você está certo de que deseja apagar todos os seus eventos favoritados?'))
                     FavoriteEvents.clear();
+                  };
+
+                  $scope.goToLinguagens = function () {
+                    $state.go('menu.linguagens');
                   };
                 })
 

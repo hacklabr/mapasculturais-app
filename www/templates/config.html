@@ -1,5 +1,5 @@
 <ion-view style="" title="Configurações">
-    <div class="header">Configurações</div>  
+    <div class="header">Configurações</div>
     <ion-content class="has-header config single" overflow-scroll="true">
 
         <div class="item" ng-if="dataSourceConfigurable">
@@ -19,9 +19,15 @@
         <hr>
 
         <div class="item">
+            <button class="button button-block button-energized" ng-click="goToLinguagens()"> Interesses </button>
+        </div>
+
+        <div class="item">
             <h2>Favoritos</h2>
             <button class="button button-block button-energized" ng-click="clearFavorites()"> Limpar Favoritos </button>
         </div>
+
+
 
     </ion-content>
 </ion-view>

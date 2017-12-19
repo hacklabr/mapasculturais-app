@@ -72,7 +72,6 @@
     <allow-navigation href="*" />
     <allow-intent href="*" />
     <access origin="*" />
-    <engine name="android" spec="^6.3.0" />
     <plugin name="cordova-plugin-firebase" spec="^0.1.25" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
 </widget>

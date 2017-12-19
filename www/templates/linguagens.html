@@ -1,0 +1,15 @@
+
+
+
+<br>
+<br>
+<br>
+<div ng-controller="LinguagensCtrl">
+    <h3>Interesses: </h3>
+  <form name="thisform" novalidate data-ng-submit="salvarPreferencias()">
+
+  <label ng-repeat="linguagem in linguagens">
+      <input class="tags" id="$index" type="checkbox" value="{{linguagem.term}}" ng-checked="linguagem.checked" /> {{linguagem.term}}<br>
+  </label>
+  <input type="submit" value="Salvar Preferências"/>
+</div>

@@ -1,5 +1,5 @@
 <ion-view style="" title="Favoritos">
-    <div class="header favorite"><span class="name">Favoritos</span></div>  
+    <div class="header favorite"><span class="name">Favoritos</span></div>
     <ion-content class="has-header" overflow-scroll="true">
       <ion-list class="favorite-item">
         <ion-item ng-repeat="event in events">
@@ -11,17 +11,17 @@
                 <a ui-sref="menu.event({entity:event.id})" class="name link-event">{{event.name}}</a>
           </h2>
           <h3 class="subtitle" ng-if="event.subTitulo">{{event.subTitle}}</h3>
-          
+
           <img class="thumb" ng-if="event.$files.avatarSmall" ng-src="{{event.$files.avatarSmall.url}}"/>
 
           <div class="description">
             {{event.shortDescription}}
           </div>
-          
+
           <p ng-if="event.subtitle">{{event.subtitle}}</p>
-          
+
           <ul class="ocurrences"><li><a ui-sref="menu.space({entity:event.space.id})" class="link-space">{{event.space.name}}</a>, {{event.start.format('LL')}} das {{event.start.format('HH:mm')}} às {{event.end.format('HH:mm')}}</li></ul>
-          
+
           <div class="information">
             <p ng-if="event.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})" class="link-project">{{event.project.name}}</a></p>
             <p><span class="label">Preço:</span> {{event.rule.price}}</p>
@@ -31,5 +31,18 @@
         </ion-item>
       </ion-list>
 
+    </ion-content>
+    <ion-content class="has-header" overflow-scroll="true">
+      <ion-list class="favorite-item">
+        <ion-item ng-repeat="language in languages">
+          <h2 class="title">
+                <a ng-click="favorite(language)" class="make-favorite">
+                    <i ng-show="event.favorite" class="elegant-icon icon-favorited"></i>
+                    <i ng-show="!event.favorite" class="elegant-icon icon-favorite"></i>
+                </a>
+                <a ui-sref="menu.event({entity:language.id})" class="name link-event">{{event.name}}</a>
+          </h2>
+        </ion-item>
+      </ion-list>
     </ion-content>
 </ion-view>

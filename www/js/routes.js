@@ -1,7 +1,7 @@
 angular.module('mapasculturais.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
-    
+
     window.$stateProvider = $stateProvider;
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -25,7 +25,17 @@ angular.module('mapasculturais.routes', [])
       }
     }
   })
-  
+
+  .state("menu.linguagens", {
+      url: '/linguagens',
+      views: {
+        'app': {
+          templateUrl: 'templates/linguagens.html',
+          controller: 'LinguagensCtrl'
+        }
+      }
+    })
+
   .state('menu.event', {
     url: '/event/:entity',
     views: {
@@ -36,6 +46,8 @@ angular.module('mapasculturais.routes', [])
     }
   })
 
+
+
   .state('menu.spaces', {
     url: '/spaces',
     views: {
@@ -45,7 +57,7 @@ angular.module('mapasculturais.routes', [])
       }
     }
   })
-  
+
   .state('menu.space', {
     url: '/space/:entity',
     views: {
@@ -55,7 +67,7 @@ angular.module('mapasculturais.routes', [])
       }
     }
   })
-  
+
   .state('menu.agent', {
     url: '/agent/:entity',
     views: {
@@ -65,7 +77,7 @@ angular.module('mapasculturais.routes', [])
       }
     }
   })
-  
+
   .state('menu.project', {
     url: '/project/:entity',
     views: {
@@ -95,7 +107,7 @@ angular.module('mapasculturais.routes', [])
       }
     }
   })
-  
+
   .state('menu.config', {
     url: '/config',
     views: {

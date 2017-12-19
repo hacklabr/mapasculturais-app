@@ -1,6 +1,6 @@
 angular.module('mapasculturais.directives', ['ionic'])
 
-    .directive('filterEvents', ['mapas.service.api', '$anchorScroll', '$timeout', 'ConfigState', function (mapasApi, $anchorScroll, $timeout, config) {
+    .directive('filterEvents', ['$localStorage','mapas.service.api', '$anchorScroll', '$timeout', 'ConfigState', function ($localStorage,mapasApi, $anchorScroll, $timeout, config) {
         return {
             restrict: 'E',
             templateUrl: 'templates/filter-events.html',
@@ -47,7 +47,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                     $scope.temp = angular.copy($scope.filters);
                     apply();
                 };
-                
+
                 $scope.toggle = function(){
                     if($scope.showFilter){
                         $scope.close();
@@ -55,20 +55,43 @@ angular.module('mapasculturais.directives', ['ionic'])
                         $scope.open();
                     }
                 };
-                
+
                 $scope.open = function () {
                     $scope.showFilter = true;
                     $timeout(function(){
                         $anchorScroll('event-filter');
                     });
                 };
-                
+
                 $scope.close = function () {
                     $scope.showFilter = false;
                 }
 
+                $scope.findTerm = function(termsArrayFromStorage, termToFind) {
+                  var found = false;
+                  for(var x = 0; x < termsArrayFromStorage.length; x++) {
+                    if (termToFind === termsArrayFromStorage[x].term) {
+                        found = true;
+                        break;
+                    }
+                  }
+                  return found;
+                }
+
                 api.taxonomyTerms('linguagem').then(function(terms){
-                    $scope.linguagens = terms;
+                    if ($localStorage.linguagens && $localStorage.linguagens.length > 0) {
+                      for(var x = 0; x < terms.length; x++) {
+                        if (!$scope.findTerm($localStorage.linguagens, terms[x])) {
+                          $localStorage.linguagens.push({"term": terms[x], "checked": false});
+                        }
+                      }
+                    } else {
+                      $localStorage.linguagens = [];
+                      for(var x = 0; x < terms.length; x++) {
+                        $localStorage.linguagens.push({"term": terms[x], "checked": false});
+                      }
+                    }
+
                 });
             }
         };
@@ -120,7 +143,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                     $scope.temp = angular.copy($scope.filters);
                     apply();
                 };
-                
+
                 $scope.toggle = function(){
                     if($scope.showFilter){
                         $scope.close();
@@ -128,14 +151,14 @@ angular.module('mapasculturais.directives', ['ionic'])
                         $scope.open();
                     }
                 };
-                
+
                 $scope.open = function () {
                     $scope.showFilter = true;
                     $timeout(function(){
                         $anchorScroll('space-filter');
                     });
                 };
-                
+
                 $scope.close = function () {
                     $scope.showFilter = false;
                 }
@@ -144,7 +167,7 @@ angular.module('mapasculturais.directives', ['ionic'])
                     $scope.areas = terms.map(function(e){
                         return {id: e, name: e};
                     });
-                    
+
                     $scope.areas.unshift({id:'', name: 'Todas'});
                 });
 

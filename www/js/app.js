@@ -13,10 +13,12 @@ angular.module('mapasculturais', [
     'mapasculturais.directives',
     'mapas.service',
     'ngStorage',
-    'ngCordova',
+    'ngCordova'
 ])
 
-.run(function($ionicPlatform) {
+
+.run(function($ionicPlatform, $state, IsFirstRun) {
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -27,6 +29,14 @@ angular.module('mapasculturais', [
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    //console.log(IsFirstRun.isFirstRun());
+    if(IsFirstRun.isFirstRun()){
+      console.log("FISRT RUNDNDWODNAOAN");
+      $state.go('menu.linguagens');
+    }
+
+
+
   });
 })
 

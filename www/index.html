@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Mapas Culturais</title>
 
@@ -10,7 +11,7 @@
     <script src="lib/moment/locale/pt-br.js"></script>
     <script src="lib/ng-mapasculturais/services.js"></script>
     <script src="lib/ngstorage/ngStorage.min.js"></script>
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script> 
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -18,15 +19,12 @@
     <!-- compiled css output -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/ionic.app.min.css" rel="stylesheet">
-    <script src="js/directives.js"></script>
-    <script src="js/app.js"></script>
 
+    <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/routes.js"></script>
     <script src="js/services.js"></script>
-
-
-
+    <script src="js/directives.js"></script>
 
     <!-- Only required for Tab projects w/ pages in multiple tabs
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>

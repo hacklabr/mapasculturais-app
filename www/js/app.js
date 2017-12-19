@@ -13,13 +13,29 @@ angular.module('mapasculturais', [
     'mapasculturais.directives',
     'mapas.service',
     'ngStorage',
-    'ngCordova'
+    'ngCordova',
 ])
 
-
-.run(function($ionicPlatform, $state, IsFirstRun) {
+.run(function($ionicPlatform, $ionicPopup, IsFirstRun, $state) {
 
   $ionicPlatform.ready(function() {
+
+    if(window.FirebasePlugin) {
+      window.FirebasePlugin.onNotificationOpen(function(notification) {
+
+            if (notification.event_id) {
+              document.location.href = "#/app/event/" + notification.event_id;
+            }
+
+      }, function(error) {
+            //console.log(error);
+      });
+    }
+
+    if(IsFirstRun.isFirstRun()) {
+      $state.go('menu.linguagens');
+    }
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -29,14 +45,6 @@ angular.module('mapasculturais', [
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    //console.log(IsFirstRun.isFirstRun());
-    if(IsFirstRun.isFirstRun()){
-      console.log("FISRT RUNDNDWODNAOAN");
-      $state.go('menu.linguagens');
-    }
-
-
-
   });
 })
 

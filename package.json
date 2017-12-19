@@ -1,15 +1,14 @@
 {
-  "name": "MapasCulturais",
+  "name": "EstadoDaCultura",
   "version": "1.0.3",
-  "description": "Mapas Culturais app",
-  "dependencies": {
+  "description": "Estado da Cultura app",
+  "devDependencies": {
+    "cordova-plugin-firebase": "^0.1.25",
     "gulp": "^3.5.6",
-    "gulp-sass": "^3.1.0",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",
-    "gulp-rename": "^1.2.0"
-  },
-  "devDependencies": {
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^3.1.0",
     "bower": "^1.3.3",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^2.2.14",
@@ -27,7 +26,7 @@
       "locator": "https://github.com/wf9a5m75/phonegap-googlemaps-plugin.git",
       "id": "plugin.google.maps",
       "variables": {
-        "API_KEY_FOR_ANDROID": "AIzaSyCpS-mpvqc6FL4GzZ0WOz5NBLHlt1jhDQY",
+        "API_KEY_FOR_ANDROID": "AIzaSyCAAWEo8dQh--7DP5EPsB6LXJj0p5KXSLo",
         "API_KEY_FOR_IOS": "AIzaSyB7x8TPq2ieu4WjpOl5K08ewFIFyZoteNs"
       }
     }
@@ -35,5 +34,19 @@
   "cordovaPlatforms": [
     "ios",
     "android"
-  ]
+  ],
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-firebase": {},
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-android": "^6.3.0",
+    "cordova-plugin-firebase": "^0.1.25",
+    "cordova-plugin-whitelist": "^1.3.3"
+  }
 }

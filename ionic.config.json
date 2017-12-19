@@ -17,7 +17,8 @@
     }
   ],
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "gulp": {}
   },
   "type": "ionic1"
 }

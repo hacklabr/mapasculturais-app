@@ -1,7 +1,7 @@
 {
-  "name": "EstadoDaCultura",
+  "name": "MapasCulturais",
   "version": "1.0.3",
-  "description": "Estado da Cultura app",
+  "description": "Mapas Culturais app",
   "devDependencies": {
     "cordova-plugin-firebase": "^0.1.25",
     "gulp": "^3.5.6",

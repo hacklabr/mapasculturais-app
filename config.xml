@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="br.com.hacklab.mapasculturais" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Mapas Culturais</name>
+<widget id="br.com.hackultura.estadodacultura" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Estado da Cultura</name>
     <description>
         Aplicativo da Plataforma Mapas Culturais.
     </description>

@@ -23,7 +23,7 @@ angular.module('mapasculturais.services', [])
   this.dataSourceConfigurable = this.fixedPrefix == null;
 
   this.dataSources = {
-    /*'spcultura': {
+    'spcultura': {
     prefix: 'spcultura',
     name: 'SP Cultura',
     url: 'http://spcultura.prefeitura.sp.gov.br/',
@@ -32,7 +32,7 @@ angular.module('mapasculturais.services', [])
     longitude: -46.6400,
     zoom: 11
   }
-},*/
+},
 estadodacultura: {
   prefix: 'estadodacultura',
   name: 'SP Estado da Cultura',
@@ -43,7 +43,7 @@ estadodacultura: {
     zoom: 7
   }
 },
-/*ceara: {
+ceara: {
 prefix: 'ceara',
 name: 'Mapa Cultural do Ceará',
 url: 'http://mapa.cultura.ce.gov.br/',
@@ -234,7 +234,7 @@ zoom: 12
 //         longitude: -47.823486328125,
 //         zoom: 6
 //     }
-// },*/
+// },
 };
 
 this.defineDataSource = function(prefix){

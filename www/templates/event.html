@@ -1,32 +1,32 @@
 <ion-view title="Evento">
     <div class="header event">Evento</div>  
-    <ion-content class="has-header single" overflow-scroll="true"> 
+    <ion-content class="has-header single" overflow-scroll="true">
         <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
-        
-        <div ng-if="entity.id" class="item event-item"> 
+
+        <div ng-if="entity.id" class="item event-item">
             <h2 class="name">{{::entity.name}}</h2>
 
             <h3 ng-if="::entity.subTitle">{{::entity.subtitle}}</h3>
 
             <div class="information">
-                
+
                 <p ng-bind-html="::entity.shortDescription"></p>
-                
+
                 <hr>
                 <div ng-if="entity.isVerified" class="information">
                     <span class="label"> este evento é verificado</span>
                 </div>
-                
+
                 <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>
                 <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
                 <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
-                
+
                 <p><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity: entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
             </div>
 
             <div class="spaces" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByEvent'; findEntityId = entity.id">
                 <div class="label">Quando e onde:</div>
-                
+
                 <ion-list ng-repeat="group in groups">
 
                     <ion-list>

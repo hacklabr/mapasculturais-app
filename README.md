@@ -83,8 +83,10 @@ $ android
 $ ionic emulate android
 ```
 
+# Configurando o serviço de Notificações no Aplicativo
+
 * Preparando o aplicativo para a comunicação com o firebase
-```
+
 1 - Utilize uma conta google e crie um projeto no Google Cloud:
 https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project
 
@@ -101,7 +103,4 @@ https://support.google.com/firebase/answer/7015592?hl=pt-br
 4 - Pronto, agora é possível simular o envio de mensagens para as instalações Android e/ou iOS.
 https://console.firebase.google.com/project/<my-google-project-name>/notification
 
-
 * Ao receber uma notificação com o parâmetro: event_id, o APP fará o redirecionamento para a tela correspondente ao evento.
-
-```

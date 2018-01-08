@@ -101,4 +101,7 @@ https://support.google.com/firebase/answer/7015592?hl=pt-br
 4 - Pronto, agora é possível simular o envio de mensagens para as instalações Android e/ou iOS.
 https://console.firebase.google.com/project/<my-google-project-name>/notification
 
+
+* Ao receber uma notificação com o parâmetro: event_id, o APP fará o redirecionamento para a tela correspondente ao evento.
+
 ```

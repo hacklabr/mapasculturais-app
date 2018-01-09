@@ -1,78 +1,79 @@
 <ion-view title="Agente">
-    <div class="header agent"><span class="name">Agente</span></div>  
-    <ion-content class="has-header single" overflow-scroll="true">
-        <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
+  <div class="header agent"><span class="name">Agente</span></div>
+  <ion-content class="has-header single" overflow-scroll="true">
+    <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
 
-        <div ng-if="entity.id" class="item agent-item"> 
-            <h2 class="name">{{::entity.name}}</h2>
-            <div class="information">
-                
-                <p ng-bind-html="::entity.shortDescription"></p>
-                
-                <hr>
-                <div ng-if="entity.isVerified" class="information">
-                    <span class="label"> este agente é verificado</span>
-                </div>
-                
-                <p><span class="label">Endereço:</span> {{::entity.endereco}}</p>
-                <p><span class="label">Tipo:</span> {{::entity.type.name}}</p>
-                <p><span class="label">Area de atuação:</span> {{::entity.terms.area.join(', ')}}</p>
-                <p ng-if="::entity.owner.id"><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
-                
-            </div>
-            
-            
-            <div class="events list" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByOwner'; findEntityId = entity.id">
+    <div ng-if="entity.id" class="item agent-item">
+      <h2 class="name">{{::entity.name}}</h2>
+      <div class="information">
 
-                <ul ng-if="false" class="single-tabs">
-                    <li class="tab tab-event active">Eventos</li>
-                    <li class="tab tab-space">Espaços</li>
-                    <li class="tab tab-agent">Subagentes</li>
-                    <li class="tab tab-project">Projetos</li>
-                </ul>
-                <div class="header event">
-                    <filter-events on-apply="applyFilters" filters="filters"></filter-events>
-                </div>
-                
-                <ion-list ng-repeat="group in groups">
+        <p ng-bind-html="::entity.shortDescription"></p>
 
-                    <div class="item item-divider">
-                        {{::dividerText(group)}}
-                    </div>
+        <hr>
+        <div ng-if="entity.isVerified" class="information">
+          <span class="label"> este agente é verificado</span>
+        </div>
 
-                    <ion-list class="event-item">
-                        <ion-item ng-repeat="event in group.events">
-                            <h2 class="title">
+        <p><span class="label">Endereço:</span> {{::entity.endereco}}</p>
+        <p><span class="label">Tipo:</span> {{::entity.type.name}}</p>
+        <p><span class="label">Area de atuação:</span> {{::entity.terms.area.join(', ')}}</p>
+        <p ng-if="::entity.owner.id"><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity:entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
+
+      </div>
+
+
+      <div class="events list" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByOwner'; findEntityId = entity.id">
+
+        <ul ng-if="false" class="single-tabs">
+          <li class="tab tab-event active">Eventos</li>
+          <li class="tab tab-space">Espaços</li>
+          <li class="tab tab-agent">Subagentes</li>
+          <li class="tab tab-project">Projetos</li>
+        </ul>
+        <div class="header event">
+          <filter-events on-apply="applyFilters" filters="filters"></filter-events>
+        </div>
+
+        <ion-list ng-repeat="group in groups">
+
+          <div class="item item-divider">
+            {{::dividerText(group)}}
+          </div>
+
+          <ion-list class="event-item">
+            <ion-item ng-repeat="event in group.events">
+              <h2 class="title">
                                 <a ng-click="favorite(event)" class="make-favorite">
                                     <i ng-show="event.favorite" class="elegant-icon icon-favorited"></i>
                                     <i ng-show="!event.favorite" class="elegant-icon icon-favorite"></i>
                                 </a>
                                 <a class="name link-event" ui-sref="menu.event({entity:event.id})">{{::event.name}}</a>
                             </h2>
-                            <h3 class="subtitle" ng-if="::event.subTitulo">{{::event.subTitle}}</h3>
-                            
-                            <img class="thumb" ng-if="::event.$files.avatarSmall" ng-src="{{::event.$files.avatarSmall.url}}"/>
+              <h3 class="subtitle" ng-if="::event.subTitulo">{{::event.subTitle}}</h3>
 
-                            <div class="description">
-                                <span ng-bind-html="::entity.shortDescription"></span>
-                            </div>
+              <img class="thumb" ng-if="::event.$files.avatarSmall" ng-src="{{::event.$files.avatarSmall.url}}" />
 
-                            <ul class="ocurrences"><li><a ui-sref="menu.space({entity:event.space.id})" class="link-space">{{::event.space.name}}</a>,
-                            {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</li></ul>
+              <div class="description">
+                <span ng-bind-html="::entity.shortDescription"></span>
+              </div>
 
-                            <div class="information">
-                                <p ng-if="::event.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})" class="link-project">{{::event.project.name}}</a></p>
-                                <p><span ng-if="::event.rule.price" class="label">Preço:</span> {{::event.rule.price}}</p>
-                                <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
-                                <p><span class="label">Linguagem:</span> {{::event.terms.linguagem.join(', ')}}</p>
-                            </div>
+              <ul class="ocurrences">
+                <li><a ui-sref="menu.space({entity:event.space.id})" class="link-space">{{::event.space.name}}</a>, {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}</li>
+              </ul>
 
-                        </ion-item>
-                    </ion-list>
-                </ion-list>
-                <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
-            </div>
-        </div>
+              <div class="information">
+                <p ng-if="::event.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:event.project.id})" class="link-project">{{::event.project.name}}</a></p>
+                <p><span ng-if="::event.rule.price" class="label">Preço:</span> {{::event.rule.price}}</p>
+                <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(event)}}">{{::event.classificacaoEtaria}}</span></p>
+                <p><span class="label">Linguagem:</span> {{::event.terms.linguagem.join(', ')}}</p>
+              </div>
 
-    </ion-content>
+            </ion-item>
+          </ion-list>
+        </ion-list>
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+      </div>
+    </div>
+
+  </ion-content>
 </ion-view>

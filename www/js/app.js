@@ -14,25 +14,43 @@ angular.module('mapasculturais', [
     'mapas.service',
     'ngStorage',
     'ngCordova',
-])
+  ])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if(window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+  .run(function($ionicPlatform, $ionicPopup, IsFirstRun, $state) {
 
-.config(function($ionicConfigProvider) {
+    $ionicPlatform.ready(function() {
+
+      if (window.FirebasePlugin) {
+        window.FirebasePlugin.onNotificationOpen(function(notification) {
+
+          if (notification.event_id) {
+            document.location.href = "#/app/event/" + notification.event_id;
+          }
+
+        }, function(error) {
+          //console.log(error);
+        });
+      }
+
+      if (IsFirstRun.isFirstRun()) {
+        $state.go('menu.linguagens');
+      }
+
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
+  })
+
+  .config(function($ionicConfigProvider) {
     $ionicConfigProvider.scrolling.jsScrolling(false);
     $ionicConfigProvider.views.forwardCache(true);
-//    $ionicConfigProvider.views.maxCache(0);
+    //    $ionicConfigProvider.views.maxCache(0);
 
-});
+  });

@@ -12,7 +12,11 @@ var paths = {
   sass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('ionic:watch:before', ['default', 'sass', 'watch']);
+
+gulp.task('default', function(){
+  console.log("Default task initialized.");
+});
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')

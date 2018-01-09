@@ -1,0 +1,13 @@
+<div ng-controller="LinguagensCtrl">
+  <div class="header">Interesses</div>
+  <ion-content>
+    <div style="margin-top:100px; margin-left:10px">
+      <form name="thisform" novalidate data-ng-submit="salvarPreferencias()">
+        <label ng-repeat="linguagem in linguagens">
+          <input style="margin-bottom:10px;" class="tags" id="$index" type="checkbox" value="{{linguagem.term}}" ng-checked="linguagem.checked" /> {{linguagem.term}}<br>
+        </label>
+        <input class="button button-block button-energized" type="submit" value="Salvar Preferências" />
+      </form>
+    </div>
+  </ion-content>
+</div>

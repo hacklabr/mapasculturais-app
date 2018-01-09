@@ -1,48 +1,51 @@
 <ion-view title="Evento">
-    <div class="header event">Evento</div>  
-    <ion-content class="has-header single" overflow-scroll="true"> 
-        <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
-        
-        <div ng-if="entity.id" class="item event-item"> 
-            <h2 class="name">{{::entity.name}}</h2>
+  <div class="header event">Evento</div>
+  <ion-content class="has-header single" overflow-scroll="true">
+    <img class="img" ng-if="::entity.$files.avatarEvent" ng-src="{{::entity.$files.avatarEvent.url}}">
 
-            <h3 ng-if="::entity.subTitle">{{::entity.subtitle}}</h3>
+    <div ng-if="entity.id" class="item event-item">
+      <h2 class="name">{{::entity.name}}</h2>
 
-            <div class="information">
-                
-                <p ng-bind-html="::entity.shortDescription"></p>
-                
-                <hr>
-                <div ng-if="entity.isVerified" class="information">
-                    <span class="label"> este evento é verificado</span>
-                </div>
-                
-                <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>
-                <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
-                <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
-                
-                <p><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity: entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
-            </div>
+      <h3 ng-if="::entity.subTitle">{{::entity.subtitle}}</h3>
 
-            <div class="spaces" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByEvent'; findEntityId = entity.id">
-                <div class="label">Quando e onde:</div>
-                
-                <ion-list ng-repeat="group in groups">
+      <div class="information">
 
-                    <ion-list>
-                        <ion-item ng-repeat="event in group.events">
-                            <ul class="ocurrences">
-                                <li><a ui-sref="menu.space({entity:event.space.id})" class="link-space">{{::event.space.name}}</a>, {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}, {{::event.space.endereco}}, <strong>{{::event.rule.price}}</strong></li>
-                            </ul>
-                            <a ng-click="favorite(event)" class="make-favorite">
+        <p ng-bind-html="::entity.shortDescription"></p>
+
+        <hr>
+        <div ng-if="entity.isVerified" class="information">
+          <span class="label"> este evento é verificado</span>
+        </div>
+
+        <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>
+        <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
+        <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
+
+        <p><span class="label">Publicado por:</span> <a ui-sref="menu.agent({entity: entity.owner.id})" class="link-agent">{{::entity.owner.name}}</a></p>
+      </div>
+
+      <div class="spaces" ng-if="entity.id" ng-controller="eventsCtrl" ng-init="findFunction = 'findByEvent'; findEntityId = entity.id">
+        <div class="label">Quando e onde:</div>
+
+        <ion-list ng-repeat="group in groups">
+
+          <ion-list>
+            <ion-item ng-repeat="event in group.events">
+              <ul class="ocurrences">
+                <li><a ui-sref="menu.space({entity:event.space.id})" class="link-space">{{::event.space.name}}</a>, {{::event.start.format('LL')}} das {{::event.start.format('HH:mm')}} às {{::event.end.format('HH:mm')}}, {{::event.space.endereco}}, <strong>{{::event.rule.price}}</strong></li>
+              </ul>
+              <a ng-click="favorite(event)" class="make-favorite">
                                 <i ng-show="::event.favorite" class="elegant-icon icon-favorited"></i>
                                 <i ng-show="::!event.favorite" class="elegant-icon icon-favorite"></i>
                             </a>
-                        </ion-item>
-                    </ion-list>
-                </ion-list>
-                <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
-            </div>
-        </div>
-    </ion-content>
+            </ion-item>
+          </ion-list>
+        </ion-list>
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
+        <button ng-show="shareButton" ng-click="shareActionButton()"><span class="elegant-icon icon-share"></span> Compartilhar</button>
+
+      </div>
+    </div>
+  </ion-content>
 </ion-view>

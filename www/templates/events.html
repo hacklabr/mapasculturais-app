@@ -1,51 +1,52 @@
 <ion-view title="Eventos">
-    <div class="header event">
-        <filter-events on-apply="applyFilters" filters="filters"></filter-events>
-    </div>    
-    <ion-content class="has-header" overflow-scroll="true">   
-        
-        <ion-list ng-if="groups.length > 0" ng-repeat="group in groups track by $index">
-            <div class="item item-divider">
-                {{::dividerText(group)}}
-            </div>
+  <div class="header event">
+    <filter-events on-apply="applyFilters" filters="filters"></filter-events>
+  </div>
+  <ion-content class="has-header" overflow-scroll="true">
 
-            <ion-list class="event-item">
-                <ion-item ng-repeat="entity in group.events track by $index">
-                    <h2 class="title">
+    <ion-list ng-if="groups.length > 0" ng-repeat="group in groups track by $index">
+      <div class="item item-divider">
+        {{::dividerText(group)}}
+      </div>
+
+      <ion-list class="event-item">
+        <ion-item ng-repeat="entity in group.events track by $index">
+          <h2 class="title">
                         <a ng-click="favorite(entity)" class="make-favorite">
                             <i ng-show="entity.favorite" class="elegant-icon icon-favorited"></i>
                             <i ng-show="!entity.favorite" class="elegant-icon icon-favorite"></i>
                         </a>
                         <a ui-sref="menu.event({entity:entity.id})" class="name link-event">{{::entity.name}}</a>
                     </h2>
-                
-                    <h3 class="subtitle" ng-if="::entity.subTitulo">{{::entity.subTitle}}</h3>
-                    
-                    <img class="thumb" ng-if="::entity.$files.avatarSmall" ng-src="{{::entity.$files.avatarSmall.url}}"/>
-                    <div class="description">
-                        <span ng-bind-html="::entity.shortDescription"></span>
-                    </div>
-                    
-                    <ul class="ocurrences"><li><a ui-sref="menu.space({entity:entity.space.id})" class="link-space">{{::entity.space.name}}</a>,
-                    {{::entity.start.format('LL')}} das {{::entity.start.format('HH:mm')}} às {{::entity.end.format('HH:mm')}}</li></ul>
-                    
-                    <div ng-if="entity.isVerified" class="information">
-                        <span class="label"> este evento é verificado</span>
-                    </div>
-                    
-                    <div class="information">
-                        <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>
-                        <p><span ng-if="::entity.rule.price" class="label">Preço:</span> {{::entity.rule.price}}</p>
-                        <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
-                        <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
-                    </div>
 
-                </ion-item>
-            </ion-list>
-        </ion-list>
-        
-        <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhum evento encontrado, refaça a busca.</p>
+          <h3 class="subtitle" ng-if="::entity.subTitulo">{{::entity.subTitle}}</h3>
 
-        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="30%"></ion-infinite-scroll>
-    </ion-content>
+          <img class="thumb" ng-if="::entity.$files.avatarSmall" ng-src="{{::entity.$files.avatarSmall.url}}" />
+          <div class="description">
+            <span ng-bind-html="::entity.shortDescription"></span>
+          </div>
+
+          <ul class="ocurrences">
+            <li><a ui-sref="menu.space({entity:entity.space.id})" class="link-space">{{::entity.space.name}}</a>, {{::entity.start.format('LL')}} das {{::entity.start.format('HH:mm')}} às {{::entity.end.format('HH:mm')}}</li>
+          </ul>
+
+          <div ng-if="entity.isVerified" class="information">
+            <span class="label"> este evento é verificado</span>
+          </div>
+
+          <div class="information">
+            <p ng-if="::entity.project.id"><span class="label">Projeto:</span> <a ui-sref="menu.project({entity:entity.project.id})" class="link-project">{{::entity.project.name}}</a></p>
+            <p><span ng-if="::entity.rule.price" class="label">Preço:</span> {{::entity.rule.price}}</p>
+            <p><span class="label">Classificação:</span> <span class="classificacao {{::classificacao(entity)}}">{{::entity.classificacaoEtaria}}</span></p>
+            <p><span class="label">Linguagem:</span> {{::entity.terms.linguagem.join(', ')}}</p>
+          </div>
+
+        </ion-item>
+      </ion-list>
+    </ion-list>
+
+    <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhum evento encontrado, refaça a busca.</p>
+
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="30%"></ion-infinite-scroll>
+  </ion-content>
 </ion-view>

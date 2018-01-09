@@ -1,31 +1,31 @@
 <ion-view style="" title="Espaços">
-    <div class="header space">
-        <filter-spaces on-apply="applyFilters" filters="filters"></filter-spaces>
-    </div>  
-    <ion-content class="has-header" overflow-scroll="true">
-        <ion-list class="space-item">
-            <ion-item ng-repeat="entity in entities">
-                <h2 class="title"><a class="name link-space" ui-sref="menu.space({entity:entity.id})">{{::entity.name}}</a></h2>
-                
-                <img class="thumb" ng-if="::entity.$files.avatarSmall" ng-src="{{::entity.$files.avatarSmall.url}}"/>
-                <div class="description">
-                    <span ng-bind-html="::entity.shortDescription"></span>
-                </div>
-                
-                <div ng-if="entity.isVerified" class="information">
-                    <span class="label"> este espaço é verificado</span>
-                </div>
+  <div class="header space">
+    <filter-spaces on-apply="applyFilters" filters="filters"></filter-spaces>
+  </div>
+  <ion-content class="has-header" overflow-scroll="true">
+    <ion-list class="space-item">
+      <ion-item ng-repeat="entity in entities">
+        <h2 class="title"><a class="name link-space" ui-sref="menu.space({entity:entity.id})">{{::entity.name}}</a></h2>
 
-                <div class="information">
-                    <p><span class="label">Endereço:</span> {{::entity.endereco}}</p>
-                    <p><span class="label">Tipo:</span> {{::entity.type.name}}</p>
-                    <p><span class="label">Área de atuação:</span> {{::entity.terms.area.join(', ')}}</p>
-                </div>
-            </ion-item>
-        </ion-list>
-        
-        <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhum espaço encontrado, refaça a busca.</p>
-        
-        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
-    </ion-content>
+        <img class="thumb" ng-if="::entity.$files.avatarSmall" ng-src="{{::entity.$files.avatarSmall.url}}" />
+        <div class="description">
+          <span ng-bind-html="::entity.shortDescription"></span>
+        </div>
+
+        <div ng-if="entity.isVerified" class="information">
+          <span class="label"> este espaço é verificado</span>
+        </div>
+
+        <div class="information">
+          <p><span class="label">Endereço:</span> {{::entity.endereco}}</p>
+          <p><span class="label">Tipo:</span> {{::entity.type.name}}</p>
+          <p><span class="label">Área de atuação:</span> {{::entity.terms.area.join(', ')}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <p ng-if="notFound" class="not-found" style="padding:15px; text-align: center">Nenhum espaço encontrado, refaça a busca.</p>
+
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+  </ion-content>
 </ion-view>

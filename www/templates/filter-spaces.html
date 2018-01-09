@@ -1,52 +1,52 @@
 <div class="name">
-    <form ng-show="!showFilter" ng-submit="applyFilters()">
-        <label class="item item-input search-input">
+  <form ng-show="!showFilter" ng-submit="applyFilters()">
+    <label class="item item-input search-input">
             <i class="icon elegant-icon icon-search placeholder-icon"></i>
             <input ng-model="temp.keyword" type="text" placeholder="Buscar espaços">
         </label>
 
-        <button class="search-btn" type="submit"></button>
-    </form>
-    <span ng-show="showFilter" class="name">Filtro</span>
+    <button class="search-btn" type="submit"></button>
+  </form>
+  <span ng-show="showFilter" class="name">Filtro</span>
 </div>
 <div class="show-filters">
-    <div ng-click="toggle()" id="space-filter" ><span class="elegant-icon icon-show-advanced-search"></span></div>
+  <div ng-click="toggle()" id="space-filter"><span class="elegant-icon icon-show-advanced-search"></span></div>
 </div>
 <div ng-if="showFilter" class="filters-background"></div>
 <div class="filters-modal" ng-show="showFilter">
 
-    <div class="list">
-        <label class="item item-input item-select">
+  <div class="list">
+    <label class="item item-input item-select">
             <div class="input-label">Tipo</div>
             <select ng-options="value.id as value.name for value in types" ng-model="temp.type"></select>
         </label>
-    </div>
+  </div>
 
-    <div class="list">
-        <label class="item item-input item-select">
+  <div class="list">
+    <label class="item item-input item-select">
             <div class="input-label">Área de atuação</div>
             <select ng-options="value.id as value.name for value in areas" ng-model="temp.area"></select>
         </label>
-    </div>
+  </div>
 
-    <div class="list">
-        <div class="item item-toggle">
-            <i class="icon icon_circle-selected"></i>
-            <span class="input-label">Somente espaços verificados</span>
-            <label class="toggle toggle-dark">
+  <div class="list">
+    <div class="item item-toggle">
+      <i class="icon icon_circle-selected"></i>
+      <span class="input-label">Somente espaços verificados</span>
+      <label class="toggle toggle-dark">
                 <input type="checkbox" ng-model="temp.verified">
                 <div class="track">
                     <div class="handle"></div>
                 </div>
             </label>
-        </div>
     </div>
+  </div>
 
-    <footer>
-        <div class="button-bar">
-            <a class="button button-small icon-left ion-close-circled" ng-click="cancel()">Cancelar</a>
-            <a class="button button-small icon-left ion-close-circled" ng-click="reset()">Limpar</a>
-            <a class="button button-small icon-left ion-checkmark-circled" ng-click="applyFilters()">Aplicar</a>
-        </div>
-    </footer>
+  <footer>
+    <div class="button-bar">
+      <a class="button button-small icon-left ion-close-circled" ng-click="cancel()">Cancelar</a>
+      <a class="button button-small icon-left ion-close-circled" ng-click="reset()">Limpar</a>
+      <a class="button button-small icon-left ion-checkmark-circled" ng-click="applyFilters()">Aplicar</a>
+    </div>
+  </footer>
 </div>

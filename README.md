@@ -34,6 +34,8 @@ $ bower install
 $ ionic setup sass
 ```
 
+**OBS**: Se a sua versão do ionic não utilizar mais a sintaxe `ionic setup`, compile o SASS executando apenas: `gulp` na raiz do repositório
+
 * Rodar
 ```
 $ ionic serve

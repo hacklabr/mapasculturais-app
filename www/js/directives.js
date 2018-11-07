@@ -6,7 +6,8 @@ angular.module('mapasculturais.directives', ['ionic'])
             templateUrl: 'templates/filter-events.html',
             scope: {
                 filters: '=',
-                onApply: '='
+                onApply: '=',
+                placeholder: '@'
             },
             link: function ($scope, el, attrs) {
                 var api = mapasApi(config.dataSource.url);
